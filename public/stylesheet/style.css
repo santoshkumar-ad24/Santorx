@@ -54,17 +54,19 @@ nav{
 
 .logo{
     display: flex;
-    gap: 0.2rem;
-    color: var(--logo);
+    flex-direction: row;
+    gap: 0.1rem;
+    color: var(--navlink);
     align-items: center;
+    
     font-size: clamp(0.8rem, 2.5vw, 1.2rem);
     font-family: "Science Gothic", sans-serif;
     
 }
 .logo-image{
-    height: 40px;
-    width: 40px;
-    margin-right: 0.5rem;
+    height: 35px;
+    width: 35px;
+    
 }
 .logo-image img{
     height: 100%;
@@ -424,13 +426,14 @@ nav{
 }
 
 /* Brand Section */
-.brand h2 {
+/* .brand h2 {
     font-size: 32px;
     margin: 0 0 10px;
     color: var(--logo);
-}
+} */
 
 .brand p {
+    margin-top: 10px;
     max-width: 300px;
     opacity: 0.75;
 }
