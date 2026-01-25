@@ -132,12 +132,12 @@ nav{
 }
 
 .home-sec{
-
+   height: 60vh;
     margin-top: 60px;
 }
 
 .home{
-    height: 60vh;
+    height: 100%;
     width: 100vw;
     display: flex;
     gap: 0.3rem;
@@ -152,7 +152,7 @@ nav{
     
 }
 @media screen and (max-width: 700px){
-
+    
     .box{
         width: calc(100%/2);
       
@@ -164,9 +164,13 @@ nav{
 }
 
 @media screen and (max-width: 550px) {
-    .box{
-        width: 100%;
+    .home-sec{
         height: 40vh;
+    }
+    .box{
+        height: 100%;
+        width: 100%;
+        
     }
     
     #img3{
@@ -268,6 +272,7 @@ nav{
 @media screen and (max-width: 610px) {
     .featured{
         grid-template-columns: 1fr;
+        /* margin-top: -200px; */
     }
 }
 
