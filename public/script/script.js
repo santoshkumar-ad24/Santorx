@@ -31,7 +31,6 @@ const blogListDes = document.getElementsByClassName("blogList-des");
 
 
 Array.from(blogListDes).forEach(element => {
-    const textLen = element.innerText.length;
     const textWord=  element.innerText.split(" ");
     let newDes = "";
     if(textWord.length > 12){
