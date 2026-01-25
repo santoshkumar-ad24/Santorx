@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const blogDB = require("../models/blog")
-const admindb = require("../models/adminDB");
+
 const userFeedbackDB = require("../models/userFeedback");
 const userConatctDB = require("../models/userContact");
-const authMiddleware = require("../middleware/adminChecker");
+
 const { validateEmail, validateString, sanitizeInput } = require("../middleware/inputValidator");
 
 

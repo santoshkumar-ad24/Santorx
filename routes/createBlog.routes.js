@@ -6,7 +6,7 @@ const userConatctDB = require("../models/userContact");
 const userFeedbackDB = require("../models/userFeedback");
 const slugify = require("slugify");
 const multer = require("multer");
-const upload = multer();
+
 const authMiddleware = require('../middleware/adminChecker');
 const { validateString, sanitizeInput } = require('../middleware/inputValidator');
 

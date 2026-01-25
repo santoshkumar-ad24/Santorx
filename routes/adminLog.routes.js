@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const admindb = require('../models/adminDB');
 const jwt = require('jsonwebtoken');
-const cookie = require('cookie');
+
 const router = express.Router();
 const { validateString } = require('../middleware/inputValidator');
 

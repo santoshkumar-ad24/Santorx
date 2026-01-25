@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const multer = require('multer');
+
 const upload = require('../middleware/quillUpload');
 const path = require('path');
-const blogDB = require('../models/blog')
+
 const admindb = require('../models/adminDB')
 const authMiddleware = require('../middleware/adminChecker')
 
