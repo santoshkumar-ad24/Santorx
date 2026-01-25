@@ -1,9 +1,5 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/blogsDB"),{
-    useNewUrlParser : true,
-    useUnifiedTopology: true
-};
 
 const blogSchema = new mongoose.Schema({
     title: String,
