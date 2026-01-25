@@ -46,12 +46,26 @@ body {
    margin-bottom: 40px;
    text-align: center;
 }
-
-.logo h1{
-   font-family: "Chelsea Market", system-ui;
-   color: var(--yellow);
-   font-size: 1.8rem;
+.logo{
+    display: flex;
+    gap: 0.2rem;
+    color: var(--logo);
+    align-items: center;
+    font-size: clamp(0.8rem, 2.5vw, 1.2rem);
+    font-family: "Science Gothic", sans-serif;
+    
 }
+.logo-image{
+    height: 40px;
+    width: 40px;
+    margin-right: 0.5rem;
+}
+.logo-image img{
+    height: 100%;
+    width: 100%;
+}
+
+
 .sidebar-menu {
    display: flex;
    flex-direction: column;
