@@ -95,9 +95,9 @@ app.get('/health', (req, res) => {
     });
 });
 
-app.get('/favicon.ico', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/image', 'reading-book.jpg'));
-});
+// app.get('/favicon.ico', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'public/image', 'reading-book.jpg'));
+// });
 // ============ 404 HANDLER ============
 app.use((req, res) => {
     res.status(404).json({
