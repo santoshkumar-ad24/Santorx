@@ -1,0 +1,335 @@
+/* --- Root Variables (Same as your theme) --- */
+:root {
+    --text: #2a2e35;
+    --primary-dark: #0D1B2A;
+    --header: #0f172a;
+    --navlink: #e6f3ff;
+    --teal: #006562;
+    --teal-glow: #00656280;
+    --yellow: #FDEB9E;
+    --logo: #9daec2;
+    --white: #ffffff;
+    --headind2: "Chelsea Market", system-ui;
+    --font-main: "DM Serif Text", serif;
+    --para: "Funnel Sans", sans-serif;
+    --transition: all 0.3s ease-in-out;
+}
+
+/* --- Layout & SEO-friendly Typography --- */
+body {
+    background-color: #fcfdfe;
+    /* Very clean, minimal blue-tinted white */
+    margin: 0;
+    font-family: var(--para);
+    line-height: 1.8;
+    /* Optimal for long reading */
+    color: #333;
+    /* Slightly softer than pure black for eyes */
+}
+
+/* BLOG PAGE STYLES - Wordora */
+main {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+/* Layout Container */
+.blogSec {
+    max-width: 1000px;
+    /* Commercial standard width */
+    margin: 7px auto;
+    padding: 0 20px;
+    color: var(--text);
+    line-height: 1.4;
+    
+}
+
+article {
+
+    animation: fadeIn 0.8s ease-in-out;
+
+}
+
+/* Typography Hierarchy */
+article h1 {
+    font-family: var(--headind2);
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    /* Responsive font size */
+    color: var(--primary-dark);
+    line-height: 1.1;
+    margin-bottom: 30px;
+    /* text-align: center; */
+}
+
+/* Uploader / Meta Section */
+.uploader {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 15px;
+    margin-bottom: 40px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.uploader-img img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--teal);
+    padding: 2px;
+}
+
+.uploader-det {
+    display: flex;
+    flex-direction: column;
+}
+
+#uploader-name {
+    font-family: var(--para);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary-dark);
+    margin: 0;
+}
+
+#uploader-date {
+    font-family: var(--para);
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+}
+
+.blog-container{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    
+
+    /* flex-wrap: wrap; */
+}
+.content-container{
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* Featured Image */
+.contentImg {
+    max-width: 800px;
+    margin: auto;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 11, 88, 0.1);
+}
+
+.contentImg img {
+    width: 100%;
+    /* height: auto; */
+    aspect-ratio: 16 / 9;
+    display: block;
+    transition: var(--transition);
+}
+
+.contentImg img:hover {
+    transform: scale(1.02);
+}
+
+/* Blog Body Content */
+.content {
+    max-width: 800px;
+    /* Narrower for better reading experience */
+    margin: 0 auto;
+    font-family: var(--para);
+    font-size: 1.15rem;
+    color: var(--text);
+    
+}
+
+/* SEO: Styling inner HTML tags from <%- blog.content %> */
+.content p{
+
+    line-height: 1.5;
+}
+
+.content h2,
+.content h3 {
+    font-family: var(--font-main);
+    color: var(--primary-dark);
+    margin: 40px 0 20px;
+}
+
+.content h2 {
+    font-size: 2rem;
+}
+
+.content blockquote {
+    border-left: 5px solid var(--teal);
+    padding: 20px 30px;
+    margin: 30px 0;
+    background-color: var(--navlink);
+    font-style: italic;
+    font-size: 1.2rem;
+    border-radius: 0 8px 8px 0;
+}
+
+.content a {
+    color: var(--teal);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 2px solid var(--teal-glow);
+    transition: var(--transition);
+}
+
+.content a:hover {
+    background-color: var(--yellow);
+    color: var(--primary-dark);
+}
+
+.content ul,
+.content ol {
+    margin-bottom: 25px;
+    padding-left: 20px;
+}
+
+.content li {
+    margin-bottom: 10px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .blogSec {
+        margin: 30px auto;
+    }
+
+    article h1 {
+        font-size: 1.5rem;
+    }
+
+    .content {
+        font-size: 1.05rem;
+    }
+}
+
+aside{
+    max-width: 300px;
+    
+    height: max-content;
+    
+    box-shadow: 0 2px 10px rgb(225, 226, 230);
+    
+}
+.author{
+    background-color: rgb(225, 226, 230);
+    padding: 1rem;
+    border-left: 2px solid var(--header);
+    border-top: 2px solid var(--header);
+}
+.author img{
+    display: block;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--teal);
+    padding: 0.1rem;
+    margin: 0 auto;
+}
+.author-bio{
+    margin-top: 1rem;
+    text-align: center;
+    color: rgb(52, 50, 50);
+    font-family: cursive;
+    font-size: 0.8rem;
+    text-shadow: 1px 1px 10px var(--teal-glow);
+}
+.blogList{
+    margin-top: 2rem;
+    background-color: rgb(225, 226, 230);
+    padding: 1rem;
+    border-left: 2px solid var(--header);
+    border-top: 2px solid var(--header);
+    height: 600px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+.blog-post{
+    display: flex;
+    gap: 0.3rem;
+    margin-top: 1rem;
+    transition: all 0.3s ease-in-out;
+
+    border-radius: 0.1rem;
+    background-color: rgb(240, 234, 223);
+    box-shadow: 1px 1px 2px solid var(--primary-dark);
+    
+}
+.blog-post:hover{
+    transform: scale(1.06);
+    box-shadow: 0.4rem 0.4rem 1rem black;
+}
+
+.blog-post img{
+    /* width: 60px; */
+    margin: 0.3rem 0 0.3rem 0.3rem;
+    border-radius: 0.3rem;
+    height: 45px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.blogList-title{
+    font-size: 0.65rem;
+    font-weight: bolder;
+    color: black;
+    line-height: 0.8rem;
+}
+.blogList-des{
+    font-size: 0.55rem;
+    color: rgb(65, 63, 63);
+}
+
+
+/* Entrance Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .blog-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    aside {
+        max-width: 100%;
+        border-left: none;
+        border-top: 2px solid var(--header);
+    }
+    .blog-post img{
+
+    height: 65px;
+
+}
+
+.blogList-title{
+    font-size: 0.85rem;
+
+    line-height: 1rem;
+}
+.blogList-des{
+    font-size: 0.65rem;
+}
+    
+}

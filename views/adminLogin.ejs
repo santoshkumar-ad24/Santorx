@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordora</title>
+    <link rel="stylesheet" href="/stylesheet/adminLog.css">
+</head>
+<body>
+    <main>
+        <section class="adminLog">
+            <form action="/admin/login" method="post">
+                <div class="login-con">
+                    <label>AdminName: 
+                    <input type="text" class="adminname" id="AdminName" name="name"> </label>
+                    <label>UserName: 
+                    <input type="text" class="username" id="UserName" name="username"> </label>
+                    <label id="bottom-border">password: 
+                    <input type="password" class="password" id="pwd" name="password"></label>
+                    <% if (message) { %>
+                        <p id="error-message"><%= message %></p>
+                    <% } %>
+                    
+                    <button type="submit" id="adminLog-submit">LogIn</button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

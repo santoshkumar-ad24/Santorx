@@ -1,0 +1,141 @@
+
+        /* --- ROOT VARIABLES (STRICT CONSTRAINT MATCH) --- */
+        :root {
+            --text: #000B58;
+            --primary-dark: #0D1B2A;
+            --header: #1B263B;
+            --navlink: #e6f3ff;
+            --teal: #006562;
+            --teal-glow: #00656280;
+            --yellow: #FDEB9E;
+            --logo: #9daec2;
+            --white: #ffffff;
+        }
+
+        /* --- GLOBAL RESET & TYPOGRAPHY --- */
+
+        body {
+            background-color: var(--white);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+
+        
+
+
+        /* --- HERO SECTION --- */
+        .about-hero {
+            background-color: var(--text);
+            padding: 4rem 5%;
+            text-align: center;
+            margin-top: 60px;
+            /* border-top: 0.2rem solid var(--teal-glow); */
+            border-bottom: 4px solid var(--teal);
+        }
+
+        .about-hero h1 {
+            color: var(--white);
+            font-size: 3rem;
+            
+            margin-bottom: 0.5rem;
+        }
+
+        .about-hero p {
+            color: var(--navlink);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.25rem;
+        }
+
+        /* --- CONTENT CONTAINER --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* --- STORY SECTION --- */
+        .story-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .story-content h2 {
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+        }
+        .story-content p{
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Using Yellow for a highlighter effect */
+        .highlight {
+            background-color: var(--yellow);
+            padding: 0 5px;
+            border-radius: 4px;
+            color: var(--text);
+        }
+
+        .story-image {
+            background-color: var(--logo); /* Placeholder color */
+            width: 100%;
+            height: 350px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 10px 10px 0px var(--teal-glow);
+        }
+        
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- VALUES CARDS --- */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .value-card {
+            background: var(--white);
+            border: 1px solid var(--logo);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--teal-glow);
+            border-color: var(--teal);
+        }
+
+        .value-icon {
+            font-size: 2rem;
+            color: var(--teal);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+ 
+
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .story-section {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }

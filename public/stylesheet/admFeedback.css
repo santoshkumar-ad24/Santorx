@@ -1,0 +1,131 @@
+/* Import Fonts (Ensure these are linked in your HTML head) */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Funnel+Sans:wght@300;400;600&display=swap');
+
+:root {
+    --text: #000B58;
+    --primary-dark: #0D1B2A;
+    --header: #1B263B;
+    --navlink: #e6f3ff;
+    --teal: #006562;
+    --teal-glow: #00656280;
+    --yellow: #FDEB9E;
+    --logo: #9daec2;
+    --white: #ffffff;
+    --headind2: "Chelsea Market", system-ui;
+    --font-main: "DM Serif Text", serif;
+    --transition: all 0.3s ease-in-out;
+    --para: "Funnel Sans", sans-serif;
+}
+
+/* Section Wrapper */
+.adm-feedback-sec {
+    padding: 60px 20px;
+    background-color: var(--navlink);
+    min-height: 400px;
+    font-family: var(--para);
+}
+
+.adm-feedback-sec h2 {
+    font-family: var(--headind2);
+    color: var(--header);
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+/* Subtle line under heading */
+.adm-feedback-sec h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--teal);
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+/* Responsive Grid Container */
+.adm-feedback-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Card Styling */
+.Admfeedback-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid var(--teal);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.Admfeedback-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px var(--teal-glow);
+}
+
+/* User Name Styling */
+.Admfeedback-user {
+    font-family: var(--font-main);
+    color: var(--text);
+    font-size: 1.25rem;
+    margin-bottom: 5px;
+}
+
+.feedName {
+    margin-right: 5px;
+}
+
+/* Email Styling */
+.Admfeedback-email {
+    font-size: 0.9rem;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+/* Message/Feedback Styling */
+.Admfeedback-message {
+    font-family: var(--para);
+    color: var(--primary-dark);
+    line-height: 1.6;
+    font-style: italic;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    position: relative;
+}
+
+/* Decorative Quote Mark */
+.Admfeedback-message::before {
+    content: '"';
+    font-family: var(--font-main);
+    font-size: 4rem;
+    color: var(--teal);
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    opacity: 0.1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .adm-feedback-sec h2 {
+        margin-top: 7rem;
+        font-size: 2rem;
+    }
+    
+    .adm-feedback-container {
+        grid-template-columns: 1fr; /* Stack on small screens */
+    }
+}

@@ -1,0 +1,101 @@
+ :root {
+     --text: #000B58;
+     --primary-dark: #0D1B2A;
+     --header: #1B263B;
+     --navlink: #e6f3ff;
+     --teal: #006562;
+     --teal-glow: #00656280;
+     /* Transparent version for glows */
+     --yellow: #FDEB9E;
+     --logo: #9daec2;
+     --white: #ffffff;
+
+     --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     --transition: all 0.3s ease-in-out;
+ }
+
+
+
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+
+ body {
+     background: radial-gradient(circle , var(--logo), var(--navlink))
+
+ }
+
+
+
+ .adminLog {
+     width: 100vw;
+     height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+ .login-con {
+     border: 2px solid var(--primary-dark);
+     background-color: var(--header);
+     display: flex;
+     flex-direction: column;
+     padding: 2rem;
+     border-radius: 2rem;
+     outline: 4px solid white;
+     box-shadow: 0.5rem 0.5rem 1rem var(--primary-dark);
+ }
+
+ .login-con label {
+     margin-bottom: 1.4rem;
+     font-size: 1.6rem;
+     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+     font-weight: bolder;
+     color: var(--navlink);
+
+     text-shadow: 2px 2px 5px black;
+     display: grid;
+     grid-template-columns: 0.8fr 1fr;
+     column-gap: 0.3rem;
+ }
+
+ .login-con label input{
+    border: none;
+    padding: 0.5rem;
+    outline: none;
+    border-radius: 0.8rem;
+    box-shadow: 0.3rem 0.3rem 0.5rem black;
+    color: var(--primary-dark);
+    font-family: cursive;
+    font-size: 1rem;
+    font-weight: bolder;
+
+ }
+ #bottom-border{
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--navlink);
+ }
+
+ #error-message{
+    color: red;
+    font-weight:500;
+    margin-bottom: 1rem;
+    text-align: center;
+ }
+
+    .login-con button {
+        padding: 0.7rem;
+        font-size: 1.4rem;
+        font-weight: bolder;
+        width: fit-content;
+        margin: auto;
+        border: none;
+        border-radius: 1rem;
+        background-color: var(--teal);
+        color: var(--white);
+        cursor: pointer;
+        box-shadow: 0.3rem 0.3rem 0.5rem black;
+    }

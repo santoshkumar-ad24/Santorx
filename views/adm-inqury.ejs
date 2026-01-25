@@ -1,0 +1,133 @@
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Wordora Admin | Command Center</title>
+
+        <link rel="stylesheet" href="/stylesheet/adm-inqury.css">
+        <link rel="stylesheet" href="/stylesheet/admin-dash.css">
+        <!-- FontAwesome for Icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </head>
+
+    <body>
+
+        <div class="admin-layout">
+            <!-- Modern Vertical Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-top">
+                    <div class="logo">
+                        <h1>Wordora</h1>
+                    </div>
+                </div>
+
+                <nav class="sidebar-menu">
+                    <a href="/admin/dashboard" class="menu-item">
+                        <i class="fas fa-chart-line"></i> <span>Dashboard</span>
+                    </a>
+                    <a href="/admin/details" class="menu-item">
+                        <i class="fas fa-user-shield"></i> <span>Profile</span>
+                    </a>
+                    <a href="/admin/dashboard/feedback" class="menu-item">
+                        <i class="fas fa-comment-dots"></i> <span>FeedBack</span>
+                    </a>
+                    <a href="/admin/dashboard/contact-inqury" class="menu-item  active">
+                        <i class="fas fa-envelope-open-text"></i> <span>Inquiry</span>
+                    </a>
+                </nav>
+
+                <div class="sidebar-bottom">
+                    <a href="/" class="external-link">
+                        <i class="fas fa-eye"></i> <span>View Site</span>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Workspace -->
+            <main class="workspace">
+                <!-- Top Navigation Bar -->
+                <header class="top-nav">
+                    <div class="nav-left">
+                        <div class="logo">
+                            <h1>WordOra</h1>
+                        </div>
+                    </div>
+                    <div class="nav-right">
+                        <a href="/admin/dashboard/create-blog" class="action-btn">
+                            <i class="fas fa-plus"></i> Add New Blog
+                        </a>
+
+                    </div>
+                </header>
+
+                <!-- Stats Highlight Grid -->
+                <section class="main-content">
+                    <div class="top-header">
+                        <h2>Contact Inquiries</h2>
+                </section>
+
+                <!-- Stats Overview -->
+                <section class="stats-grid">
+                    <div class="stat-card">
+                        <div class="card-align">
+                            <i class="fas fa-inbox"></i>
+                            <div>
+                                <p>Total Inquiries</p>
+                                <h3><%= userContact.length %></h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Inquiry Table -->
+                    <section class="inquiry-section">
+                        <div class="table-container">
+                            <table class="inquiry-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Inquiry Type</th>
+                                        <th>Message</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Item 1 -->
+                                     <% for( let index = 0; index < Math.min(userContact.length, 20); index++ ) { %>
+                                     
+                                        <tr>
+                                            <td class="user-name"><%= userContact[index].name %></td>
+                                            <td class="user-email"><%= userContact[index].email %></td>
+                                            <td><span class="badge badge-teal"><%= userContact[index].inquiry %></span></td>
+                                            <td class="message-cell"><%= userContact[index].message %></td>
+                                            <td>
+                                                <div class="action-btns">
+                                                    <button class="btn-view" title="View"><i
+                                                        class="fas fa-eye"></i></button>
+                                                        <p><%= userContact[index].Date.toDateString() %></p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </section>
+                </section>
+            </main>
+        </div>
+
+
+
+
+
+
+
+    </body>
+
+    </html>
