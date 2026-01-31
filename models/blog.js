@@ -5,6 +5,10 @@ const blogSchema = new mongoose.Schema({
     title: String,
     slug: String,
     category: String,
+    featured:{
+      type: Boolean,
+      default: false
+    },
     metaKeyword: String,
     metaDescription: String,
     imageUrl: String,

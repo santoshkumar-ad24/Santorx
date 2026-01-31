@@ -93,6 +93,16 @@ form label{
     font-size: 1rem;
     font-family: var(--font-main);
  }
+
+#category{
+   border: none;
+   min-width: 30%;
+   border-radius: 8px;
+   border: 1px solid rgba(13, 27, 42, 0.2);
+}
+
+
+
  form textarea{
     margin-top: 1rem;
     padding: 10px;

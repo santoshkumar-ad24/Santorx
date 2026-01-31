@@ -49,7 +49,7 @@ router.get("/dashboard/create-blog", authMiddleware,(req,res)=> {
 
 router.post("/postBlog", authMiddleware, async (req, res, next) => {
     try {
-        const { title, category, keyword, description, content, image } = req.body;
+        const { title, category, featured, keyword, description, content, image } = req.body;
         
         if (!validateString(title, 5, 200)) {
             return res.status(400).json({ success: false, message: 'Title must be between 5 and 200 characters' });
@@ -73,6 +73,7 @@ router.post("/postBlog", authMiddleware, async (req, res, next) => {
         const sanitizedData = {
             title: sanitizeInput(title),
             category: sanitizeInput(category),
+            featured: featured === "true",
             metaKeyword: sanitizeInput(keyword),
             metaDescription: sanitizeInput(description),
             content: content,
@@ -102,7 +103,7 @@ router.get("/dashboard/edit/:id", authMiddleware,async (req,res)=> {
 router.post("/dashboard/edit/:id", authMiddleware, async (req, res, next) => {
     try {
         const id = req.params.id;
-        const { title, category, keyword, description, content, image } = req.body;
+        const { title, category, featured,keyword, description, content, image } = req.body;
         
         if (!validateString(title, 5, 200)) {
             return res.status(400).json({ success: false, message: 'Title must be between 5 and 200 characters' });
@@ -127,6 +128,7 @@ router.post("/dashboard/edit/:id", authMiddleware, async (req, res, next) => {
             title: sanitizeInput(title),
             slug: slugify(sanitizeInput(title), { lower: true, strict: true }),
             category: sanitizeInput(category),
+            featured: featured === "true",
             metaKeyword: sanitizeInput(keyword),
             metaDescription: sanitizeInput(description),
             content: content,

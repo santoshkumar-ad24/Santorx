@@ -30,6 +30,8 @@ const blogListDes = document.getElementsByClassName("blogList-des");
     });
 
 
+
+    
 Array.from(blogListDes).forEach(element => {
     const textWord=  element.innerText.split(" ");
     let newDes = "";
@@ -37,7 +39,7 @@ Array.from(blogListDes).forEach(element => {
         for (let index = 0; index < 12; index++) {
          newDes = newDes + textWord[index] + " ";   
         }
-        element.innerText = newDes + "...";
+        element.innerText = newDes+"...";
     }
 });
 

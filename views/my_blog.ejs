@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Your hub for tech insights, blogs and futuristic ideas.">
+    <meta name="description" content="Your hub for tech insights, blogs and futuristic ideas.">
     <meta name="keywords" content="Tech Blogs, Technology, Programming, Software Development, Tech News, Coding, Future Tech, Tech Reviews">
     <title>My Blog | Santorx</title>
     <link rel="stylesheet" href="stylesheet/style.css">
@@ -14,9 +13,7 @@
 <body>
     <header>
         <navbar>
-            
             <nav>
-
                 <div class="logo">
                     <img src="/favicon.ico" alt="logo-image" class="logo-image">
                     <h1>Santorx</h1>
@@ -40,13 +37,45 @@
     <section class="blog_section">
         <div class="title">
             <h2>The Feed</h2>
+            <p class="blog-subtitle">
+                Learn AI, tech skills, and future trends with practical, student‑friendly articles.
+            </p>
         </div>
 
-        <!-- Category Filter -->
+        <!-- START HERE / FEATURED SECTION -->
+        <section class="start-here">
+            <h3>Start Here</h3>
+            <p>
+                New to Santorx? Begin with these handpicked posts to understand AI skills, projects, and future tech careers.
+            </p>
+            <div class="start-here-grid">
+                <% 
+                    // pick up to 3 featured posts by hand or via a flag
+                    const featured = blog
+                        .filter(b => b.featured)  // optional: add isFeatured in data
+                        .slice(0, 3);
+
+                    const fallbackFeatured = blog.slice(0, 3);
+                    const startHerePosts = featured.length ? featured : fallbackFeatured;
+                %>
+                <% startHerePosts.forEach(post => { %>
+                    <a href="/blog/<%= post.slug %>" class="start-here-card">
+                        
+
+                        <img class="featured-post-image" src="<%= post.imageUrl %>" alt="<%= post.slug %>">
+                        <span class="start-here-category"><%= post.category %></span>
+                        <h4><%= post.title %></h4>
+                        <p class="blog-excerpt"><%= post.metaDescription %></p>
+                    </a>
+                <% }) %>
+            </div>
+        </section>
+
+
+        <!-- Category Filter (from your existing categories) -->
         <div class="category-filter">
             <button class="filter-btn active" data-category="all">All</button>
             <% 
-                // Extract unique categories from blogs
                 const categories = [...new Set(blog.map(b => b.category).filter(c => c))];
                 categories.forEach(category => { 
             %>
@@ -55,36 +84,33 @@
         </div>
 
         <div class="article">
-            <% for( let index = 0; index < blog.length; index++ ) { %>
-        
+            <% for (let index = 0; index < blog.length; index++ ) { %>
+                <div class="blogs-card" data-category="<%= blog[index].category %>">
+                    <div class="img-blog">
+                        <img src="<%= blog[index].imageUrl %>" alt="<%= blog[index].title %>">
+                    </div>
+                    <div class="blog-card-content">
+                        <span class="blog-category"><%= blog[index].category %></span>
 
-            <div class="blogs-card" data-category="<%= blog[index].category %>">
-                <div class="img-blog">
-                    <img src="<%=blog[index].imageUrl %>" alt="<%= blog[index].title %>">
-                </div>
-                <div class="blog-card-content">
-                    <span class="blog-category"><%= blog[index].category %></span>
+                        <h2 class="blog-title">
+                            <%= blog[index].title %>
+                        </h2>
 
-                    <h2 class="blog-title">
-                        <%= blog[index].title %>
-                    </h2>
+                        <p class="blog-excerpt">
+                            <%= blog[index].metaDescription %>
+                        </p>
 
-                    <p class="blog-excerpt">
-                        <%= blog[index].metaDescription %>
-                    </p>
-
-                    <div class="blog-footer">
-                        <span class="blog-date"><%= blog[index].Date.toDateString() %></span>
-                        <a href="/blog/<%= blog[index].slug %>" class="read-more">Read Article →</a>
+                        <div class="blog-footer">
+                            <span class="blog-date"><%= blog[index].Date.toDateString() %></span>
+                            <a href="/blog/<%= blog[index].slug %>" class="read-more">Read Article →</a>
+                        </div>
                     </div>
                 </div>
-            </div>
             <% } %>
         </div>
-
     </section>
 
-
+    <!-- NEWSLETTER / FEEDBACK SECTION WITH CLEAR CTA -->
     <section class="feedback-sec">
         <div class="feedback">
             <form action="/feedback" method="post">
@@ -92,26 +118,26 @@
                     <div class="partN">
 
                         <label for="firstname">First Name</label>
-                        <input type="text" name="firstName" id="firstname">
+                        <input type="text" name="firstName" id="firstname" >
                     </div>
                     <div class="partN">
-
+                        
                         <label for="lastname">Last Name</label>
-                        <input type="text" name="lastName" id="lastname">
+                        <input type="text" name="lastName" id="lastname" >
                     </div>
                 </div>
 
                 <div class="form-ele">
 
                     <label for="emailadd">Email</label>
-                    <input type="email" name="email" id="emailadd">
+                    <input type="email" name="email" id="emailadd" >
                 </div>
 
                 <div class="form-ele">
 
                     <label for="msg">Leave us a message...</label>
                     <textarea name="message" id="msg"></textarea>
-
+                    
                 </div>
 
                 <div class="form-ele">
@@ -124,7 +150,6 @@
 
     <footer class="footer">
         <div class="footer-wrapper">
-
             <div class="f-col brand">
                 <h2>Santorx</h2>
                 <p>Your hub for tech insights, blogs and futuristic ideas.</p>
@@ -134,32 +159,33 @@
                 <h4>Explore</h4>
                 <ul>
                     <li><a href="/">Home</a></li>
-                <li><a href="/blog">Blogs</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
+                    <li><a href="/blog">Blogs</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
                 </ul>
             </div>
 
             <div class="f-col">
                 <h4>Community</h4>
                 <ul>
+                    <!-- Replace # with your real links when ready -->
                     <li><a href="#">Facebook</a></li>
                     <li><a href="#">GitHub</a></li>
                     <li><a href="#">Instagram</a></li>
                     <li><a href="#">Twitter</a></li>
                 </ul>
             </div>
-
-
         </div>
 
         <div class="footer-bottom">
             © 2025 Santorx — All rights reserved.
         </div>
     </footer>
-<script src="/script/blogCardHeight.js"></script>
-<script src="/script/script.js"></script>
-<script src="/script/blogdescriptional.js"></script>  
-</body>
 
+    <script src="/script/blogCardHeight.js"></script>
+    <script src="/script/script.js"></script>
+    <script src="/script/blogdescriptional.js"></script>
+
+    
+</body>
 </html>

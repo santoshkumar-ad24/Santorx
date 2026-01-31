@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,49 +10,60 @@
     <link rel="stylesheet" href="/stylesheet/createBlog.css">
 
 </head>
+
 <body>
     <header>
-        
-            <nav>
 
-                <div class="logo">
-                    <img src="/favicon.ico" alt="logo-image" class="logo-image">
-                    <h1>Santorx</h1>
-                </div>
-                
-            </nav>
+        <nav>
+
+            <div class="logo">
+                <img src="/favicon.ico" alt="logo-image" class="logo-image">
+                <h1>Santorx</h1>
+            </div>
+
+        </nav>
         </navbar>
     </header>
 
     <section class="create_blog">
         <div class="back-btn">
-            
+
             <a href="/admin/dashboard"><button type="button" class="back-btn">Back Button</button></a>
         </div>
         <div class="create-blog-container">
             <h2>Create a New Blog Post</h2>
-           
-            <form  class="create-blog-form" action="/admin/postBlog" method="POST">
+
+            <form class="create-blog-form" action="/admin/postBlog" method="POST">
                 <div class="blog-details">
 
                     <label for="title">Blog Title:</label>
                     <input type="text" id="title" name="title" required>
-                    
+
                     <label for="category">Category:</label>
-                    <input type="text" id="category" name="category" required>
-                    
+                    <select id="category" name="category" required>
+                            <option>AI Trends & Future</option>
+                            <option>Tools & Reviews</option>
+                            <option>Creators & Marketing</option>
+                            <option>Productivity & Automation</option>
+                        </select>
+
                 </div>
+                <label>
+                    <input type="checkbox" name="featured" value="true">
+                    Mark as Featured Post
+                </label>
+
                 <label for="description">Description:</label>
                 <textarea id="description" name="description" rows="5" required></textarea>
                 <label for="keyword">Keywords:</label>
                 <textarea id="keyword" name="keyword" rows="5" required></textarea>
-                
-                <textarea hidden id="content" name="content" ></textarea>
+
+                <textarea hidden id="content" name="content"></textarea>
 
                 <input type="hidden" name="image" id="imageUrl" value="null">
                 <div id="editor">
                 </div>
-                
+
                 <button type="submit" class="submit-btn" id="publish">Publish Blog</button>
             </form>
         </div>
@@ -59,9 +71,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
     <script src="/script/quilleditor.js">
-    
+
 
     </script>
 
 </body>
+
 </html>

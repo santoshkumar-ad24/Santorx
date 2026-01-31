@@ -38,10 +38,20 @@
                     <label for="title">Blog Title:</label>
                     <input type="text" id="title" name="title" value="<%= blog.title %>" required>
 
+                    
                     <label for="category">Category:</label>
-                    <input type="text" id="category" name="category" value="<%= blog.category %>" required>
-
+                    <select id="category" name="category" value="<%= blog.category %>"  required>
+                            <option>AI Trends & Future</option>
+                            <option>Tools & Reviews</option>
+                            <option>Creators & Marketing</option>
+                            <option>Productivity & Automation</option>
+                        </select>
+                    
                 </div>
+                <label>
+                    <input type="checkbox" name="featured" value="true">
+                    Mark as Featured Post
+                </label>
                 <label for="description">Description:</label>
                 <textarea id="description" name="description" rows="5" required><%= blog.metaDescription %></textarea>
                 <label for="keyword">Keywords:</label>
