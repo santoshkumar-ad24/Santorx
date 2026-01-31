@@ -100,11 +100,20 @@ app.get('/health', (req, res) => {
 // });
 // ============ 404 HANDLER ============
 app.use((req, res) => {
-    res.status(404).json({
-        success: false,
-        message: 'Route not found',
-        path: req.path
-    });
+    // Check if the request accepts HTML
+    if (req.accepts('html')) {
+        res.status(404).render('404', {
+            statusCode: 404,
+            errorTitle: 'Page Not Found',
+            errorMessage: `The page "${req.path}" doesn't exist. It might have been moved or deleted.`
+        });
+    } else {
+        res.status(404).json({
+            success: false,
+            message: 'Route not found',
+            path: req.path
+        });
+    }
 });
 
 // ============ ERROR HANDLING MIDDLEWARE ============
