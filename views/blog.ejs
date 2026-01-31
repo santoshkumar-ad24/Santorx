@@ -1,139 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<%= blog.metaDescription %>">
-    <title><%= blog.title %> | Santorx</title>
+    <title>
+        <%= blog.title %> | Santorx
+    </title>
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=DM+Serif+Text:ital@0;1&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap">
-    
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=DM+Serif+Text:ital@0;1&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap"></noscript>
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=DM+Serif+Text:ital@0;1&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap">
+
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=DM+Serif+Text:ital@0;1&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap">
+    </noscript>
     <link rel="stylesheet" href="/stylesheet/style.css">
     <link rel="stylesheet" href="/stylesheet/blog.css">
 </head>
+
 <body>
     <header>
-            <nav>
+        <nav>
 
-                <div class="logo">
-                    <img src="/favicon.ico" alt="logo-image" class="logo-image">
-                    <h1>Santorx</h1>
-                </div>
-                <input type="checkbox" id="menu-toggle" style="display: none;">
-                <label for="menu-toggle" class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-                <div class="nav-link menu">
-                    <a href="/">Home</a>
-                    <a href="/blog">Blog</a>
-                    <a href="/about">About</a>
-                    <a href="/contact">Contact</a>
-                </div>
-            </nav>
+            <div class="logo">
+                <img src="/favicon.ico" alt="logo-image" class="logo-image">
+                <h1>Santorx</h1>
+            </div>
+            <input type="checkbox" id="menu-toggle" style="display: none;">
+            <label for="menu-toggle" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="nav-link menu">
+                <a href="/">Home</a>
+                <a href="/blog">Blog</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+            </div>
+        </nav>
         </navbar>
     </header>
     <main>
 
         <section class="blogSec">
             <article>
+                <!-- Hero Section with Title -->
+                <div class="blog-hero">
+                    <h1 class="blog-title">
+                        <%= blog.title %>
+                    </h1>
 
-                
-                <h1><%= blog.title %></h1>
-                <div class="uploader">
-                    <div class="uploader-img">
-                        <img src="<%= blog.adminId.adminImage %>" alt="admin-profile-image" width="60" height="60">
-                    </div>
-                    <div class="uploader-det">
-                        <p id="uploader-name"><%= blog.adminId.adminName %></p>
-                        <p id="uploader-date"><%= blog.Date.toDateString() %></p>
+                    <!-- Author & Date Card -->
+                    <div class="uploader">
+                        <div class="uploader-img">
+                            <img src="<%= blog.adminId.adminImage %>" alt="admin-profile-image" width="60" height="60">
+                        </div>
+                        <div class="uploader-det">
+                            <p id="uploader-name">
+                                <%= blog.adminId.adminName %>
+                            </p>
+                            <p id="uploader-date">
+                                <%= blog.Date.toDateString() %>
+                            </p>
+                        </div>
+                        <div class="blog-meta">
+                            <span class="read-time">📖 3 min read</span>
+                        </div>
                     </div>
                 </div>
-                <div class="blog-container">
-                    <div class="content-container">
 
+                <!-- Main Content Section -->
+                <div class="blog-container">
+                    <!-- Main Content -->
+                    <div class="content-container">
+                        <!-- Featured Image with Shadow -->
                         <div class="contentImg">
                             <img src="<%= blog.imageUrl %>" alt="<%= blog.slug %>" loading="lazy">
                         </div>
-                        
+
+                        <!-- Blog Body Content -->
                         <div class="content">
                             <p>
                                 <%- blog.content %>
                             </p>
                         </div>
+
+                        <!-- Share Section -->
+                        <div class="share-section">
+                            <h3>Share this article</h3>
+                            <div class="share-buttons">
+                                <a href="#" id="shareBtn-facebook" class="share-btn facebook" title="Share on Facebook">f</a>
+                                <a href="#" id="shareBtn-twitter" class="share-btn twitter" title="Share on Twitter">𝕏</a>
+                                <a href="#" id="shareBtn-linkedin" class="share-btn linkedin" title="Share on LinkedIn">in</a>
+                                <a href="#" id="copyLinkBtn" class="share-btn copy" title="Copy Link">🔗</a>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- Sidebar -->
                     <aside class="aside">
-                        <div class="author">
+                        <!-- Author Bio Card -->
+                        <div class="author-card">
                             <img src="<%= blog.adminId.adminImage %>" alt="Author Profile" loading="lazy">
+                            <h3>About the Author</h3>
                             <p class="author-bio">
                                 <%= blog.adminId.adminBio %>
                             </p>
-                            
+                            <div class="author-badge">Featured Writer</div>
                         </div>
-                        <div class="blogList">
-                            <% for( let index = 0; index < Math.min(blogList.length ,12); index++ ) { %>
-                            
-                                <div class="blog-post">
-                                    <img src="<%= blogList[index].imageUrl %>" alt="<%= blogList[index].slug %>">
-                                    <div class="blogList-details">
-                                        <p class="blogList-title"><%= blogList[index].title %></p>
-                                        <p class="blogList-des">
-                                            <%= blogList[index].metaDescription %>
-                                        </p>
-                                    </div>
-                                </div>
-                            <% } %>
+
+                        <!-- Recommended Posts -->
+                        <div class="blogList-container">
+                            <h3 class="recommended-title">📚 Recommended Posts</h3>
+                            <div class="blogList">
+                                <% for( let index=0; index < Math.min(blogList.length ,12); index++ ) { %>
+
+                                    <a href="/blog/<%= blogList[index].slug %>" class="blog-post">
+                                        <img src="<%= blogList[index].imageUrl %>" alt="<%= blogList[index].slug %>">
+                                        <div class="blogList-details">
+                                            <p class="blogList-title">
+                                                <%= blogList[index].title %>
+                                            </p>
+                                            <p class="blogList-des">
+                                                <%= blogList[index].metaDescription %>
+                                            </p>
+                                        </div>
+                                    </a>
+                                    <% } %>
+                            </div>
                         </div>
                     </aside>
                 </div>
             </article>
-            
+
         </section>
     </main>
     <footer class="footer">
-    <div class="footer-wrapper">
+        <div class="footer-wrapper">
 
-        <div class="f-col brand">
-            <h2>Santorx</h2>
-            <p>Your hub for tech insights, blogs and futuristic ideas.</p>
+            <div class="f-col brand">
+                <h2>Santorx</h2>
+                <p>Your hub for tech insights, blogs and futuristic ideas.</p>
+            </div>
+
+            <div class="f-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog">Blogs</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="f-col">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                </ul>
+            </div>
+
+
         </div>
 
-        <div class="f-col">
-            <h4>Explore</h4>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/blog">Blogs</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
+        <div class="footer-bottom">
+            © 2025 Santorx — All rights reserved.
         </div>
-
-        <div class="f-col">
-            <h4>Community</h4>
-            <ul>
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">GitHub</a></li>
-                <li><a href="#">Instagram</a></li>
-                <li><a href="#">Twitter</a></li>
-            </ul>
-        </div>
+    </footer>
 
 
-    </div>
-
-    <div class="footer-bottom">
-        © 2025 Santorx — All rights reserved.
-    </div>
-</footer>
-
-<script src="/script/script.js">
-</script>
+    <script src="/script/share.js"></script>
 
 
-    </body>
+</body>
 
 </html>

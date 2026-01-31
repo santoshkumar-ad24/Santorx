@@ -40,3 +40,6 @@ Array.from(blogListDes).forEach(element => {
         element.innerText = newDes + "...";
     }
 });
+
+
+
