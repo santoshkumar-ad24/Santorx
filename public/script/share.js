@@ -13,7 +13,7 @@ if (copyLinkBtn) {
             .then(() => {
                 // Show feedback
                 const originalText = copyLinkBtn.textContent;
-                copyLinkBtn.textContent = "✓ Copied!";
+                copyLinkBtn.textContent = "✓ 🔗";
                 copyLinkBtn.style.opacity = "0.7";
                 
                 setTimeout(() => {
