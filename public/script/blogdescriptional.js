@@ -1,6 +1,6 @@
 
 const blogExcerpt = document.getElementsByClassName("blog-excerpt");
-const featBlogDes = document.getElementById("featBlogDes");
+const featBlogDes = document.getElementsByClassName("blogList-des");
 
 
 
@@ -15,11 +15,14 @@ Array.from(blogExcerpt).forEach(element => {
         element.innerText = blogDes + "...";
     }
 });
-const featTextWord=  featBlogDes.innerText.split(" ");
-let featDes = "";
-if(featTextWord.length > 25){
-    for (let index = 0; index < 25; index++) {
-     featDes = featDes + featTextWord[index] + " ";   
+Array.from(featBlogDes).forEach(element => {
+
+    const featTextWord=  element.innerText.split(" ");
+    let featDes = "";
+    if(featTextWord.length > 25){
+        for (let index = 0; index < 25; index++) {
+            featDes = featDes + featTextWord[index] + " ";   
+        }
+        element.innerText = featDes + "...";
     }
-    featBlogDes.innerText = featDes + "...";
-}
+});
