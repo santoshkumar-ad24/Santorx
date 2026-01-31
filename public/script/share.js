@@ -1,7 +1,6 @@
 // Get the current page URL and title
 const currentUrl = window.location.href;
 const pageTitle = document.title;
-console.log("Current URL:", currentUrl);
 // ==================== COPY LINK ====================
 const copyLinkBtn = document.getElementById("copyLinkBtn");
 if (copyLinkBtn) {
@@ -60,5 +59,3 @@ if (linkedinBtn) {
         window.open(linkedinUrl, 'linkedin-share-dialog', 'width=800,height=600');
     });
 }
-
-console.log("Share functionality loaded successfully");

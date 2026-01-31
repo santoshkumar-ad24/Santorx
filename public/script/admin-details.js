@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (form && file) {
                 form.submit();
             } else{
-                console.log("Not Found")
+                alert("not found");
             }
 
         });

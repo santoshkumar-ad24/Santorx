@@ -55,8 +55,8 @@ function imageHandler() {
         });
         const data = await res.json()
         if (imageUrl.value === 'null') {
-            console.log("No hidden input to set image URL");
-            console.log("Uploaded image URL:", data.url);
+            alert("No hidden input to set image URL");
+            
             imageUrl.value = data.url;
         }
 

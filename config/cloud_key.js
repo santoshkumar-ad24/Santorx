@@ -22,6 +22,6 @@ cloudinary.config({
     secure: true,
 });
 
-console.log('✓ Cloudinary configured successfully');
+console.log('✓ configured successfully');
 
 module.exports = cloudinary;

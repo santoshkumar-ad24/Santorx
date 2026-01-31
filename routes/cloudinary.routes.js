@@ -13,7 +13,7 @@ const cloudinary = require('../config/cloud_key');
 
 router.post("/upload-image", upload.single("image"), authMiddleware,async (req, res, next) => {
 
-    console.log(path.parse(req.file.originalname).name); 
+
         const cloudUpload = await cloudinary.uploader.upload(
         `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`, {
         asset_folder: "BlogImage",
@@ -26,14 +26,13 @@ router.post("/upload-image", upload.single("image"), authMiddleware,async (req, 
     }
     );
     const imageUrl = cloudUpload.secure_url;
-    console.log(imageUrl);
+
 
     res.json({ url: imageUrl });
 
 });
 
 router.post("/admin/details/uploader-img",upload.single("profile"), authMiddleware,async (req,res, next)=>{
-     console.log(path.parse(req.file.originalname).name);
     const cloudUpload = await cloudinary.uploader.upload(
         `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`, {
         asset_folder: "BlogProfileImage",
@@ -47,10 +46,9 @@ router.post("/admin/details/uploader-img",upload.single("profile"), authMiddlewa
     const imageUrl = cloudUpload.secure_url;
     const admin = await admindb.findOne({_id: req.adminID});
     if(!admin) return res.status(404).redirect('/admin/login');
-    console.log(imageUrl)
+
     admin.adminImage = imageUrl;
     await admin.save();
-    console.log(admin);
     res.redirect('/admin/details');
 
 })
