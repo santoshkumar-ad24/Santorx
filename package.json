@@ -9,8 +9,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "NODE_ENV=development node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "cleancss -o public/css/style.min.css public/css/style.css"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "blog",
