@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://santorx.vercel.app/</loc>
+  <lastmod>2026-02-23T16:16:22+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://santorx.vercel.app/blog</loc>
+  <lastmod>2026-02-23T16:16:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://santorx.vercel.app/about</loc>
+  <lastmod>2026-02-23T16:16:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://santorx.vercel.app/contact</loc>
+  <lastmod>2026-02-23T16:16:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://santorx.vercel.app/blog/ai-inference-the-next-big-frontier-in-ai-and-technology-2025-2026</loc>
+  <lastmod>2026-02-23T16:16:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://santorx.vercel.app/blog/11-ai-trends-that-will-reshape-business-and-jobs-in-2026</loc>
+  <lastmod>2026-02-23T16:16:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
+</urlset>
