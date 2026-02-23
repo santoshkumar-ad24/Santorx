@@ -4,7 +4,6 @@ const path = require('path');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
-const xss = require("xss-clean");
 const rateLimit = require("express-rate-limit");
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
@@ -60,7 +59,6 @@ app.use(helmet({
     nosniff: true,
     xssFilter: true,
 }));
-app.use(xss());
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100
