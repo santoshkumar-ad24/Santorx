@@ -18,7 +18,7 @@ const blogWebRouter = require('./routes/blogWeb.routes');
 const createBlogRouter = require('./routes/createBlog.routes');
 const cloudinaryRouter = require('./routes/cloudinary.routes');
 const adminLog = require('./routes/adminLog.routes');
-const seoRouter = require('./routes/seo.routes');
+
 
 // Environment variables
 const PORT = process.env.PORT || 3000;
@@ -88,7 +88,6 @@ app.use((req, res, next) => {
 });
 
 // ============ ROUTES ============
-app.use('/', seoRouter);
 app.use('/', blogWebRouter);
 app.use('/admin', createBlogRouter);
 app.use('/cloud', cloudinaryRouter);
