@@ -1,0 +1,72 @@
+
+User-agent: *
+Allow: /
+
+
+Disallow: /admin/
+Disallow: /config/
+Disallow: /middleware/
+Disallow: /models/
+Disallow: /routes/
+Disallow: /utils/
+Disallow: /node_modules/
+Disallow: /\.env
+Disallow: /\.git
+
+
+Disallow: /user/profile/
+Disallow: /user/settings/
+Disallow: /user/dashboard/
+
+
+Disallow: /api/
+
+
+Allow: /public/
+Allow: /public/image/
+Allow: /public/script/
+Allow: /public/stylesheet/
+
+
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /config/
+Disallow: /middleware/
+Disallow: /models/
+Disallow: /routes/
+Disallow: /utils/
+Disallow: /node_modules/
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+Disallow: /config/
+Disallow: /middleware/
+Disallow: /models/
+Disallow: /routes/
+Disallow: /utils/
+Disallow: /node_modules/
+Crawl-delay: 1
+
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+
+Sitemap: https://rsantosh.com/sitemap.xml
+
+
+Crawl-delay: 1
+
+Request-rate: 10/10s

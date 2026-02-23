@@ -20,6 +20,7 @@
     --teal-glow: #00656280;
     --yellow: #FDEB9E;
     --logo: #9daec2;
+    --logoX: rgb(38, 164, 164);
     --white: #ffffff;
     --headind2: "Chelsea Market", system-ui;
     --font-main: "DM Serif Text", serif;
@@ -64,13 +65,30 @@ nav{
     
 }
 .logo-image{
-    height: 35px;
-    width: 35px;
+    height: 40px;
+    width: 40px;
     
 }
 .logo-image img{
     height: 100%;
     width: 100%;
+}
+
+.logo h1, .logo h2{
+  background: linear-gradient(0deg, rgb(117, 218, 246) 30%, whitesmoke 50%);
+  -webkit-background-clip: text;   /* Clips background to text */
+  -webkit-text-fill-color: transparent; /* Makes text transparent so gradient shows */
+  background-clip: text;           /* For modern browsers */
+  color: transparent;              /* Fallback */
+
+}
+.logo span{
+    background: radial-gradient(circle, var(--teal-glow), var(--logoX));
+  -webkit-background-clip: text;   /* Clips background to text */
+  -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-weight: bold;
 }
 
 .profileImg img{

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Santorx</title>
+    <title>RSantoshX</title>
     <link rel="stylesheet" href="/stylesheet/adminLog.css">
 </head>
 <body>
@@ -12,11 +12,11 @@
             <form action="/admin/login" method="post">
                 <div class="login-con">
                     <label>AdminName: 
-                    <input type="text" class="adminname" id="AdminName" name="name"> </label>
+                    <input type="text" class="adminname" id="AdminName" name="name" required> </label>
                     <label>UserName: 
-                    <input type="text" class="username" id="UserName" name="username"> </label>
+                    <input type="text" class="username" id="UserName" name="username" required> </label>
                     <label id="bottom-border">password: 
-                    <input type="password" class="password" id="pwd" name="password"></label>
+                    <input type="password" class="password" id="pwd" name="password" required></label>
                     <% if (message) { %>
                         <p id="error-message"><%= message %></p>
                     <% } %>
