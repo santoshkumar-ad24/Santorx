@@ -4,10 +4,8 @@ const path = require('path');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
-const rateLimit = require("express-rate-limit");
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
-const compression = require("compression");
 const app = express();
 
 // Connect to Database
@@ -65,7 +63,6 @@ app.use(helmet({
 }));
 
 
-app.use(compression());
 // ============ VIEW ENGINE ============
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
