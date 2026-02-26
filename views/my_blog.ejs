@@ -64,8 +64,8 @@
                 careers.
             </p>
             <div class="start-here-grid">
-                <% // pick up to 3 featured posts by hand or via a flag const featured=blog .filter(b=> b.featured) //
-                    optional: add isFeatured in data
+                <%
+                const featured=blog .filter(b=> b.featured)
                     .slice(0, 3);
 
                     const fallbackFeatured = blog.slice(0, 3);
