@@ -27,7 +27,6 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 // ============ SECURITY MIDDLEWARE ============
 // Enable Helmet for security headers
 
-app.set('trust proxy', 1);
 
 
 app.use(helmet({
@@ -64,11 +63,7 @@ app.use(helmet({
     nosniff: true,
     xssFilter: true,
 }));
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100
-});
-app.use(limiter);
+
 
 app.use(compression());
 // ============ VIEW ENGINE ============
