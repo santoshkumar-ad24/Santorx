@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FFKQPJ102"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-9FFKQPJ102');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Your hub for tech insights, blogs and futuristic ideas.">
-    <meta name="keywords" content="Tech Blogs, Technology, Programming, Software Development, Tech News, Coding, Future Tech, Tech Reviews">
+    <meta name="keywords"
+        content="Tech Blogs, Technology, Programming, Software Development, Tech News, Coding, Future Tech, Tech Reviews">
     <meta property="og:site_name" content="RSantoshX" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <title>My Blog | RSantoshX</title>
@@ -49,28 +60,33 @@
         <section class="start-here">
             <h3>Start Here</h3>
             <p>
-                New to RSantoshX? Begin with these handpicked posts to understand AI skills, projects, and future tech careers.
+                New to RSantoshX? Begin with these handpicked posts to understand AI skills, projects, and future tech
+                careers.
             </p>
             <div class="start-here-grid">
-                <% 
-                    // pick up to 3 featured posts by hand or via a flag
-                    const featured = blog
-                        .filter(b => b.featured)  // optional: add isFeatured in data
-                        .slice(0, 3);
+                <% // pick up to 3 featured posts by hand or via a flag const featured=blog .filter(b=> b.featured) //
+                    optional: add isFeatured in data
+                    .slice(0, 3);
 
                     const fallbackFeatured = blog.slice(0, 3);
                     const startHerePosts = featured.length ? featured : fallbackFeatured;
-                %>
-                <% startHerePosts.forEach(post => { %>
-                    <a href="/blog/<%= post.slug %>" class="start-here-card">
-                        
+                    %>
+                    <% startHerePosts.forEach(post=> { %>
+                        <a href="/blog/<%= post.slug %>" class="start-here-card">
 
-                        <img class="featured-post-image" src="<%= post.imageUrl %>" alt="<%= post.slug %>">
-                        <span class="start-here-category"><%= post.category %></span>
-                        <h4><%= post.title %></h4>
-                        <p class="blog-excerpt"><%= post.metaDescription %></p>
-                    </a>
-                <% }) %>
+
+                            <img class="featured-post-image" src="<%= post.imageUrl %>" alt="<%= post.slug %>">
+                            <span class="start-here-category">
+                                <%= post.category %>
+                            </span>
+                            <h4>
+                                <%= post.title %>
+                            </h4>
+                            <p class="blog-excerpt">
+                                <%= post.metaDescription %>
+                            </p>
+                        </a>
+                        <% }) %>
             </div>
         </section>
 
@@ -78,22 +94,25 @@
         <!-- Category Filter (from your existing categories) -->
         <div class="category-filter">
             <button class="filter-btn active" data-category="all">All</button>
-            <% 
-                const categories = [...new Set(blog.map(b => b.category).filter(c => c))];
-                categories.forEach(category => { 
-            %>
-                <button class="filter-btn" data-category="<%= category %>"><%= category %></button>
-            <% }); %>
+            <% const categories=[...new Set(blog.map(b=> b.category).filter(c => c))];
+                categories.forEach(category => {
+                %>
+                <button class="filter-btn" data-category="<%= category %>">
+                    <%= category %>
+                </button>
+                <% }); %>
         </div>
 
         <div class="article">
-            <% for (let index = 0; index < blog.length; index++ ) { %>
+            <% for (let index=0; index < blog.length; index++ ) { %>
                 <div class="blogs-card" data-category="<%= blog[index].category %>">
                     <div class="img-blog">
                         <img src="<%= blog[index].imageUrl %>" alt="<%= blog[index].title %>">
                     </div>
                     <div class="blog-card-content">
-                        <span class="blog-category"><%= blog[index].category %></span>
+                        <span class="blog-category">
+                            <%= blog[index].category %>
+                        </span>
 
                         <h2 class="blog-title">
                             <%= blog[index].title %>
@@ -104,12 +123,14 @@
                         </p>
 
                         <div class="blog-footer">
-                            <span class="blog-date"><%= blog[index].Date.toDateString() %></span>
+                            <span class="blog-date">
+                                <%= blog[index].Date.toDateString() %>
+                            </span>
                             <a href="/blog/<%= blog[index].slug %>" class="read-more">Read Article →</a>
                         </div>
                     </div>
                 </div>
-            <% } %>
+                <% } %>
         </div>
     </section>
 
@@ -121,26 +142,26 @@
                     <div class="partN">
 
                         <label for="firstname">First Name</label>
-                        <input type="text" name="firstName" id="firstname" >
+                        <input type="text" name="firstName" id="firstname">
                     </div>
                     <div class="partN">
-                        
+
                         <label for="lastname">Last Name</label>
-                        <input type="text" name="lastName" id="lastname" >
+                        <input type="text" name="lastName" id="lastname">
                     </div>
                 </div>
 
                 <div class="form-ele">
 
                     <label for="emailadd">Email</label>
-                    <input type="email" name="email" id="emailadd" >
+                    <input type="email" name="email" id="emailadd">
                 </div>
 
                 <div class="form-ele">
 
                     <label for="msg">Leave us a message...</label>
                     <textarea name="message" id="msg"></textarea>
-                    
+
                 </div>
 
                 <div class="form-ele">
@@ -155,9 +176,9 @@
         <div class="footer-wrapper">
             <div class="f-col brand">
                 <div class="logo">
-                <img src="/image/logo.png" alt="logo-image" class="logo-image">
-                <h2>RSantosh<span>X</span></h2>
-            </div>
+                    <img src="/image/logo.png" alt="logo-image" class="logo-image">
+                    <h2>RSantosh<span>X</span></h2>
+                </div>
                 <p>Your hub for tech insights, blogs and futuristic ideas.</p>
             </div>
 
@@ -193,6 +214,7 @@
     <script src="/script/script.js"></script>
     <script src="/script/blogdescriptional.js"></script>
 
-    
+
 </body>
+
 </html>

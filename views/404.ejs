@@ -1,41 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FFKQPJ102"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-9FFKQPJ102');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<% if(typeof blog !== 'undefined') { %><%= blog.metaDescription %><% } else { %>Error Page - RSantoshX Blog<% } %>">
-    <title><% if(typeof blog !== 'undefined') { %><%= blog.title %> | <% } %>RSantoshX</title>
+    <meta name="description"
+        content="<% if(typeof blog !== 'undefined') { %><%= blog.metaDescription %><% } else { %>Error Page - RSantoshX Blog<% } %>">
+    <title>
+        <% if(typeof blog !=='undefined' ) { %>
+            <%= blog.title %> | <% } %>RSantoshX
+    </title>
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=DM+Serif+Text:ital@0;1&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap">
-    
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=DM+Serif+Text:ital@0;1&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap"></noscript>
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=DM+Serif+Text:ital@0;1&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap">
+
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=DM+Serif+Text:ital@0;1&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap">
+    </noscript>
     <link rel="stylesheet" href="/stylesheet/style.css">
     <link rel="stylesheet" href="/stylesheet/error.css">
 </head>
+
 <body>
     <header>
-            <nav>
+        <nav>
 
-                <div class="logo">
-                    <img src="/image/logo.png" alt="logo-image" class="logo-image">
-                    <h1>RSantosh<span>X</span></h1>
-                </div>
-                <input type="checkbox" id="menu-toggle" style="display: none;">
-                <label for="menu-toggle" class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-                <div class="nav-link menu">
-                    <a href="/">Home</a>
-                    <a href="/blog">Blog</a>
-                    <a href="/about">About</a>
-                    <a href="/privacy-policy">Privacy</a>
-                    <a href="/contact">Contact</a>
-                </div>
-            </nav>
+            <div class="logo">
+                <img src="/image/logo.png" alt="logo-image" class="logo-image">
+                <h1>RSantosh<span>X</span></h1>
+            </div>
+            <input type="checkbox" id="menu-toggle" style="display: none;">
+            <label for="menu-toggle" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="nav-link menu">
+                <a href="/">Home</a>
+                <a href="/blog">Blog</a>
+                <a href="/about">About</a>
+                <a href="/privacy-policy">Privacy</a>
+                <a href="/contact">Contact</a>
+            </div>
+        </nav>
         </navbar>
     </header>
     <main>
@@ -44,54 +63,57 @@
             <div class="error-container">
                 <!-- Error Code Display -->
                 <div class="error-code">
-                    <h1><%= statusCode || 404 %></h1>
+                    <h1>
+                        <%= statusCode || 404 %>
+                    </h1>
                 </div>
 
                 <!-- Error Message -->
                 <div class="error-content">
                     <h2 class="error-title">
-                        <% if(statusCode === 404) { %>
+                        <% if(statusCode===404) { %>
                             Page Not Found
-                        <% } else if(statusCode === 500) { %>
-                            Server Error
-                        <% } else if(statusCode === 403) { %>
-                            Access Forbidden
-                        <% } else if(statusCode === 401) { %>
-                            Authentication Error
-                        <% } else if(statusCode === 400) { %>
-                            Bad Request
-                        <% } else { %>
-                            Oops! Something Went Wrong
-                        <% } %>
+                            <% } else if(statusCode===500) { %>
+                                Server Error
+                                <% } else if(statusCode===403) { %>
+                                    Access Forbidden
+                                    <% } else if(statusCode===401) { %>
+                                        Authentication Error
+                                        <% } else if(statusCode===400) { %>
+                                            Bad Request
+                                            <% } else { %>
+                                                Oops! Something Went Wrong
+                                                <% } %>
                     </h2>
 
                     <p class="error-message">
                         <% if(errorMessage) { %>
                             <%= errorMessage %>
-                        <% } else if(statusCode === 404) { %>
-                            The page you're looking for doesn't exist. It might have been moved or deleted.
-                        <% } else if(statusCode === 500) { %>
-                            Something went wrong on our server. Please try again later.
-                        <% } else if(statusCode === 403) { %>
-                            You don't have permission to access this resource.
-                        <% } else if(statusCode === 401) { %>
-                            Your session has expired or you are not authenticated. Please login.
-                        <% } else if(statusCode === 400) { %>
-                            The request was invalid. Please check your input.
-                        <% } else { %>
-                            We encountered an unexpected error. Please try again.
-                        <% } %>
+                                <% } else if(statusCode===404) { %>
+                                    The page you're looking for doesn't exist. It might have been moved or deleted.
+                                    <% } else if(statusCode===500) { %>
+                                        Something went wrong on our server. Please try again later.
+                                        <% } else if(statusCode===403) { %>
+                                            You don't have permission to access this resource.
+                                            <% } else if(statusCode===401) { %>
+                                                Your session has expired or you are not authenticated. Please login.
+                                                <% } else if(statusCode===400) { %>
+                                                    The request was invalid. Please check your input.
+                                                    <% } else { %>
+                                                        We encountered an unexpected error. Please try again.
+                                                        <% } %>
                     </p>
 
                     <!-- Error Illustration -->
                     <div class="error-illustration">
                         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="100" cy="100" r="90" fill="#f0f0f0" stroke="#ddd" stroke-width="2"/>
-                            <circle cx="70" cy="80" r="8" fill="#333"/>
-                            <circle cx="130" cy="80" r="8" fill="#333"/>
-                            <path d="M 70 120 Q 100 140 130 120" stroke="#333" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <circle cx="100" cy="100" r="90" fill="#f0f0f0" stroke="#ddd" stroke-width="2" />
+                            <circle cx="70" cy="80" r="8" fill="#333" />
+                            <circle cx="130" cy="80" r="8" fill="#333" />
+                            <path d="M 70 120 Q 100 140 130 120" stroke="#333" stroke-width="3" fill="none"
+                                stroke-linecap="round" />
                             <text x="100" y="170" font-size="24" font-weight="bold" text-anchor="middle" fill="#666">
-                                <% if(statusCode === 404) { %>Error<% } else { %>Oops<% } %>
+                                <% if(statusCode===404) { %>Error<% } else { %>Oops<% } %>
                             </text>
                         </svg>
                     </div>
@@ -114,49 +136,49 @@
 
     </main>
     <footer class="footer">
-    <div class="footer-wrapper">
+        <div class="footer-wrapper">
 
-        <div class="f-col brand">
-            <div class="logo">
-                <img src="/image/logo.png" alt="logo-image" class="logo-image">
-                <h2>RSantosh<span>X</span></h2>
+            <div class="f-col brand">
+                <div class="logo">
+                    <img src="/image/logo.png" alt="logo-image" class="logo-image">
+                    <h2>RSantosh<span>X</span></h2>
+                </div>
+                <p>Your hub for tech insights, blogs and futuristic ideas.</p>
             </div>
-            <p>Your hub for tech insights, blogs and futuristic ideas.</p>
+
+            <div class="f-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog">Blogs</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/privacy-policy">Privacy</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="f-col">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                </ul>
+            </div>
+
+
         </div>
 
-        <div class="f-col">
-            <h4>Explore</h4>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/blog">Blogs</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/privacy-policy">Privacy</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
+        <div class="footer-bottom">
+            © 2025 RSantoshX — All rights reserved.
         </div>
+    </footer>
 
-        <div class="f-col">
-            <h4>Community</h4>
-            <ul>
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">GitHub</a></li>
-                <li><a href="#">Instagram</a></li>
-                <li><a href="#">Twitter</a></li>
-            </ul>
-        </div>
+    <script src="/script/script.js">
+    </script>
 
 
-    </div>
-
-    <div class="footer-bottom">
-        © 2025 RSantoshX — All rights reserved.
-    </div>
-</footer>
-
-<script src="/script/script.js">
-</script>
-
-
-    </body>
+</body>
 
 </html>

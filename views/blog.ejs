@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FFKQPJ102"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-9FFKQPJ102');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<%= blog.metaDescription %>">
@@ -12,13 +21,13 @@
         <%= blog.title %> | RSantoshX
     </title>
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
-    <link rel="preconnect"  href="https://fonts.googleapis.com">
-    <link rel="preconnect"  href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style"
         href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=DM+Serif+Text:ital@0;1&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap">
 
     <noscript>
-        <link rel="stylesheet" 
+        <link rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=DM+Serif+Text:ital@0;1&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap">
     </noscript>
     <link rel="stylesheet" href="/stylesheet/style.css">
@@ -98,9 +107,12 @@
                         <div class="share-section">
                             <h3>Share this article</h3>
                             <div class="share-buttons">
-                                <a href="#" id="shareBtn-facebook" class="share-btn facebook" title="Share on Facebook">f</a>
-                                <a href="#" id="shareBtn-twitter" class="share-btn twitter" title="Share on Twitter">𝕏</a>
-                                <a href="#" id="shareBtn-linkedin" class="share-btn linkedin" title="Share on LinkedIn">in</a>
+                                <a href="#" id="shareBtn-facebook" class="share-btn facebook"
+                                    title="Share on Facebook">f</a>
+                                <a href="#" id="shareBtn-twitter" class="share-btn twitter"
+                                    title="Share on Twitter">𝕏</a>
+                                <a href="#" id="shareBtn-linkedin" class="share-btn linkedin"
+                                    title="Share on LinkedIn">in</a>
                                 <a href="#" id="copyLinkBtn" class="share-btn copy" title="Copy Link">🔗</a>
                             </div>
                         </div>
@@ -149,9 +161,9 @@
 
             <div class="f-col brand">
                 <div class="logo">
-                <img src="/image/logo.png" alt="logo-image" class="logo-image">
-                <h2>RSantosh<span>X</span></h2>
-            </div>
+                    <img src="/image/logo.png" alt="logo-image" class="logo-image">
+                    <h2>RSantosh<span>X</span></h2>
+                </div>
                 <p>Your hub for tech insights, blogs and futuristic ideas.</p>
             </div>
 
