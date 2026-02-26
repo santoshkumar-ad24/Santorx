@@ -131,11 +131,56 @@
 
 
         /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            .about-hero p {
+                font-size: 1.1rem;
+            }
+            .container {
+                padding: 3rem 1.5rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .story-section {
                 grid-template-columns: 1fr;
             }
-            .hero h1 {
+            .about-hero {
+                padding: 3rem 5%;
+            }
+            .about-hero h1 {
                 font-size: 2rem;
+            }
+            .story-image {
+                height: 250px;
+            }
+            .story-content h2 {
+                font-size: 1.8rem;
+            }
+            .story-content p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-hero {
+                padding: 2rem 5%;
+            }
+            .about-hero h1 {
+                font-size: 1.6rem;
+            }
+            .about-hero p {
+                font-size: 0.95rem;
+            }
+            .story-image {
+                height: 200px;
+            }
+            .values-grid {
+                gap: 1rem;
+            }
+            .value-card {
+                padding: 1.5rem;
             }
         }

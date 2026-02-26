@@ -1,28 +1,38 @@
 
+/**
+ * Blog Description Truncation for Production
+ * Optimizes excerpt lengths across different page layouts
+ */
+
 const blogExcerpt = document.getElementsByClassName("blog-excerpt");
 const featBlogDes = document.getElementsByClassName("blogList-des");
+const featuredBlogDesc = document.getElementById("featBlogDes");
 
+/**
+ * Truncate text to specified word count
+ * @param {string} text - Original text
+ * @param {number} wordCount - Max words to keep
+ * @returns {string} - Truncated text with ellipsis
+ */
+function truncateText(text, wordCount) {
+    const words = text.trim().split(/\s+/);
+    if (words.length > wordCount) {
+        return words.slice(0, wordCount).join(" ") + "...";
+    }
+    return text;
+}
 
+// Featured blog description (index.ejs featured section) - shorter for clean look
+if (featuredBlogDesc && featuredBlogDesc.innerText) {
+    featuredBlogDesc.innerText = truncateText(featuredBlogDesc.innerText, 25);
+}
 
-
+// Blog cards excerpts (index.ejs and my_blog.ejs main grid) - medium length for balance
 Array.from(blogExcerpt).forEach(element => {
-    const blogTextWord=  element.innerText.split(" ");
-    let blogDes = "";
-    if(blogTextWord.length > 20){
-        for (let index = 0; index < 20; index++) {
-            blogDes = blogDes + blogTextWord[index] + " ";   
-        }
-        element.innerText = blogDes + "...";
-    }
+    element.innerText = truncateText(element.innerText, 18);
 });
-Array.from(featBlogDes).forEach(element => {
 
-    const featTextWord=  element.innerText.split(" ");
-    let featDes = "";
-    if(featTextWord.length > 25){
-        for (let index = 0; index < 25; index++) {
-            featDes = featDes + featTextWord[index] + " ";   
-        }
-        element.innerText = featDes + "...";
-    }
+// Sidebar recommended posts (blog.ejs) - shorter for compact sidebar
+Array.from(featBlogDes).forEach(element => {
+    element.innerText = truncateText(element.innerText, 12);
 });

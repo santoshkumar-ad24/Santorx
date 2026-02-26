@@ -78,13 +78,14 @@
 
 .blogs-card {
   background: var(--white);
-  border-radius: 16px;
   max-width: 380px;
   padding: 20px;
+  margin-bottom: 20px;
   border: 1px solid rgba(13, 27, 42, 0.08);
   box-shadow:
-    0 12px 30px rgba(13, 27, 42, 0.08),
-    0 0 0 transparent;
+  0 12px 30px rgba(13, 27, 42, 0.08),
+  0 0 0 transparent;
+  border-radius: 1rem;
   transition: all 0.35s ease;
   position: relative;
   overflow: hidden;
@@ -312,4 +313,28 @@
   .blog_section .article {
     padding: 0 1rem;
   }
+
+  /* tighten filter buttons and text sizes */
+  .filter-btn {
+    padding: 8px 20px;
+    font-size: 0.85rem;
+  }
+  .blog-title {
+    font-size: 1.15rem;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .filter-btn {
+    padding: 6px 16px;
+    font-size: 0.75rem;
+  }
+  .blog-excerpt {
+    font-size: 0.875rem;
+  }
+}
+
+/* minor visual upgrade: subtle border gradient for cards */
+.blogs-card {
+  border-image: linear-gradient(135deg, var(--teal) 0%, var(--yellow) 100%) 1;
 }

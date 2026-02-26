@@ -251,8 +251,13 @@ nav{
 
 @media screen and (max-width:610px) {
     .featured{
-        grid-template-columns: 1fr;
-        grid-template-rows: 0.5fr 1fr; 
+        display: flex;
+        flex-direction: column;
+        /* grid-template-columns: 1fr;
+        grid-template-rows: 0.5fr 1fr;  */
+    }
+    .image{
+        height: 200px;
     }
     .desc{
 
@@ -276,6 +281,12 @@ nav{
     color: var(--text);
     font-weight: 700;
     font-family: "Zalando Sans Expanded", sans-serif;
+}
+
+.title h2 {
+    font-size: clamp(1.3rem, 4vw, 2rem);
+    line-height: 1.3;
+    margin: 0;
 }
 
 .blog-fp{
@@ -304,6 +315,10 @@ nav{
         grid-template-columns: 1fr;
         /* margin-top: -200px; */
     }
+    /* reduce desc padding on small devices */
+    .desc {
+        padding: 20px 15px;
+    }
 }
 
 
@@ -312,6 +327,26 @@ nav{
     padding: 0 1.5rem;
     margin: 4rem auto;
 }
+
+/* additional responsive tweaks specific to homepage and blog listing */
+@media screen and (max-width: 900px) {
+    .blog-sec {
+        padding: 0 1rem;
+    }
+    .featured .desc {
+        padding: 45px 25px;
+    }
+    .title {
+        font-size: clamp(1rem, 2.5vw, 1.4rem);
+    }
+    .blog-fp {
+        font-size: clamp(0.85rem, 1.8vw, 1rem);
+    }
+    .read-more {
+        font-size: 0.9rem;
+    }
+}
+
 
 #article-upper{
     display: flex;

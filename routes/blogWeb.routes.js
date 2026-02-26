@@ -26,6 +26,10 @@ router.get("/blog", async (req, res) => {
     res.render('my_blog', { blog });
 })
 
+router.get("/privacy-policy",(req,res)=>{
+    res.render('privacy_policy');
+})
+
 router.get("/about", async (req, res) => {
     res.render('about');
 })
