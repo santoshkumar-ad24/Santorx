@@ -26,6 +26,10 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 
 // ============ SECURITY MIDDLEWARE ============
 // Enable Helmet for security headers
+
+app.set('trust proxy', 1);
+
+
 app.use(helmet({
     contentSecurityPolicy: {
         directives: {
