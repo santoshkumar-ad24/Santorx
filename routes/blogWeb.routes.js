@@ -30,6 +30,14 @@ router.get("/privacy-policy",(req,res)=>{
     res.render('privacy_policy');
 })
 
+router.get("/terms-&-conditions",(req,res)=>{
+    res.render('terms');
+})
+
+router.get("/disclaimer",(req,res)=>{
+    res.render('disclaimer');
+})
+
 router.get("/about", async (req, res) => {
     res.render('about');
 })

@@ -1,0 +1,111 @@
+/* Use site variables from /stylesheet/style.css so legal pages match theme */
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial
+}
+html {
+     scroll-behavior: smooth;
+}
+
+.legal-wrap {
+    max-width: 1100px;
+    margin: 48px auto;
+    padding: 28px;
+    background: var(--white);
+    color: var(--text);
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+    
+.toc {
+    display: flex;
+    gap: 12px;
+    margin: 18px 0 18px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 16px;
+    background: #f7f7ff;
+    border-radius: 12px;
+    border: 1px solid #e0e3ff;
+}
+
+
+
+.toc a {
+    padding: 8px 20px;
+    border-radius: 999px;
+    border: 2px solid var(--teal);
+    background: transparent;
+    color: var(--teal);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+
+
+
+.legal-content h2 {
+    font-size: 18px;
+    margin: 20px 0 8px
+}
+
+.legal-content p,
+.legal-content li {
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 15px
+}
+
+.legal-content ul {
+    padding-left: 20px
+}
+
+.highlight {
+    color: var(--teal)
+}
+
+.last-updated {
+    margin-top: 22px;
+    padding: 12px;
+    border-radius: 8px;
+    background: rgba(14, 22, 31, 0.02);
+    font-size: 14px;
+    color: var(--logo)
+}
+
+@media (max-width:800px) {
+    .legal-wrap {
+        margin: 24px 18px;
+        padding: 18px
+    }
+
+    .site-title {
+        font-size: 16px
+    }
+
+    .logo {
+        width: 40px;
+        height: 40px;
+        font-size: 16px
+    }
+}
+
+/* Accessibility helpers */
+a:focus,
+button:focus {
+    outline: 2px solid rgba(96, 165, 250, 0.25);
+    outline-offset: 2px
+}
+
+/* Small print */
+.small {
+    font-size: 13px;
+    color: var(--muted)
+}
