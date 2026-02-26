@@ -2,7 +2,7 @@
 User-agent: *
 Allow: /
 
-
+Disallow: /404
 Disallow: /admin/
 Disallow: /config/
 Disallow: /middleware/
