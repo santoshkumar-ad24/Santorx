@@ -75,21 +75,14 @@ nav{
 }
 
 .logo h1, .logo h2{
-  background: linear-gradient(0deg, rgb(117, 218, 246) 30%, whitesmoke 50%);
+  background: linear-gradient(-10deg, teal 10%,rgb(190, 252, 252), white 70%);
   -webkit-background-clip: text;   /* Clips background to text */
   -webkit-text-fill-color: transparent; /* Makes text transparent so gradient shows */
   background-clip: text;           /* For modern browsers */
   color: transparent;              /* Fallback */
 
 }
-.logo span{
-    background: radial-gradient(circle, var(--teal-glow), var(--logoX));
-  -webkit-background-clip: text;   /* Clips background to text */
-  -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-    font-weight: bold;
-}
+
 
 .profileImg img{
     height: 50px;
