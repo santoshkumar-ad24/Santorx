@@ -750,11 +750,14 @@ article h1 {
     .content table {
         font-size: 0.9rem;
         margin: 25px 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .content th,
     .content td {
         padding: 12px 12px;
+        min-width: 100px;
     }
 
     .content ul,
@@ -858,39 +861,16 @@ article h1 {
     .content table {
         font-size: 0.85rem;
         margin: 20px 0;
-        display: block;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+        min-width: 600px;
+        max-width: none;
     }
 
-    .content thead {
-        display: none;
-    }
-
-    .content tbody tr {
-        display: block;
-        border: 1px solid #e0e0e0;
-        margin-bottom: 15px;
-        border-radius: 4px;
-    }
-
+    .content th,
     .content td {
-        display: block;
-        padding: 10px;
-        text-align: right;
-        padding-left: 50%;
-        position: relative;
-        border: none;
-        border-bottom: 1px solid #f0f0f0;
-    }
-
-    .content td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 10px;
-        font-weight: 600;
-        color: var(--primary-dark);
-        text-align: left;
+        min-width: 120px;
+        padding: 8px 12px;
     }
 
     .content img {
