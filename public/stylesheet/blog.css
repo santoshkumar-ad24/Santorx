@@ -863,14 +863,17 @@ article h1 {
         margin: 20px 0;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        min-width: 600px;
+        min-width: 100%;
         max-width: none;
+        display: block;
+        white-space: nowrap;
     }
 
     .content th,
     .content td {
-        min-width: 120px;
         padding: 8px 12px;
+        white-space: nowrap;
+        min-width: 80px;
     }
 
     .content img {
