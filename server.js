@@ -28,38 +28,50 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 
 
 app.use(helmet({
-    contentSecurityPolicy: {
-        directives: {
-            defaultSrc: ["'self'"],
-            scriptSrc: [
-          "'self'",
-          "https://cdn.jsdelivr.net"   // allow Quill JS from jsDelivr
-        ],
-        styleSrc: [
-          "'self'",
-          "'unsafe-inline'",
-          "https://fonts.googleapis.com",
-          "https://cdn.jsdelivr.net" ,
-           "https://cdnjs.cloudflare.com" // allow Quill CSS from jsDelivr
-        ],
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
 
+      scriptSrc: [
+        "'self'",
+        "'unsafe-inline'",
+        "https://cdn.jsdelivr.net",
+        "https://www.googletagmanager.com"
+      ],
 
-            imgSrc: ["'self'", 'data:', 'https:'],
-            connectSrc: [
-          "'self'",
-          "https://cdn.jsdelivr.net"   // allow source map requests
-        ]
+      styleSrc: [
+        "'self'",
+        "'unsafe-inline'",
+        "https://fonts.googleapis.com",
+        "https://cdn.jsdelivr.net",
+        "https://cdnjs.cloudflare.com"
+      ],
 
-        },
-    },
-    hsts: {
-        maxAge: 31536000, // 1 year
-        includeSubDomains: true,
-        preload: true
-    },
-    frameguard: { action: 'deny' },
-    nosniff: true,
-    xssFilter: true,
+      imgSrc: [
+        "'self'",
+        "data:",
+        "https:",
+        "https://www.google-analytics.com"
+      ],
+
+      connectSrc: [
+        "'self'",
+        "https://cdn.jsdelivr.net",
+        "https://www.google-analytics.com",
+        "https://www.googletagmanager.com"
+      ]
+    }
+  },
+
+  hsts: {
+    maxAge: 31536000,
+    includeSubDomains: true,
+    preload: true
+  },
+
+  frameguard: { action: 'deny' },
+  nosniff: true,
+  xssFilter: true
 }));
 
 
