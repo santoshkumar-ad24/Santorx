@@ -38,7 +38,9 @@ app.use(helmet({
         "https://cdn.jsdelivr.net",
         "https://www.googletagmanager.com",
         "https://www.clarity.ms",
-        "https://scripts.clarity.ms"
+        "https://scripts.clarity.ms",
+        "https://j.clarity.ms"
+
 
       ],
 
@@ -63,7 +65,8 @@ app.use(helmet({
         "https://www.google-analytics.com",
         "https://www.googletagmanager.com",
         "https://www.clarity.ms",
-        "https://scripts.clarity.ms"
+        "https://scripts.clarity.ms",
+        "https://j.clarity.ms"
 
       ]
     }
