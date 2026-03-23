@@ -36,7 +36,9 @@ app.use(helmet({
         "'self'",
         "'unsafe-inline'",
         "https://cdn.jsdelivr.net",
-        "https://www.googletagmanager.com"
+        "https://www.googletagmanager.com",
+        "https://www.clarity.ms"
+
       ],
 
       styleSrc: [
@@ -58,7 +60,9 @@ app.use(helmet({
         "'self'",
         "https://cdn.jsdelivr.net",
         "https://www.google-analytics.com",
-        "https://www.googletagmanager.com"
+        "https://www.googletagmanager.com",
+        "https://www.clarity.ms"
+
       ]
     }
   },
