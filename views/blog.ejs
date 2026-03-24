@@ -2,16 +2,16 @@
 <html lang="en">
 
 <head>
-    
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q1SH5LZCTH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-Q1SH5LZCTH');
-</script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q1SH5LZCTH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Q1SH5LZCTH');
+    </script>
     <script type="application/ld+json">
 {
 "@context": "https://schema.org",
@@ -23,7 +23,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<%= blog.metaDescription %>">
     <meta name="keywords" content="<%= blog.metaKeywords %>">
-    <meta property="og:site_name" content="Saniova" />
+
+    <meta property="og:title" content="<%= blog.title %>" />
+    <meta property="og:description" content="<%= blog.metaDescription %>" />
+    <meta property="og:image" content="<%= blog.imageUrl %>" />
+    <meta property="og:url" content="https://rsantosh.com.np/blog/<%= blog.slug %>" />
+    <meta property="og:type" content="article" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="<%= blog.title %>" />
+    <meta name="twitter:description" content="<%= blog.metaDescription %>" />
+    <meta name="twitter:image" content="<%= blog.imageUrl %>" />
+    <meta name="twitter:url" content="https://rsantosh.com.np/blog/<%= blog.slug %>" />
+
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <title>
         <%= blog.title %> | Saniova
@@ -73,12 +85,12 @@
 }
 </script>
     <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "w0boasx8gf");
-</script>
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "w0boasx8gf");
+    </script>
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -241,7 +253,9 @@
                 <ul>
                     <li><a href="https://www.facebook.com/share/1HMvQ11zft/">Facebook</a></li>
                     <li><a href="https://www.reddit.com/u/WerewolfMain3182/s/i6biQC9A6T">Reddit</a></li>
-                    <li><a href="https://www.quora.com/profile/Saniova?ch=10&oid=3168548346&share=f830d026&srid=5a8iLI&target_type=user">quora</a></li>
+                    <li><a
+                            href="https://www.quora.com/profile/Saniova?ch=10&oid=3168548346&share=f830d026&srid=5a8iLI&target_type=user">quora</a>
+                    </li>
                     <li><a href="https://pin.it/5b77ei5Rx">Pinterest</a></li>
                 </ul>
             </div>
