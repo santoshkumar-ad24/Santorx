@@ -69,5 +69,3 @@ Sitemap: https://rsantosh.com/sitemap.xml
 
 
 Crawl-delay: 1
-
-Request-rate: 10/10s
