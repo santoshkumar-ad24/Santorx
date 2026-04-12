@@ -19,7 +19,7 @@ router.get("/details",authMiddleware ,async (req,res)=>{
 router.get("/dashboard",authMiddleware,async (req,res)=> {
     const blog = await blogDB.find({content: {$nin: [null, ""]}})
         .populate("adminId","adminImage")
-        .sort({createdAt: -1});
+        .sort({Date: -1});
     
 
         res.render('admin-dashboard', {blog});
@@ -29,7 +29,7 @@ router.get("/dashboard",authMiddleware,async (req,res)=> {
 router.get("/dashboard/feedback",authMiddleware, async (req,res)=>{
     const blog = await blogDB.find({content: {$nin: [null, ""]}})
         .populate("adminId","adminImage")
-        .sort({createdAt: -1});
+        .sort({Date: -1});
     const userFeedback = await userFeedbackDB.find().sort({createdAt: -1});
 
     res.render("adm-feedback", {userFeedback, blog})
@@ -132,7 +132,7 @@ router.post("/dashboard/edit/:id", authMiddleware, async (req, res, next) => {
             metaDescription: sanitizeInput(description),
             content: content,
             imageUrl: image,
-            updatedAt: Date.now(),
+            Date: Date.now(),
             adminId: admin._id
         };
         

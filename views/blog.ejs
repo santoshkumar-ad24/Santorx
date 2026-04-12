@@ -103,6 +103,7 @@
     </noscript>
     <link rel="stylesheet" href="/stylesheet/style.css">
     <link rel="stylesheet" href="/stylesheet/blog.css">
+    <link rel="stylesheet" href="/stylesheet/hamburger-menu.css">
 </head>
 
 <body>
@@ -111,7 +112,7 @@
 
             <div class="logo">
                 <img src="/image/logo.png" alt="logo-image" class="logo-image">
-                <h2>Saniova</h2>
+                <a href="/"><h2>Saniova</h2></a>
             </div>
             <input type="checkbox" id="menu-toggle" style="display: none;">
             <label for="menu-toggle" class="hamburger">
@@ -144,36 +145,28 @@
                         <div class="uploader-img">
                             <img src="<%= blog.adminId.adminImage %>" alt="admin-profile-image" width="60" height="60">
                         </div>
-                        <div class="uploader-det">
-                            <p id="uploader-name">
-                                <%= blog.adminId.adminName %>
-                            </p>
-                            <p id="uploader-date">
-                                <%= blog.Date.toDateString() %>
-                            </p>
-                        </div>
-                        <div class="blog-meta">
-                            <span class="read-time">📖 3 min read</span>
+                        <div id="uploader-details">
+                            <div class="uploader-det">
+                                <p id="uploader-name">
+                                    <%= blog.adminId.adminName %>
+                                </p>
+                                <p id="uploader-date">
+                                    <%= blog.Date.toDateString() %>
+                                </p>
+                            </div>
+                            <div class="blog-meta">
+                                <span class="read-time">📖 3 min read</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
+
+
                 <!-- Main Content Section -->
                 <div class="blog-container">
-                    <!-- Main Content -->
-                    <div class="content-container">
-                        <!-- Featured Image with Shadow -->
-                        <div class="contentImg">
-                            <img src="<%= blog.imageUrl %>" alt="<%= blog.slug %>" loading="lazy">
-                        </div>
 
-                        <!-- Blog Body Content -->
-                        <div class="content">
-                            <p>
-                                <%- blog.content %>
-                            </p>
-                        </div>
-
+                    <aside class="share-aside">
                         <!-- Share Section -->
                         <div class="share-section">
                             <h3>Share this article</h3>
@@ -187,45 +180,83 @@
                                 <a href="#" id="copyLinkBtn" class="share-btn copy" title="Copy Link">🔗</a>
                             </div>
                         </div>
-                    </div>
+                    </aside>
+                    <!-- Main Content -->
 
-                    <!-- Sidebar -->
-                    <aside class="aside">
-                        <!-- Author Bio Card -->
-                        <div class="author-card">
-                            <img src="<%= blog.adminId.adminImage %>" alt="Author Profile" loading="lazy">
-                            <h3>About the Author</h3>
-                            <p class="author-bio">
-                                <%= blog.adminId.adminBio %>
-                            </p>
-                            <div class="author-badge">Featured Writer</div>
+
+                    <div class="content-container">
+                        <!-- Featured Image with Shadow -->
+                        <div class="contentImg">
+                            <img src="<%= blog.imageUrl %>" alt="<%= blog.slug %>" loading="lazy">
                         </div>
 
-                        <!-- Recommended Posts -->
-                        <div class="blogList-container">
-                            <h3 class="recommended-title">📚 Recommended Posts</h3>
-                            <div class="blogList">
-                                <% for( let index=0; index < Math.min(blogList.length ,12); index++ ) { %>
+                        <!-- Blog Body Content -->
+                        <div class="content">
+                            <p>
+                                <%- blog.content %>
+                            </p>
+                        </div>
 
-                                    <a href="/blog/<%= blogList[index].slug %>" class="blog-post">
-                                        <img src="<%= blogList[index].imageUrl %>" alt="<%= blogList[index].slug %>">
-                                        <div class="blogList-details">
-                                            <p class="blogList-title">
-                                                <%= blogList[index].title %>
-                                            </p>
-                                            <p class="blogList-des" id="featBlogDes">
-                                                <%= blogList[index].metaDescription %>
+
+                    </div>
+
+
+                    <!-- Sidebar -->
+                </div>
+                <section class="blog-recommendation">
+
+                    <!-- Recommended Posts -->
+                    <div class="blogList-container">
+                        <h3 class="recommended-title">Recommended Posts</h3>
+
+                        <!-- <div class="blog-reco-box"> -->
+                        <div class="box-reco-blog">
+                            <% let featuredBlog; do { featuredBlog=Math.floor(Math.random() * blogList.length); } while
+                            (blogList[featuredBlog].slug===blogSlug); %>
+
+                                <div class="blogList1">
+                                    <a href="/blog/<%= blogList[featuredBlog].slug %>" class="featured-blog-post">
+                                        <div class="feat-reco-image">
+                                            <img src="<%= blogList[featuredBlog].imageUrl %>"
+                                                alt="<%= blogList[featuredBlog].slug %>" loading=" lazy">
+                                        </div>
+                                        <div class="feat-blogList-details">
+                                            <p class="feat-blogList-title">
+                                                <%= blogList[featuredBlog].title %>
                                             </p>
                                         </div>
                                     </a>
-                                    <% } %>
-                            </div>
+                                </div>
+
+                                <% totalBlog = 8;
+                                for( let index=0; index < Math.min(blogList.length ,totalBlog); index++ ) { 
+                                    if(index === featuredBlog){ 
+                                        totalBlog = totalBlog + 1;
+                                         continue; } %>
+                                    <div class="blogList">
+                                        <a href="/blog/<%= blogList[index].slug %>" class="blog-post">
+                                            <div class="reco-image">
+                                                <img src="<%= blogList[index].imageUrl %>"
+                                                    alt="<%= blogList[index].slug %>" loading=" lazy">
+                                                loading="lazy">
+                                            </div>
+                                            <div class="blogList-details">
+                                                <p class="blogList-title">
+                                                    <%= blogList[index].title %>
+                                                </p>
+                                                <p class="blogList-des" id="featBlogDes">
+                                                    <%= blogList[index].metaDescription %>
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                <% } %>
                         </div>
-                    </aside>
-                </div>
+
+
+                </section>
             </article>
 
-        </section>
     </main>
     <footer class="footer">
         <div class="footer-wrapper">
@@ -233,7 +264,7 @@
             <div class="f-col brand">
                 <div class="logo">
                     <img src="/image/logo.png" alt="logo-image" class="logo-image">
-                    <h2>Saniova</h2>
+                    <a href="/"><h2>Saniova</h2></a>
                 </div>
                 <p>Your hub for tech insights, blogs and futuristic ideas.</p>
             </div>

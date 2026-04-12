@@ -38,6 +38,8 @@
     <title>Saniova - Tech Insights, Blogs & Futuristic Ideas</title>
     <link rel="stylesheet" href="/stylesheet/style.css">
     <link rel="stylesheet" href="/stylesheet/my_blog.css">
+    <link rel="stylesheet" href="/stylesheet/blog-cards.css">
+    <link rel="stylesheet" href="/stylesheet/hamburger-menu.css">
 </head>
 
 <body>
@@ -47,7 +49,7 @@
 
             <div class="logo">
                 <img src="/image/logo.png" alt="logo-image" class="logo-image">
-                <h1>Saniova</h1>
+                <a href="/"><h2>Saniova</h2></a>
             </div>
             <input type="checkbox" id="menu-toggle" style="display: none;">
             <label for="menu-toggle" class="hamburger">
@@ -67,21 +69,59 @@
     </header>
 
     <section class="home-sec">
-        <div class="home">
-            <div class="box" id="img1">
-                <img src="https://res.cloudinary.com/dn2cdy2ea/image/upload/v1771853797/computer-usage_ng0oyk_lkptfe.jpg"
-                    alt="computer-usage">
+        <div class="home-grid">
+            <div class="hero-copy">
+                <span class="hero-badge">Future Trend Journal</span>
+                <h1>Discover AI-driven ideas and future tech stories.</h1>
+                <p>Curated insights on artificial intelligence, innovation, automation, and emerging digital trends for the next generation of makers.</p>
+                <div class="hero-actions">
+                    <a href="/blog" class="hero-btn primary">Explore Articles</a>
+                    <a href="/contact" class="hero-btn secondary">Connect</a>
+                </div>
             </div>
-            <div class="box" id="img2">
-                <img src="https://res.cloudinary.com/dn2cdy2ea/image/upload/v1771853943/stylish-computer-setup_rbz9no_hetfgp.jpg"
-                    alt="stylish-computer-setup">
-            </div>
-            <div class="box" id="img3">
-                <img src="https://res.cloudinary.com/dn2cdy2ea/image/upload/v1771854106/reading-book_lp8dw3_mzzjh2.jpg"
-                    alt="reading-book">
+            <div class="hero-visual">
+                <div class="hero-panel">
+                    <div class="panel-top">
+                        <span>AI CORE</span>
+                        <span class="panel-tag">LIVE</span>
+                    </div>
+                    <div class="panel-screen">
+
+                        <div class="screen-grid">
+                            <div class="robot">
+                                <div class="robot-bubble">HII</div>
+                                <div class="robot-antenna"></div>
+                                <div class="robot-head">
+                                    <div class="robot-eyes">
+                                        <span class="robot-eye left"></span>
+                                        <span class="robot-eye right"></span>
+                                    </div>
+                                    <div class="robot-mouth"></div>
+                                </div>
+                                <div class="robot-body">
+                                    <div class="robot-chest"></div>
+                                    <div class="robot-details">
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="robot-shadow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-meta">
+                        <div>
+                            <small>Pulse</small>
+                            <strong>0.87</strong>
+                        </div>
+                        <div>
+                            <small>Trend</small>
+                            <strong>FUTURE</strong>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
     </section>
 
 
@@ -118,40 +158,53 @@
             <a href="/blog"><button type="button" class="read-more">All Posts-></button></a>
         </div>
 
+        <% 
+        const groupedBlogs = {};
+        blog.forEach(b => {
+          if (!groupedBlogs[b.category]) groupedBlogs[b.category] = [];
+          groupedBlogs[b.category].push(b);
+        });
+        const categories = Object.keys(groupedBlogs).sort((a,b) => {
+          if (a === 'Future Trends') return -1;
+          if (b === 'Future Trends') return 1;
+          return a.localeCompare(b);
+        });
+        %>
 
-
-        <div class="article">
-            <% for( let index=0; index < Math.min(blog.length, 6); index++ ) { %>
+        <% categories.forEach(cat => { %>
+        <div class="category-section">
+            <h4 class="category-title"><%= cat %></h4>
+            <div class="blog-cards-grid">
+                <% groupedBlogs[cat].slice(0, 6).forEach(b => { %>
                 <div class="blogs-card">
                     <div class="img-blog">
-                        <img src="<%= blog[index].imageUrl %>" alt="<%= blog[index].title %>">
+                        <img src="<%= b.imageUrl %>" alt="<%= b.title %>">
                     </div>
                     <div class="blog-card-content">
                         <span class="blog-category">
-                            <%= blog[index].category %>
+                            <%= b.category %>
                         </span>
 
                         <h2 class="blog-title">
-                            <%= blog[index].title %>
+                            <%= b.title %>
                         </h2>
 
                         <p class="blog-excerpt">
-                            <%= blog[index].metaDescription %>
-
+                            <%= b.metaDescription %>
                         </p>
 
                         <div class="blog-footer">
                             <span class="blog-date">
-                                <%= blog[index].Date.toDateString() %>
+                                <%= b.Date.toDateString() %>
                             </span>
-                            <a href="/blog/<%= blog[index].slug %>" class="read-more">Read Article →</a>
+                            <a href="/blog/<%= b.slug %>" class="read-more-myblog">Read Article →</a>
                         </div>
                     </div>
                 </div>
-
-
-                <% } %>
+                <% }); %>
+            </div>
         </div>
+        <% }); %>
     </section>
 
     <section class="feedback-sec">
@@ -197,7 +250,7 @@
             <div class="f-col brand">
                 <div class="logo">
                     <img src="/image/logo.png" alt="logo-image" class="logo-image">
-                    <h2>Saniova</h2>
+                    <a href="/"><h2>Saniova</h2></a>
                 </div>
                 <p>Your hub for tech insights, blogs and futuristic ideas.</p>
             </div>

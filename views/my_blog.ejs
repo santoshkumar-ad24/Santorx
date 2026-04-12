@@ -37,6 +37,7 @@
     <title>AI & Technology Articles | Saniova Tech Blog</title>
     <link rel="stylesheet" href="stylesheet/style.css">
     <link rel="stylesheet" href="stylesheet/my_blog.css">
+    <link rel="stylesheet" href="stylesheet/hamburger-menu.css">
 </head>
 
 <body>
@@ -45,7 +46,7 @@
             <nav>
                 <div class="logo">
                     <img src="/image/logo.png" alt="logo-image" class="logo-image">
-                    <h1>Saniova</h1>
+                    <a href="/"><h1>Saniova</h1></a>
                 </div>
                 <input type="checkbox" id="menu-toggle" style="display: none;">
                 <label for="menu-toggle" class="hamburger">
@@ -119,34 +120,101 @@
                 <% }); %>
         </div>
 
-        <div class="article">
-            <% for (let index=0; index < blog.length; index++ ) { %>
-                <div class="blogs-card" data-category="<%= blog[index].category %>">
-                    <div class="img-blog">
-                        <img src="<%= blog[index].imageUrl %>" alt="<%= blog[index].title %>">
-                    </div>
-                    <div class="blog-card-content">
+        <div class="blogs-container" id="blogs-container">
+            <% 
+            // Group blogs by category
+            const groupedBlogs = {};
+            blog.forEach(b => {
+              if (!groupedBlogs[b.category]) groupedBlogs[b.category] = [];
+              groupedBlogs[b.category].push(b);
+            });
+            
+            // Sort categories (Future Trends first)
+            const categoryOrder = Object.keys(groupedBlogs).sort((a,b) => {
+              if (a === 'Future Trends') return -1;
+              if (b === 'Future Trends') return 1;
+              return a.localeCompare(b);
+            });
+            
+            // Render each category group
+            categoryOrder.forEach((category) => {
+              const categoryBlogs = groupedBlogs[category];
+              const itemsToShow = 6;
+              const hasMore = categoryBlogs.length > itemsToShow;
+            %>
+              <div class="category-group" data-category="<%= category %>">
+                <div class="category-header">
+                  <h3 class="category-group-title"><%= category %></h3>
+                  <span class="category-count"><%= categoryBlogs.length %> articles</span>
+                </div>
+                
+                <div class="article" data-group="<%= category %>">
+                  <% categoryBlogs.slice(0, itemsToShow).forEach((b) => { %>
+                    <div class="blogs-card" data-category="<%= b.category %>">
+                      <div class="img-blog">
+                        <img src="<%= b.imageUrl %>" alt="<%= b.title %>">
+                      </div>
+                      <div class="blog-card-content">
                         <span class="blog-category">
-                            <%= blog[index].category %>
+                          <%= b.category %>
                         </span>
 
                         <h2 class="blog-title">
-                            <%= blog[index].title %>
+                          <%= b.title %>
                         </h2>
 
                         <p class="blog-excerpt">
-                            <%= blog[index].metaDescription %>
+                          <%= b.metaDescription %>
                         </p>
 
                         <div class="blog-footer">
-                            <span class="blog-date">
-                                <%= blog[index].Date.toDateString() %>
-                            </span>
-                            <a href="/blog/<%= blog[index].slug %>" class="read-more">Read Article →</a>
+                          <span class="blog-date">
+                            <%= b.Date.toDateString() %>
+                          </span>
+                          <a href="/blog/<%= b.slug %>" class="read-more-myblog">Read Article →</a>
                         </div>
+                      </div>
                     </div>
+                  <% }); %>
+
+                  <% categoryBlogs.slice(itemsToShow).forEach((b) => { %>
+                    <div class="blogs-card" data-category="<%= b.category %>" data-hidden="true" style="display: none;">
+                      <div class="img-blog">
+                        <img src="<%= b.imageUrl %>" alt="<%= b.title %>">
+                      </div>
+                      <div class="blog-card-content">
+                        <span class="blog-category">
+                          <%= b.category %>
+                        </span>
+
+                        <h2 class="blog-title">
+                          <%= b.title %>
+                        </h2>
+
+                        <p class="blog-excerpt">
+                          <%= b.metaDescription %>
+                        </p>
+
+                        <div class="blog-footer">
+                          <span class="blog-date">
+                            <%= b.Date.toDateString() %>
+                          </span>
+                          <a href="/blog/<%= b.slug %>" class="read-more-myblog">Read Article →</a>
+                        </div>
+                      </div>
+                    </div>
+                  <% }); %>
                 </div>
+
+                <% if (hasMore) { %>
+                  <div class="load-more-wrapper">
+                    <button class="load-more-btn" data-category="<%= category %>" data-total="<%= categoryBlogs.length %>" data-shown="<%= itemsToShow %>">
+                      Load More (<%= categoryBlogs.length - itemsToShow %> more)
+                    </button>
+                  </div>
                 <% } %>
+              </div>
+            <% }); %>
         </div>
     </section>
 
@@ -193,7 +261,7 @@
             <div class="f-col brand">
                 <div class="logo">
                     <img src="/image/logo.png" alt="logo-image" class="logo-image">
-                    <h2>Saniova</h2>
+                    <a href="/"><h2>Saniova</h2></a>
                 </div>
                 <p>Your hub for tech insights, blogs and futuristic ideas.</p>
             </div>
@@ -238,6 +306,7 @@
     <script src="/script/blogCardHeight.js"></script>
     <script src="/script/script.js"></script>
     <script src="/script/blogdescriptional.js"></script>
+    <script src="/script/blog-filter.js"></script>
 
 
 </body>

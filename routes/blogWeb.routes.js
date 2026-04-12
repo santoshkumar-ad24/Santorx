@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const blogDB = require("../models/blog")
+const adminDB = require("../models/adminDB")
 
 const userFeedbackDB = require("../models/userFeedback");
 const userConatctDB = require("../models/userContact");
@@ -12,7 +13,7 @@ router.get("/", async (req, res) => {
     const blog = await blogDB.find({
         content: { $nin: [null, ""] }
     })
-        .sort({ createdAt: -1 });
+        .sort({ Date: -1 });
     const featured = Math.floor(Math.random() * blog.length);
     res.render('index', {
         blog,
@@ -22,7 +23,7 @@ router.get("/", async (req, res) => {
 
 router.get("/blog", async (req, res) => {
     const blog = await blogDB.find({ content: { $nin: [null, ""] } })
-        .sort({ createdAt: -1 });
+        .sort({ Date: -1 });
     res.render('my_blog', { blog });
 })
 
@@ -39,7 +40,9 @@ router.get("/disclaimer",(req,res)=>{
 })
 
 router.get("/about", async (req, res) => {
-    res.render('about');
+    const blogAdmin = await adminDB.find()
+        .sort({ Date: -1 }).select("adminImage adminName adminBio");
+    res.render('about', {blogAdmin });
 })
 
 router.get("/contact", (req, res) => {
@@ -128,10 +131,10 @@ router.get("/blog/:slug", async (req, res) => {
     const slug = req.params.slug;
     const blog = await blogDB.findOne({ slug: slug }).populate("adminId", "adminImage adminName adminBio");
     
-    const blogList = await blogDB.find({ content: { $nin: [null, ""] } })
+    const blogList = await blogDB.find({ content: { $nin: [null, ""] }, slug: { $ne: slug } })
         .sort({ createdAt: -1 });
     if (blog) {
-        res.render('blog', { blog,blogList});
+        res.render('blog', { blog, blogList, blogSlug : slug });
 
     }
     else {

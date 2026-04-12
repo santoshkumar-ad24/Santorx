@@ -70,11 +70,29 @@ body {
 
 .info-item {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 15px;
     margin-bottom: 20px;
 }
-
+.icon-name {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+#info-tag {
+    display: inline-block;
+    align-self: self-start;
+    background: var(--yellow);
+    color: var(--primary-dark);
+    
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
 .icon-box {
     width: 45px;
     height: 45px;
@@ -86,9 +104,90 @@ body {
     font-weight: bold;
     color: var(--white);
 }
+.attractive-section {
+    max-width: 200px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+.quote {
+    position: relative;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.05rem;
+    max-height: 310px;
+    border-radius: 30px;
+    background: rgba(7, 36, 64, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+
+}
+
+.quote::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.18), transparent 18%),
+        radial-gradient(circle at 80% 10%, rgba(88, 216, 255, 0.18), transparent 12%),
+        radial-gradient(circle at 60% 85%, rgba(251, 255, 125, 0.16), transparent 15%),
+        linear-gradient(135deg, rgba(63, 169, 255, 0.12), rgba(255, 255, 255, 0));
+    opacity: 0.95;
+    pointer-events: none;
+    transform: scale(1.12);
+}
+
+.quote::after {
+    content: 'AI';
+    position: absolute;
+    top: 12%;
+    right: 8%;
+    left: 0;
+    
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.08);
+    letter-spacing: 0.3em;
+    transform: rotate(10deg);
+    pointer-events: none;
+}
+
+#vertical-text {
+    position: relative;
+    writing-mode: sideways-lr;
+    text-orientation: upright;
+    color: #ffffff;
+    max-width: 320px;
+    z-index: 1;
+        height: 100%;
+    padding: 15px 5px;
+}
+
+#vertical-text::before,
+#vertical-text::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 1px dashed rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    opacity: 0.45;
+}
+
+#vertical-text::before {
+    top: -18px;
+    left: -24px;
+}
+
+#vertical-text::after {
+    bottom: -18px;
+    right: -22px;
+}
 
 .social-links {
     display: flex;
+    flex-direction: column;
     gap: 15px;
     margin-top: 40px;
 }
@@ -96,7 +195,7 @@ body {
 .social-btn {
     width: 40px;
     height: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(0, 57, 1, 0.2);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -106,6 +205,8 @@ body {
     font-size: 0.8rem;
     font-weight: bold;
     transition: var(--transition);
+    background-color: var(--teal);
+    box-shadow: 5px 10px 5px rgba(0, 101, 98, 0.1);
 }
 
 .social-btn:hover {
@@ -186,7 +287,34 @@ select.form-control {
 }
 
 /* --- Responsive Adjustments --- */
-@media (max-width: 850px) {
+@media (max-width: 700px) {
+    .attractive-section {
+        max-width: 100%;
+        flex-direction: column;
+        gap: 30px;
+    }
+    .quote{
+        height: fit-content;
+    }
+    #vertical-text {
+        padding-left: 10px;
+        padding-top: 10px;
+        margin-bottom: 0;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: fit-content;
+        writing-mode:horizontal-tb;
+        color: white;
+}  
+    .social-links{
+        margin-top: 10px;
+        height: fit-content;
+        flex-direction: row;
+        justify-content: center;
+    }
     .glass-card {
         flex-direction: column;
     }
