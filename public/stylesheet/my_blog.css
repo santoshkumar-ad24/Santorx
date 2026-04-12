@@ -132,7 +132,6 @@
 
 .blogs-card {
   background: var(--white);
-  aspect-ratio: 1 / 1.4;
   padding: 0.9rem;
   border: 1px solid rgba(13, 27, 42, 0.08);
   box-shadow: 0 8px 20px rgba(13, 27, 42, 0.08);
@@ -150,6 +149,7 @@
   overflow: hidden;
   border-radius: 0.625rem;
   margin-bottom: 0.75rem;
+  min-height: 80px;
 }
 
 .img-blog img {

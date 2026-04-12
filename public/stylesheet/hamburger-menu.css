@@ -9,6 +9,27 @@ body {
     position: fixed;
 }
 
+.menu-backdrop {
+    display: none;
+}
+
+#menu-toggle:checked ~ .menu-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: transparent;
+    z-index: 9;
+    cursor: default;
+}
+
+#menu-toggle:checked ~ .hamburger {
+    z-index: 11;
+}
+
+#menu-toggle:checked ~ .menu {
+    z-index: 10;
+}
+
 /* Overlay backdrop when menu is open */
 body::before {
     content: '';
