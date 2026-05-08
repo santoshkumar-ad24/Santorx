@@ -41,7 +41,8 @@ app.use(helmet({
         "https://scripts.clarity.ms",
         "https://j.clarity.ms",
         "https://k.clarity.ms",
-        "https://*.clarity.ms"
+        "https://*.clarity.ms",
+        "https://cdn.vercel-insights.com"
 
 
 
@@ -71,7 +72,8 @@ app.use(helmet({
         "https://scripts.clarity.ms",
         "https://j.clarity.ms",
         "https://k.clarity.ms",
-        "https://*.clarity.ms"
+        "https://*.clarity.ms",
+        "https://vitals.vercel-insights.com"
 
       ]
     }
