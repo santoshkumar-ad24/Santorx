@@ -53,12 +53,8 @@ function imageHandler() {
             method: "POST",
             body: formData
         });
-        const data = await res.json()
-        if (imageUrl.value === 'null') {
-            alert("No hidden input to set image URL");
-            
-            imageUrl.value = data.url;
-        }
+        const data = await res.json();
+        imageUrl.value = data.url;
 
         const range = quill.getSelection();
 
@@ -72,7 +68,10 @@ function imageHandler() {
 publish.addEventListener('click', () => {
     const content = quill.root.innerHTML;
 
-    const contentWithoutImages = content.replace(/<img[^>]*>/, "");
+    const contentWithoutImages = content.replace(/<img[^>]*>/g, "");
     output.value = contentWithoutImages;
 
+    if (!quill.root.querySelector('img')) {
+        imageUrl.value = 'null';
+    }
 })
