@@ -800,6 +800,11 @@ nav{
         min-height: 160px;
     }
 }
+@media screen and (max-width: 620px){
+    .hero-visual{
+        display: none;
+    }
+}
 
 @media screen and (max-width: 480px) {
     .home-sec {
