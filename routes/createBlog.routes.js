@@ -5,43 +5,44 @@ const admindb = require("../models/adminDB");
 const userConatctDB = require("../models/userContact");
 const userFeedbackDB = require("../models/userFeedback");
 const slugify = require("slugify");
+const submitIndexNow = require("../utils/indexnow");
 
 const authMiddleware = require('../middleware/adminChecker');
 const { validateString, sanitizeInput } = require('../middleware/inputValidator');
 
-router.get("/details",authMiddleware ,async (req,res)=>{
-    const admin = await admindb.findOne({_id: req.adminID});
-    if(!admin) return res.status(400).redirect('/admin/login')
-    res.render('admin-details',{adminImage: admin.adminImage, adminName: admin.adminName, adminUser: admin.adminUser,joinDate: admin.Date.toDateString()});
+router.get("/details", authMiddleware, async (req, res) => {
+    const admin = await admindb.findOne({ _id: req.adminID });
+    if (!admin) return res.status(400).redirect('/admin/login')
+    res.render('admin-details', { adminImage: admin.adminImage, adminName: admin.adminName, adminUser: admin.adminUser, joinDate: admin.Date.toDateString() });
 })
 
 
-router.get("/dashboard",authMiddleware,async (req,res)=> {
-    const blog = await blogDB.find({content: {$nin: [null, ""]}})
-        .populate("adminId","adminImage")
-        .sort({Date: -1});
-    
+router.get("/dashboard", authMiddleware, async (req, res) => {
+    const blog = await blogDB.find({ content: { $nin: [null, ""] } })
+        .populate("adminId", "adminImage")
+        .sort({ Date: -1 });
 
-        res.render('admin-dashboard', {blog});
+
+    res.render('admin-dashboard', { blog });
 
 
 })
-router.get("/dashboard/feedback",authMiddleware, async (req,res)=>{
-    const blog = await blogDB.find({content: {$nin: [null, ""]}})
-        .populate("adminId","adminImage")
-        .sort({Date: -1});
-    const userFeedback = await userFeedbackDB.find().sort({createdAt: -1});
+router.get("/dashboard/feedback", authMiddleware, async (req, res) => {
+    const blog = await blogDB.find({ content: { $nin: [null, ""] } })
+        .populate("adminId", "adminImage")
+        .sort({ Date: -1 });
+    const userFeedback = await userFeedbackDB.find().sort({ createdAt: -1 });
 
-    res.render("adm-feedback", {userFeedback, blog})
+    res.render("adm-feedback", { userFeedback, blog })
 })
 
-router.get("/dashboard/contact-inqury",authMiddleware, async (req,res)=>{
-    const userContact = await userConatctDB.find().sort({createdAt: -1});
+router.get("/dashboard/contact-inqury", authMiddleware, async (req, res) => {
+    const userContact = await userConatctDB.find().sort({ createdAt: -1 });
 
-    res.render("adm-inqury", {userContact})
+    res.render("adm-inqury", { userContact })
 })
 
-router.get("/dashboard/create-blog", authMiddleware,(req,res)=> {
+router.get("/dashboard/create-blog", authMiddleware, (req, res) => {
     res.render('create-blog');
 })
 
@@ -49,7 +50,7 @@ router.get("/dashboard/create-blog", authMiddleware,(req,res)=> {
 router.post("/postBlog", authMiddleware, async (req, res, next) => {
     try {
         const { title, category, featured, keyword, description, content, image } = req.body;
-        
+
         if (!validateString(title, 5, 200)) {
             return res.status(400).json({ success: false, message: 'Title must be between 5 and 200 characters' });
         }
@@ -65,10 +66,10 @@ router.post("/postBlog", authMiddleware, async (req, res, next) => {
         if (!validateString(content, 20, 50000)) {
             return res.status(400).json({ success: false, message: 'Content must be between 20 and 50000 characters' });
         }
-        
+
         const admin = await admindb.findOne({ _id: req.adminID });
         if (!admin) return res.status(404).render('/admin/login', { message: 'Unauthorized' });
-        
+
         const sanitizedData = {
             title: sanitizeInput(title),
             category: sanitizeInput(category),
@@ -79,12 +80,16 @@ router.post("/postBlog", authMiddleware, async (req, res, next) => {
             imageUrl: image,
             adminId: admin._id
         };
-        
-        await blogDB.create({
+
+        const blog  = await blogDB.create({
             ...sanitizedData,
             slug: slugify(sanitizedData.title, { lower: true, strict: true })
         });
-        
+        await submitIndexNow(
+            `https://rsantosh.com.np/blog/${blog.slug}`
+        ).catch(err => {
+            console.error("IndexNow failed:", err.message);
+        });
         res.redirect('/admin/dashboard/create-blog');
     } catch (error) {
         next(error);
@@ -92,18 +97,18 @@ router.post("/postBlog", authMiddleware, async (req, res, next) => {
 });
 
 
-router.get("/dashboard/edit/:id", authMiddleware,async (req,res)=> {
+router.get("/dashboard/edit/:id", authMiddleware, async (req, res) => {
     const id = req.params.id;
-    const blog = await blogDB.findOne({_id: id});
-    if(!blog) redirect("/admin/dashboard");
-    res.render("edit-blog", {blog});
+    const blog = await blogDB.findOne({ _id: id });
+    if (!blog) redirect("/admin/dashboard");
+    res.render("edit-blog", { blog });
 });
 
 router.post("/dashboard/edit/:id", authMiddleware, async (req, res, next) => {
     try {
         const id = req.params.id;
-        const { title, category, featured,keyword, description, content, image } = req.body;
-        
+        const { title, category, featured, keyword, description, content, image } = req.body;
+
         if (!validateString(title, 5, 200)) {
             return res.status(400).json({ success: false, message: 'Title must be between 5 and 200 characters' });
         }
@@ -119,10 +124,10 @@ router.post("/dashboard/edit/:id", authMiddleware, async (req, res, next) => {
         if (!validateString(content, 20, 50000)) {
             return res.status(400).json({ success: false, message: 'Content must be between 20 and 50000 characters' });
         }
-        
+
         const admin = await admindb.findOne({ _id: req.adminID });
         if (!admin) return res.status(404).render('/admin/login', { message: 'Unauthorized' });
-        
+
         const sanitizedData = {
             title: sanitizeInput(title),
             slug: slugify(sanitizeInput(title), { lower: true, strict: true }),
@@ -135,8 +140,13 @@ router.post("/dashboard/edit/:id", authMiddleware, async (req, res, next) => {
             Date: Date.now(),
             adminId: admin._id
         };
-        
-        await blogDB.findOneAndUpdate({ _id: id }, sanitizedData);
+
+        const blog = await blogDB.findOneAndUpdate({ _id: id }, sanitizedData);
+        await submitIndexNow(
+            `https://rsantosh.com.np/blog/${blog.slug}`
+        ).catch(err => {
+            console.error("IndexNow failed:", err.message);
+        });
         res.redirect('/admin/dashboard');
     } catch (error) {
         next(error);
@@ -150,6 +160,11 @@ router.post("/dashboard/delete/:id", authMiddleware, async (req, res, next) => {
         if (!result) {
             return res.status(404).json({ success: false, message: 'Blog not found' });
         }
+        submitIndexNow(
+            `https://rsantosh.com.np/blog/${result.slug}`
+        ).catch(err => {
+            console.error("IndexNow failed:", err.message);
+        });
         res.redirect('/admin/dashboard');
     } catch (error) {
         next(error);
