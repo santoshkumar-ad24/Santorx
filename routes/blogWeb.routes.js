@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const blogDB = require("../models/blog")
 const adminDB = require("../models/adminDB")
+const User = require('../models/User');
 
 const userFeedbackDB = require("../models/userFeedback");
 const userConatctDB = require("../models/userContact");
@@ -134,7 +135,17 @@ router.get("/blog/:slug", async (req, res) => {
     const blogList = await blogDB.find({ content: { $nin: [null, ""] }, slug: { $ne: slug } })
         .sort({ createdAt: -1 });
     if (blog) {
-        res.render('blog', { blog, blogList, blogSlug : slug });
+        // Record history for authenticated users (move to top)
+        if (req.user) {
+            try {
+                await User.updateOne({ _id: req.user._id }, { $pull: { history: { blog: blog._id } } });
+                await User.updateOne({ _id: req.user._id }, { $push: { history: { blog: blog._id, viewedAt: new Date() } } });
+            } catch (err) {
+                console.error('Error updating user history', err);
+            }
+        }
+
+        res.render('blog', { blog, blogList, blogSlug: slug });
 
     }
     else {

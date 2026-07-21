@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Your Bookmarks</title>
+    <link rel="stylesheet" href="/stylesheet/style.css">
+    <link rel="stylesheet" href="/stylesheet/hamburger-menu.css">
+</head>
+<body>
+    <header>
+        <navbar>
+            <nav>
+                <div class="logo">
+                    <a href="/"><h1>Saniova</h1></a>
+                </div>
+                <div class="nav-link menu">
+                    <a href="/">Home</a>
+                    <a href="/blog">Blog</a>
+                </div>
+            </nav>
+        </navbar>
+    </header>
+    <%- include('partials/signReg') %>
+
+    <main class="user-feature-page">
+        <h2>Bookmarks</h2>
+        <p class="muted">Articles you've bookmarked will appear here.</p>
+        <div class="feature-grid">
+            <% if (!loggedIn) { %>
+                <div class="feature-card">Please <a href="/auth/google">sign in</a> to see your bookmarks.</div>
+            <% } else if (bookmarks && bookmarks.length) { %>
+                <% bookmarks.forEach(b => { %>
+                    <div class="feature-card">
+                        <h4><a href="/blog/<%= b.slug %>"><%= b.title %></a></h4>
+                        <p><%= b.metaDescription %></p>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <div class="feature-card">No bookmarks yet.</div>
+            <% } %>
+        </div>
+    </main>
+</body>
+</html>

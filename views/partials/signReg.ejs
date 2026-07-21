@@ -1,0 +1,83 @@
+<% if (locals.user) { %>
+    <div class="register">
+        <span><%= user.name.split(' ')[0] %></span>
+        <div class="logOpt">
+            <p>&gt;</p>
+        </div>
+        <div class="user-dropdown">
+            <div class="align-user">
+                <p class="user-details">
+                    <img class="user-profile" src="<%= user.profileImage %>" alt="Profile">
+                    <span><%= user.name %></span>
+                </p>
+            </div>
+            <div style="margin-top:8px; margin-bottom:8px; font-size:0.75rem; color:#aaa;"><%= user.email %></div>
+
+            <div class="user-feature">
+                <a href="/bookmarks">Bookmarks</a>
+                <a href="/history">History</a>
+            </div>
+
+            <a class="logout" href="/auth/logout" style="display: block; color: #ff4757; text-decoration: none; padding: 8px 10px; border-radius: 6px; background: rgba(255, 71, 87, 0.1); transition: all 0.3s ease;margin-top: 10px; text-align: center; font-weight: 600;" onmouseover="this.style.background='rgba(255, 71, 87, 0.2)'" onmouseout="this.style.background='rgba(255, 71, 87, 0.1)'">Logout</a>
+        </div>
+    </div>
+
+
+        
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userMenu = document.querySelector('.register');
+            const dropdown = document.querySelector('.user-dropdown');
+            const logOpt = document.querySelector('.logOpt');
+            if (userMenu && dropdown) {
+                // Show dropdown on hover
+                userMenu.addEventListener('mouseenter', () => {
+                    dropdown.style.display = 'block';
+                    if (logOpt) {
+                        logOpt.style.transform = 'rotate(90deg)';
+                    }
+                });
+                
+                // Hide dropdown on leave
+                userMenu.addEventListener('mouseleave', () => {
+                    dropdown.style.display = 'none';
+                    if (logOpt) {
+                        logOpt.style.transform = 'rotate(0deg)';
+                    }
+                });
+                
+                // Also hide on body click
+                document.addEventListener('click', () => {
+                    dropdown.style.display = 'none';
+                    if (logOpt) {
+                        logOpt.style.transform = 'rotate(0deg)';
+                    }
+                });
+                
+                dropdown.addEventListener('click', (e) => e.stopPropagation());
+            }
+        });
+    </script>
+<% } else { %>
+    <div class="register">
+        <button class="logBtn"><span>Signin/Register</span></button>
+    </div>
+
+    <div class="auth-modal hidden" id="authModal" aria-hidden="true">
+        <div class="auth-card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+            <button class="auth-close" id="authClose" type="button" aria-label="Close sign in dialog">×</button>
+            <div class="auth-header">
+                <h2 id="authTitle">Sign in / Register</h2>
+                <p>Continue with Google to sign in or create an account.</p>
+            </div>
+            <a class="google-btn" href="/auth/google">
+                <span class="google-icon">G</span>
+                Continue with Google
+            </a>
+            <p class="auth-note">By continuing, you agree to our <a href="/terms-&-conditions" target="_blank"
+                    rel="noopener noreferrer">Terms & Conditions</a> and <a href="/privacy-policy" target="_blank"
+                    rel="noopener noreferrer">Privacy Policy</a>.</p>
+        </div>
+    </div>
+<% } %>

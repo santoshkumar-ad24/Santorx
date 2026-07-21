@@ -7,7 +7,40 @@ const helmet = require('helmet');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
 const app = express();
+const passport = require("passport");
+const jwt = require("jsonwebtoken");
+const User = require("./models/User");
 
+require("./config/passport");
+
+// Trust proxy when running behind a reverse proxy (required for secure cookies)
+if (process.env.NODE_ENV === 'production') {
+    app.set('trust proxy', 1);
+}
+
+app.use(passport.initialize());
+app.use(cookieParser()); // Moved cookie-parser here to ensure req.cookies is available
+
+// JWT Authentication Middleware
+app.use(async (req, res, next) => {
+    const token = req.cookies.userToken;
+    if (token) {
+        try {
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            const user = await User.findById(decoded.id);
+            req.user = user;
+            res.locals.user = user;
+        } catch (err) {
+            console.error("JWT Verification Error:", err);
+            req.user = null;
+            res.locals.user = null;
+        }
+    } else {
+        req.user = null;
+        res.locals.user = null;
+    }
+    next();
+});
 // Connect to Database
 connectDB();
 
@@ -16,6 +49,7 @@ const blogWebRouter = require('./routes/blogWeb.routes');
 const createBlogRouter = require('./routes/createBlog.routes');
 const cloudinaryRouter = require('./routes/cloudinary.routes');
 const adminLog = require('./routes/adminLog.routes');
+const userFeaturesRouter = require('./routes/userFeatures.routes');
 
 
 // Environment variables
@@ -59,7 +93,9 @@ app.use(helmet({
                 "'self'",
                 "data:",
                 "https:",
-                "https://www.google-analytics.com"
+                "https://www.google-analytics.com",
+                "https://lh3.googleusercontent.com",
+                "https://*.googleusercontent.com"
             ],
 
             connectSrc: [
@@ -70,6 +106,8 @@ app.use(helmet({
                 "https://analytics.google.com",
                 "https://stats.g.doubleclick.net",
                 "https://www.google.com",
+                "https://accounts.google.com",
+                "https://*.googleusercontent.com",
                 "https://www.clarity.ms",
                 "https://scripts.clarity.ms",
                 "https://j.clarity.ms",
@@ -103,9 +141,6 @@ app.use(express.json({ limit: '10mb' }));
 // ============ STATIC FILES ============
 app.use(express.static(path.join(__dirname, 'public')));
 
-// ============ COOKIE PARSER ============
-app.use(cookieParser());
-
 // ============ REQUEST LOGGING ============
 app.use((req, res, next) => {
     console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`);
@@ -114,9 +149,11 @@ app.use((req, res, next) => {
 
 // ============ ROUTES ============
 app.use('/', blogWebRouter);
+app.use('/', userFeaturesRouter);
 app.use('/admin', createBlogRouter);
 app.use('/cloud', cloudinaryRouter);
 app.use('/admin', adminLog);
+app.use("/auth", require("./routes/auth"));
 
 // ============ HEALTH CHECK ENDPOINT ============
 app.get('/health', (req, res) => {
