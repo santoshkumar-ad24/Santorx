@@ -28,67 +28,67 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 
 
 app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
 
-      scriptSrc: [
-        "'self'",
-        "'unsafe-inline'",
-        "https://cdn.jsdelivr.net",
-        "https://www.googletagmanager.com",
-        "https://www.clarity.ms",
-        "https://scripts.clarity.ms",
-        "https://j.clarity.ms",
-        "https://k.clarity.ms",
-        "https://*.clarity.ms"
+            scriptSrc: [
+                "'self'",
+                "'unsafe-inline'",
+                "https://cdn.jsdelivr.net",
+                "https://www.googletagmanager.com",
+                "https://www.clarity.ms",
+                "https://scripts.clarity.ms",
+                "https://j.clarity.ms",
+                "https://k.clarity.ms",
+                "https://*.clarity.ms"
 
 
 
-      ],
+            ],
 
-      styleSrc: [
-        "'self'",
-        "'unsafe-inline'",
-        "https://fonts.googleapis.com",
-        "https://cdn.jsdelivr.net",
-        "https://cdnjs.cloudflare.com"
-      ],
+            styleSrc: [
+                "'self'",
+                "'unsafe-inline'",
+                "https://fonts.googleapis.com",
+                "https://cdn.jsdelivr.net",
+                "https://cdnjs.cloudflare.com"
+            ],
 
-      imgSrc: [
-        "'self'",
-        "data:",
-        "https:",
-        "https://www.google-analytics.com"
-      ],
+            imgSrc: [
+                "'self'",
+                "data:",
+                "https:",
+                "https://www.google-analytics.com"
+            ],
 
-      connectSrc: [
-        "'self'",
-        "https://cdn.jsdelivr.net",
-        "https://www.google-analytics.com",
-        "https://www.googletagmanager.com",
-        "https://analytics.google.com",
-        "https://stats.g.doubleclick.net",
-        "https://www.google.com",
-        "https://www.clarity.ms",
-        "https://scripts.clarity.ms",
-        "https://j.clarity.ms",
-        "https://k.clarity.ms",
-        "https://*.clarity.ms"
+            connectSrc: [
+                "'self'",
+                "https://cdn.jsdelivr.net",
+                "https://www.google-analytics.com",
+                "https://www.googletagmanager.com",
+                "https://analytics.google.com",
+                "https://stats.g.doubleclick.net",
+                "https://www.google.com",
+                "https://www.clarity.ms",
+                "https://scripts.clarity.ms",
+                "https://j.clarity.ms",
+                "https://k.clarity.ms",
+                "https://*.clarity.ms"
 
-      ]
-    }
-  },
+            ]
+        }
+    },
 
-  hsts: {
-    maxAge: 31536000,
-    includeSubDomains: true,
-    preload: true
-  },
+    hsts: {
+        maxAge: 31536000,
+        includeSubDomains: true,
+        preload: true
+    },
 
-  frameguard: { action: 'deny' },
-  nosniff: true,
-  xssFilter: true
+    frameguard: { action: 'deny' },
+    nosniff: true,
+    xssFilter: true
 }));
 
 

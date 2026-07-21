@@ -19,7 +19,7 @@
 "name": "Saniova"
 }
 </script>
-<meta name="yandex-verification" content="dad153b32c9fed72" />
+    <meta name="yandex-verification" content="dad153b32c9fed72" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<%= blog.metaDescription %>">
@@ -113,7 +113,9 @@
 
             <div class="logo">
                 <img src="/image/logo.png" alt="logo-image" class="logo-image">
-                <a href="/"><h2>Saniova</h2></a>
+                <a href="/">
+                    <h2>Saniova</h2>
+                </a>
             </div>
             <input type="checkbox" id="menu-toggle" style="display: none;">
             <label for="menu-toggle" class="menu-backdrop" aria-hidden="true"></label>
@@ -128,7 +130,23 @@
                 <a href="/about">About</a>
                 <a href="/privacy-policy">Privacy</a>
                 <a href="/contact">Contact</a>
+
             </div>
+            <% if (locals.user) { %>
+                <div class="user-avatar-container" onclick="toggleUserDropdown(event)">
+                    <img src="<%= user.avatar || 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y' %>"
+                        alt="User" class="user-avatar">
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="/profile">👤 Profile</a>
+                        <a href="/bookmarks">🔖 Bookmarks</a>
+                        <a href="/history">🕒 History</a>
+                        <hr>
+                        <a href="/auth/logout" style="color: #ff4d4d;">🚪 Log out</a>
+                    </div>
+                </div>
+                <% } else { %>
+                    <button class="auth-btn" onclick="openAuthModal()">Sign In</button>
+                    <% } %>
         </nav>
         </navbar>
     </header>
@@ -214,7 +232,7 @@
                         <!-- <div class="blog-reco-box"> -->
                         <div class="box-reco-blog">
                             <% let featuredBlog; do { featuredBlog=Math.floor(Math.random() * blogList.length); } while
-                            (blogList[featuredBlog].slug===blogSlug); %>
+                                (blogList[featuredBlog].slug===blogSlug); %>
 
                                 <div class="blogList1">
                                     <a href="/blog/<%= blogList[featuredBlog].slug %>" class="featured-blog-post">
@@ -230,11 +248,8 @@
                                     </a>
                                 </div>
 
-                                <% totalBlog = 8;
-                                for( let index=0; index < Math.min(blogList.length ,totalBlog); index++ ) { 
-                                    if(index === featuredBlog){ 
-                                        totalBlog = totalBlog + 1;
-                                         continue; } %>
+                                <% totalBlog=8; for( let index=0; index < Math.min(blogList.length ,totalBlog); index++
+                                    ) { if(index===featuredBlog){ totalBlog=totalBlog + 1; continue; } %>
                                     <div class="blogList">
                                         <a href="/blog/<%= blogList[index].slug %>" class="blog-post">
                                             <div class="reco-image">
@@ -252,7 +267,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                <% } %>
+                                    <% } %>
                         </div>
 
 
@@ -266,7 +281,9 @@
             <div class="f-col brand">
                 <div class="logo">
                     <img src="/image/logo.png" alt="logo-image" class="logo-image">
-                    <a href="/"><h2>Saniova</h2></a>
+                    <a href="/">
+                        <h2>Saniova</h2>
+                    </a>
                 </div>
                 <p>Your hub for tech insights, blogs and futuristic ideas.</p>
             </div>
@@ -313,6 +330,25 @@
     <script src="/script/share.js"></script>
     <script src="/script/blogdescriptional.js"></script>
 
+
 </body>
 
 </html>
+</ul>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+    © 2025 Saniova — All rights reserved.
+</div>
+</footer>
+
+
+<script src="/script/share.js"></script>
+<script src="/script/blogdescriptional.js"></script>
+
+<%- include('partials/authModal') %>
+    </body>
+
+    </html>

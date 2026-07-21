@@ -147,6 +147,7 @@ router.post("/dashboard/edit/:id", authMiddleware, async (req, res, next) => {
         ).catch(err => {
             console.error("IndexNow failed:", err.message);
         });
+        console.log("Blog updated successfully:", blog);
         res.redirect('/admin/dashboard');
     } catch (error) {
         next(error);
