@@ -132,21 +132,7 @@
                 <a href="/contact">Contact</a>
 
             </div>
-            <% if (locals.user) { %>
-                <div class="user-avatar-container" onclick="toggleUserDropdown(event)">
-                    <img src="<%= user.avatar || 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y' %>"
-                        alt="User" class="user-avatar">
-                    <div class="user-dropdown" id="userDropdown">
-                        <a href="/profile">👤 Profile</a>
-                        <a href="/bookmarks">🔖 Bookmarks</a>
-                        <a href="/history">🕒 History</a>
-                        <hr>
-                        <a href="/auth/logout" style="color: #ff4d4d;">🚪 Log out</a>
-                    </div>
-                </div>
-                <% } else { %>
-                    <button class="auth-btn" onclick="openAuthModal()">Sign In</button>
-                    <% } %>
+
         </nav>
         </navbar>
     </header>
@@ -334,19 +320,3 @@
 </body>
 
 </html>
-</ul>
-</div>
-
-</div>
-
-<div class="footer-bottom">
-    © 2025 Saniova — All rights reserved.
-</div>
-</footer>
-
-
-<script src="/script/share.js"></script>
-
-    </body>
-
-    </html>
