@@ -50,6 +50,7 @@ const createBlogRouter = require('./routes/createBlog.routes');
 const cloudinaryRouter = require('./routes/cloudinary.routes');
 const adminLog = require('./routes/adminLog.routes');
 const userFeaturesRouter = require('./routes/userFeatures.routes');
+const gameRouter = require('./routes/game.routes');
 
 
 // Environment variables
@@ -154,6 +155,7 @@ app.use('/admin', createBlogRouter);
 app.use('/cloud', cloudinaryRouter);
 app.use('/admin', adminLog);
 app.use("/auth", require("./routes/auth"));
+app.use('/', gameRouter);
 
 // ============ HEALTH CHECK ENDPOINT ============
 app.get('/health', (req, res) => {

@@ -1,34 +1,21 @@
 <% if (locals.user) { %>
-    <div class="signedIn">
 
+    <div class="register">
         <span>
-            <%= user.name.split(' ')[0] %></span>
+            <%= user.profileImage %>
+        </span>
         <div class="logOpt">
             <p>&gt;</p>
         </div>
-        <div class="user-dropdown">
-            <div class="align-user">
-                <p class="user-details">
-                    <img class="user-profile" src="<%= user.profileImage %>" alt="Profile">
-                </p>
-                <span><%= user.name %></span>
-            </div>
-            <div style="margin-top:8px; margin-bottom:8px;letter-spacing: 0.05rem; font-size:0.75rem; color:#ffffff;"><%= user.email %></div>
-
-            <div class="user-feature">
-                <a href="/bookmarks">Bookmarks</a>
-                <a href="/history">History</a>
-            </div>
-
-            <a class="logout" href="/auth/logout" style="display: block; color: #ff4757; text-decoration: none; padding: 8px 10px; border-radius: 6px; background: rgba(255, 71, 87, 0.1); transition: all 0.3s ease;margin-top: 10px; text-align: center; font-weight: 600;" onmouseover="this.style.background='rgba(255, 71, 87, 0.2)'" onmouseout="this.style.background='rgba(255, 71, 87, 0.1)'">Logout</a>
-        </div>
     </div>
 
-
-
     <% } else { %>
+
         <div class="register">
             <button class="logBtn"><span>Signin/Register</span></button>
+            <div class="logOpt">
+                <p>&gt;</p>
+            </div>
         </div>
 
         <div class="auth-modal hidden" id="authModal" aria-hidden="true">
@@ -47,4 +34,5 @@
                         rel="noopener noreferrer">Privacy Policy</a>.</p>
             </div>
         </div>
+
         <% } %>

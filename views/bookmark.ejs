@@ -1,45 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Your Bookmarks</title>
+    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q1SH5LZCTH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Q1SH5LZCTH');
+    </script>
+    <meta name="yandex-verification" content="dad153b32c9fed72" />
+    <script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "WebSite",
+"name": "Saniova"
+}
+</script>
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "w0boasx8gf");
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="BookMark - Saniova. Learn how we protect your data while exploring AI, AGI, and future technology insights.">
+    <meta name="keywords" content="BookMark, Data Protection, AI Technology, Saniova, AGI, Future Tech">
+    <meta property="og:site_name" content="Saniova" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <title>Check BookMark | Saniova</title>
     <link rel="stylesheet" href="/stylesheet/style.css">
     <link rel="stylesheet" href="/stylesheet/hamburger-menu.css">
+    <link rel="stylesheet" href="/stylesheet/blog-cards.css">
 </head>
+
 <body>
     <header>
-        <navbar>
-            <nav>
-                <div class="logo">
-                    <a href="/"><h1>Saniova</h1></a>
-                </div>
-                <div class="nav-link menu">
-                    <a href="/">Home</a>
-                    <a href="/blog">Blog</a>
-                </div>
-            </nav>
-        </navbar>
+        <nav>
+            <div class="logo">
+                <img src="/image/logo.png" alt="logo-image" class="logo-image">
+                <a href="/">
+                    <h2>Saniova</h2>
+                </a>
+            </div>
+            <input type="checkbox" id="menu-toggle" style="display: none;">
+            <label for="menu-toggle" class="menu-backdrop" aria-hidden="true"></label>
+            <label for="menu-toggle" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="nav-link menu">
+                <a href="/">Home</a>
+                <a href="/blog">Blog</a>
+                <a href="/about">About</a>
+                <a href="/privacy-policy">Privacy</a>
+                <a href="/contact">Contact</a>
+
+            </div>
+
+        </nav>
     </header>
     <%- include('partials/signReg') %>
 
-    <main class="user-feature-page">
-        <h2>Bookmarks</h2>
-        <p class="muted">Articles you've bookmarked will appear here.</p>
-        <div class="feature-grid">
-            <% if (!loggedIn) { %>
-                <div class="feature-card">Please <a href="/auth/google">sign in</a> to see your bookmarks.</div>
-            <% } else if (bookmarks && bookmarks.length) { %>
-                <% bookmarks.forEach(b => { %>
-                    <div class="feature-card">
-                        <h4><a href="/blog/<%= b.slug %>"><%= b.title %></a></h4>
-                        <p><%= b.metaDescription %></p>
+        <main class="user-feature-page">
+            <div class="feature-page-header">
+                <h2>Bookmarks</h2>
+                <p class="muted">Articles you've bookmarked will appear here.</p>
+            </div>
+
+            <div class="feature-grid">
+                <% if (!loggedIn) { %>
+                    <div class="auth-modal hidden" id="authModal" aria-hidden="true">
+                        <div class="auth-card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+                            <button class="auth-close" id="authClose" type="button"
+                                aria-label="Close sign in dialog">×</button>
+                            <div class="auth-header">
+                                <h2 id="authTitle">Please Sign in / Register to see your bookmarks</h2>
+                                <p>Continue with Google to sign in or create an account.</p>
+                            </div>
+                            <a class="google-btn" href="/auth/google">
+                                <span class="google-icon">G</span>
+                                Continue with Google
+                            </a>
+                            <p class="auth-note">By continuing, you agree to our <a href="/terms-&-conditions"
+                                    target="_blank" rel="noopener noreferrer">Terms & Conditions</a> and <a
+                                    href="/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+                            </p>
+                        </div>
                     </div>
-                <% }) %>
-            <% } else { %>
-                <div class="feature-card">No bookmarks yet.</div>
-            <% } %>
-        </div>
-    </main>
+                    <div style="text-align: center; width: 100%; margin-top: 20px;">
+                        <a class="hero-btn primary" href="#"
+                            onclick="document.getElementById('authModal').classList.remove('hidden')">Sign In to View
+                            Bookmarks</a>
+                    </div>
+                    <% } else if (bookmarks && bookmarks.length) { %>
+                        <div class="list-view-grid">
+                            <% bookmarks.forEach(b=> { %>
+                                <div class="blogs-card list-view-card">
+                                    <div class="img-blog">
+                                        <img src="<%= b.imageUrl || '/image/default-blog.jpg' %>" alt="<%= b.title %>">
+                                    </div>
+                                    <a href="/blog/<%= b.slug %>" class="card-link">
+                                        <div class="blog-card-content">
+                                            <span class="blog-category">
+                                                <%= b.category || 'General' %>
+                                            </span>
+                                            <h2 class="blog-title">
+                                                <%= b.title %>
+                                            </h2>
+                                            <p class="blog-excerpt">
+                                                <%= b.metaDescription %>
+                                            </p>
+                                            <div class="blog-footer">
+                                                <span class="blog-date">
+                                                    <%= b.Date ? b.Date.toDateString() : '' %>
+                                                </span>
+                                                <a href="/blog/<%= b.slug %>" class="read-more-myblog">Read Article
+                                                    →</a>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <% }) %>
+                        </div>
+                        <% } else { %>
+                            <div class="empty-feature-state">
+                                <h3>No bookmarks yet.</h3>
+                                <p>Explore our articles and bookmark your favorites!</p>
+                                <a href="/blog" class="hero-btn primary">Explore Articles</a>
+                            </div>
+                            <% } %>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-wrapper">
+
+                <div class="f-col brand">
+                    <div class="logo">
+                        <img src="/image/logo.png" alt="logo-image" class="logo-image">
+                        <a href="/">
+                            <h2>Saniova</h2>
+                        </a>
+                    </div>
+                    <p>Your hub for tech insights, blogs and futuristic ideas.</p>
+                </div>
+
+                <div class="f-col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/blog">Blogs</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/privacy-policy">Privacy</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="f-col">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://www.facebook.com/share/1HMvQ11zft/">Facebook</a></li>
+                        <li><a href="https://www.reddit.com/u/WerewolfMain3182/s/i6biQC9A6T">Reddit</a></li>
+                        <li><a
+                                href="https://www.quora.com/profile/Saniova?ch=10&oid=3168548346&share=f830d026&srid=5a8iLI&target_type=user">quora</a>
+                        </li>
+                        <li><a href="https://pin.it/5b77ei5Rx">Pinterest</a></li>
+                    </ul>
+                </div>
+
+                <div class="f-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy-policy">Privacy Policy</a></li>
+                        <li><a href="/terms-&-conditions">Terms & Conditions</a></li>
+                        <li><a href="/disclaimer">Disclaimer</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                © 2025 Saniova — All rights reserved.
+            </div>
+        </footer>
+
+        <script src="/script/authPopup.js"></script>
 </body>
+
 </html>

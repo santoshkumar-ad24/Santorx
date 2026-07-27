@@ -136,7 +136,7 @@
 
     </header>
     <%- include('partials/signReg') %>
-        
+
 
         <main>
 
@@ -165,9 +165,6 @@
                                 </div>
                                 <div class="blog-meta">
                                     <span class="read-time">📖 3 min read</span>
-                                    <form method="POST" action="/bookmarks/toggle/<%= blog.slug %>" style="display:inline;margin-left:10px;">
-                                        <button type="submit" class="bookmark-btn">🔖 Bookmark</button>
-                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -179,17 +176,64 @@
                     <div class="blog-container">
 
                         <aside class="share-aside">
+                            <div class="blog-interact">
+                                <div class="interact-actions">
+                                    <button type="button" class="interact-btn like trigger-auth-modal"
+                                        data-action="like" aria-label="Like article">
+                                        <span class="icon"><img class="blog-interact-icon" src="/image/like-icon.png"
+                                                alt="like"></span>
+                                        <span class="count"></span>
+                                    </button>
+                                    <button type="button" class="interact-btn dislike trigger-auth-modal"
+                                        data-action="dislike" aria-label="Dislike article">
+                                        <span class="icon"><img class="blog-interact-icon" src="/image/dislike.png"
+                                                alt="dislike"></span>
+                                    </button>
+                                    <button type="button" class="interact-btn comment" aria-label="Comment article">
+                                        <span class="icon"><img class="blog-interact-icon" src="/image/comment-icon.png"
+                                                alt="comment"></span>
+                                        <span class="count"></span>
+                                    </button>
+
+                                    <div class="bookmark-action-blog">
+                                        <% if (locals.user) { %>
+                                            <form method="POST" action="/bookmarks/toggle/<%= blog.slug %>"
+                                                class="ajax-bookmark-form">
+                                                <button type="submit" class="interact-btn bookmark bookmark-btn"
+                                                    aria-label="<%= locals.isBookmarked ? 'Remove bookmark' : 'Bookmark article' %>">
+                                                    <span class="book-icon"><%- locals.isBookmarked
+                                                            ? '<img class="blog-interact-icon" src="/image/saved-icon.png" alt="saved">'
+                                                            : '<img class="blog-interact-icon" src="/image/bookmark-icon.png" alt="bookmark">'
+                                                            %></span>
+                                                </button>
+                                            </form>
+                                            <% } else { %>
+                                                <button type="button" class="interact-btn bookmark trigger-auth-modal"
+                                                    data-action="bookmark" aria-label="Bookmark article">
+                                                    <span class="icon"><img class="blog-interact-icon"
+                                                            src="/image/bookmark-icon.png" alt="bookmark"></span>
+                                                </button>
+                                                <% } %>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- Share Section -->
                             <div class="share-section">
-                                <h3>Share this article</h3>
-                                <div class="share-buttons">
-                                    <a href="#" id="shareBtn-facebook" class="share-btn facebook"
-                                        title="Share on Facebook">f</a>
-                                    <a href="#" id="shareBtn-twitter" class="share-btn twitter"
-                                        title="Share on Twitter">𝕏</a>
-                                    <a href="#" id="shareBtn-linkedin" class="share-btn linkedin"
-                                        title="Share on LinkedIn">in</a>
-                                    <a href="#" id="copyLinkBtn" class="share-btn copy" title="Copy Link">🔗</a>
+                                <button type="button" class="share-toggle-btn share0toggle-icon" aria-expanded="false"
+                                    aria-controls="share-options" aria-label="Toggle share options">
+                                    <span class="share-toggle-icon"><img class="blog-interact-icon"
+                                            src="/image/share-icon.png" alt="share"></span>
+                                </button>
+                                <div class="share-panel" id="share-options" aria-hidden="true">
+                                    <div class="share-buttons">
+                                        <a href="#" id="shareBtn-facebook" class="share-btn facebook"
+                                            title="Share on Facebook">f</a>
+                                        <a href="#" id="shareBtn-twitter" class="share-btn twitter"
+                                            title="Share on Twitter">𝕏</a>
+                                        <a href="#" id="shareBtn-linkedin" class="share-btn linkedin"
+                                            title="Share on LinkedIn">in</a>
+                                        <a href="#" id="copyLinkBtn" class="share-btn copy" title="Copy Link">🔗</a>
+                                    </div>
                                 </div>
                             </div>
                         </aside>
@@ -215,6 +259,44 @@
 
                         <!-- Sidebar -->
                     </div>
+
+                    <!-- Comments Slide Panel -->
+                    <div class="comment-panel" id="commentPanel" data-blog-slug="<%= blog.slug %>">
+                        <div class="comment-panel-header">
+                            <h3 class="comments-title">💬 Comments</h3>
+                            <button class="comment-close-btn" aria-label="Close comments">×</button>
+                        </div>
+                        <div class="comment-form">
+                            <div class="comment-input-wrapper">
+                                <% if (locals.user) { %>
+                                    <div class="comment-avatar-container">
+                                        <img class="comment-user-avatar" src="<%= user.profileImage %>"
+                                            alt="User Avatar">
+                                    </div>
+                                    <% } else { %>
+                                        <div class="comment-avatar-container">
+                                            <img class="comment-user-avatar" src="/image/avatar-sign.png"
+                                                alt="Guest Avatar">
+                                        </div>
+                                        <% } %>
+                                            <div class="comment-input-box">
+                                                <textarea class="comment-input" placeholder="Share your thoughts..."
+                                                    maxlength="1000" rows="4"></textarea>
+                                                <div class="comment-action-row">
+                                                    <% if (!locals.user) { %>
+                                                        <button class="comment-signin-btn" type="button">Sign
+                                                            In</button>
+                                                        <% } else { %>
+                                                            <button class="comment-submit-btn"
+                                                                type="button">Post</button>
+                                                            <% } %>
+                                                </div>
+                                            </div>
+                            </div>
+                        </div>
+                        <div class="comments-list"></div>
+                    </div>
+
                     <section class="blog-recommendation">
 
                         <!-- Recommended Posts -->
@@ -319,9 +401,11 @@
         </footer>
 
 
-        <script src="/script/share.js"></script>
-        <script src="/script/blogdescriptional.js"></script>
-        <script src="/script/authPopup.js"></script>
+        <%- include('partials/confirmModal') %>
+            <script src="/script/share.js"></script>
+            <script src="/script/blog-interactions.js"></script>
+            <script src="/script/blogdescriptional.js"></script>
+            <script src="/script/authPopup.js"></script>
 </body>
 
 </html>

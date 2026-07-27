@@ -1,45 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>History</title>
+    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q1SH5LZCTH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Q1SH5LZCTH');
+    </script>
+    <meta name="yandex-verification" content="dad153b32c9fed72" />
+    <script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "WebSite",
+"name": "Saniova"
+}
+</script>
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "w0boasx8gf");
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="History - Saniova. Learn how we protect your data while exploring AI, AGI, and future technology insights.">
+    <meta name="keywords" content="History, Data Protection, AI Technology, Saniova, AGI, Future Tech">
+    <meta property="og:site_name" content="Saniova" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <title>Check History | Saniova</title>
     <link rel="stylesheet" href="/stylesheet/style.css">
     <link rel="stylesheet" href="/stylesheet/hamburger-menu.css">
+    <link rel="stylesheet" href="/stylesheet/blog-cards.css">
 </head>
+
 <body>
     <header>
-        <navbar>
-            <nav>
-                <div class="logo">
-                    <a href="/"><h1>Saniova</h1></a>
-                </div>
-                <div class="nav-link menu">
-                    <a href="/">Home</a>
-                    <a href="/blog">Blog</a>
-                </div>
-            </nav>
-        </navbar>
+        <nav>
+            <div class="logo">
+                <img src="/image/logo.png" alt="logo-image" class="logo-image">
+                <a href="/">
+                    <h2>Saniova</h2>
+                </a>
+            </div>
+            <input type="checkbox" id="menu-toggle" style="display: none;">
+            <label for="menu-toggle" class="menu-backdrop" aria-hidden="true"></label>
+            <label for="menu-toggle" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="nav-link menu">
+                <a href="/">Home</a>
+                <a href="/blog">Blog</a>
+                <a href="/about">About</a>
+                <a href="/privacy-policy">Privacy</a>
+                <a href="/contact">Contact</a>
+
+            </div>
+
+        </nav>
     </header>
     <%- include('partials/signReg') %>
 
-    <main class="user-feature-page">
-        <h2>History</h2>
-        <p class="muted">Your recently viewed articles.</p>
-        <div class="feature-grid">
-            <% if (!loggedIn) { %>
-                <div class="feature-card">Please <a href="/auth/google">sign in</a> to see your history.</div>
-            <% } else if (history && history.length) { %>
-                <% history.forEach(h => { %>
-                    <div class="feature-card">
-                        <h4><a href="/blog/<%= h.slug %>"><%= h.title %></a></h4>
-                        <p><%= h.metaDescription %></p>
+        <main class="user-feature-page">
+            <div class="feature-page-header">
+                <h2>History</h2>
+                <p class="muted">Your recently viewed articles.</p>
+                <% if (loggedIn && history && history.length> 0) { %>
+                    <button class="clear-history-btn" id="clearAllHistoryBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                            </path>
+                            <line x1="10" y1="11" x2="10" y2="17"></line>
+                            <line x1="14" y1="11" x2="14" y2="17"></line>
+                        </svg>
+                        Clear All
+                    </button>
+                    <% } %>
+            </div>
+
+            <div class="feature-grid">
+                <% if (!loggedIn) { %>
+                    <div class="auth-modal hidden" id="authModal" aria-hidden="true">
+                        <div class="auth-card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+                            <button class="auth-close" id="authClose" type="button"
+                                aria-label="Close sign in dialog">×</button>
+                            <div class="auth-header">
+                                <h2 id="authTitle">Please Sign in / Register to see your history</h2>
+                                <p>Continue with Google to sign in or create an account.</p>
+                            </div>
+                            <a class="google-btn" href="/auth/google">
+                                <span class="google-icon">G</span>
+                                Continue with Google
+                            </a>
+                            <p class="auth-note">By continuing, you agree to our <a href="/terms-&-conditions"
+                                    target="_blank" rel="noopener noreferrer">Terms & Conditions</a> and <a
+                                    href="/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+                            </p>
+                        </div>
                     </div>
-                <% }) %>
-            <% } else { %>
-                <div class="feature-card">No history yet.</div>
-            <% } %>
-        </div>
-    </main>
+                    <div style="text-align: center; width: 100%; margin-top: 20px;">
+                        <a class="hero-btn primary" href="#"
+                            onclick="document.getElementById('authModal').classList.remove('hidden')">Sign In to View
+                            History</a>
+                    </div>
+                    <% } else if (history && history.length) { %>
+
+                        <div class="list-view-grid">
+                            <% history.forEach(h=> { %>
+                                <div class="blogs-card list-view-card">
+                                    <div class="img-blog">
+                                        <img src="<%= h.imageUrl || '/image/default-blog.jpg' %>" alt="<%= h.title %>">
+                                    </div>
+                                    <a href="/blog/<%= h.slug %>" class="card-link">
+                                        <div class="blog-card-content">
+                                            <span class="blog-category">
+                                                <%= h.category || 'General' %>
+                                            </span>
+                                            <h2 class="blog-title">
+                                                <%= h.title %>
+                                            </h2>
+                                            <p class="blog-excerpt">
+                                                <%= h.metaDescription %>
+                                            </p>
+                                            <div class="blog-footer">
+                                                <span class="blog-date">
+                                                    Viewed: <%= h.viewedAt ? new Date(h.viewedAt).toDateString() :
+                                                        (h.Date ? h.Date.toDateString() : '' ) %>
+                                                </span>
+                                                <div class="card-actions">
+                                                    <button class="delete-history-btn" data-blog-id="<%= h._id %>"
+                                                        title="Remove from history">
+                                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                                            stroke="currentColor" stroke-width="2"
+                                                            stroke-linecap="round" stroke-linejoin="round">
+                                                            <polyline points="3 6 5 6 21 6"></polyline>
+                                                            <path
+                                                                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                            </path>
+                                                        </svg>
+                                                    </button>
+                                                    <a href="/blog/<%= h.slug %>" class="read-more-myblog">Read Article
+                                                        →</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <% }) %>
+                        </div>
+                        <% } else { %>
+                            <div class="empty-feature-state">
+                                <h3>No history yet.</h3>
+                                <p>Start reading some articles to build your history!</p>
+                                <a href="/blog" class="hero-btn primary">Explore Articles</a>
+                            </div>
+                            <% } %>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-wrapper">
+
+                <div class="f-col brand">
+                    <div class="logo">
+                        <img src="/image/logo.png" alt="logo-image" class="logo-image">
+                        <a href="/">
+                            <h2>Saniova</h2>
+                        </a>
+                    </div>
+                    <p>Your hub for tech insights, blogs and futuristic ideas.</p>
+                </div>
+
+                <div class="f-col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/blog">Blogs</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/privacy-policy">Privacy</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="f-col">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://www.facebook.com/share/1HMvQ11zft/">Facebook</a></li>
+                        <li><a href="https://www.reddit.com/u/WerewolfMain3182/s/i6biQC9A6T">Reddit</a></li>
+                        <li><a
+                                href="https://www.quora.com/profile/Saniova?ch=10&oid=3168548346&share=f830d026&srid=5a8iLI&target_type=user">quora</a>
+                        </li>
+                        <li><a href="https://pin.it/5b77ei5Rx">Pinterest</a></li>
+                    </ul>
+                </div>
+
+                <div class="f-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy-policy">Privacy Policy</a></li>
+                        <li><a href="/terms-&-conditions">Terms & Conditions</a></li>
+                        <li><a href="/disclaimer">Disclaimer</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                © 2025 Saniova — All rights reserved.
+            </div>
+        </footer>
+
+        <%- include('partials/confirmModal') %>
+            <script src="/script/authPopup.js"></script>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const clearBtn = document.getElementById('clearAllHistoryBtn');
+                    if (clearBtn) {
+                        clearBtn.addEventListener('click', async () => {
+                            const confirmed = await window.customConfirm(
+                                'Clear History',
+                                'Are you sure you want to clear your entire reading history?',
+                                'Clear All'
+                            );
+                            if (!confirmed) return;
+
+                            try {
+                                const response = await fetch('/history', {
+                                    method: 'DELETE',
+                                    headers: { 'Content-Type': 'application/json' }
+                                });
+                                const data = await response.json();
+                                if (data.success) {
+                                    window.location.reload();
+                                } else {
+                                    alert('Error clearing history: ' + (data.message || 'Unknown error'));
+                                }
+                            } catch (err) {
+                                console.error(err);
+                                alert('Error clearing history');
+                            }
+                        });
+                    }
+
+                    const deleteBtns = document.querySelectorAll('.delete-history-btn');
+                    deleteBtns.forEach(btn => {
+                        btn.addEventListener('click', async (e) => {
+                            e.preventDefault();
+                            const blogId = btn.getAttribute('data-blog-id');
+
+                            const confirmed = await window.customConfirm(
+                                'Remove Item',
+                                'Remove this article from your history?'
+                            );
+                            if (!confirmed) return;
+
+                            try {
+                                const response = await fetch(`/history/${blogId}`, {
+                                    method: 'DELETE',
+                                    headers: { 'Content-Type': 'application/json' }
+                                });
+                                const data = await response.json();
+                                if (data.success) {
+                                    window.location.reload();
+                                } else {
+                                    alert('Error removing item: ' + (data.message || 'Unknown error'));
+                                }
+                            } catch (err) {
+                                console.error(err);
+                                alert('Error removing item from history');
+                            }
+                        });
+                    });
+                });
+            </script>
 </body>
+
 </html>

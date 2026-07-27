@@ -135,17 +135,22 @@ router.get("/blog/:slug", async (req, res) => {
     const blogList = await blogDB.find({ content: { $nin: [null, ""] }, slug: { $ne: slug } })
         .sort({ createdAt: -1 });
     if (blog) {
-        // Record history for authenticated users (move to top)
+        let isBookmarked = false;
         if (req.user) {
             try {
                 await User.updateOne({ _id: req.user._id }, { $pull: { history: { blog: blog._id } } });
                 await User.updateOne({ _id: req.user._id }, { $push: { history: { blog: blog._id, viewedAt: new Date() } } });
+                
+                const userDoc = await User.findById(req.user._id);
+                if (userDoc && userDoc.bookmarks && userDoc.bookmarks.includes(blog._id)) {
+                    isBookmarked = true;
+                }
             } catch (err) {
-                console.error('Error updating user history', err);
+                console.error('Error updating user history or checking bookmark', err);
             }
         }
 
-        res.render('blog', { blog, blogList, blogSlug: slug });
+        res.render('blog', { blog, blogList, blogSlug: slug, isBookmarked });
 
     }
     else {

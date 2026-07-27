@@ -3,7 +3,6 @@
   box-sizing: border-box;
 }
 .blog-sec {
-  margin-top: 90px;
   margin-bottom: 0;
   padding: 2rem 1rem;
   background-color: var(--white);
@@ -219,5 +218,194 @@
   }
   .blog-footer{
     margin-top: 0;
+  }
+}
+
+/* Specific styling for horizontal lists (Bookmarks & History) */
+.list-view-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.list-view-card {
+  max-width: 100%;
+  flex-direction: row;
+  align-items: stretch;
+  background: var(--white); 
+  border: 1px solid rgba(0, 101, 98, 0.15); 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  padding: 1.25rem;
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.list-view-card:hover {
+  border-color: var(--teal);
+  box-shadow: 0 10px 28px rgba(0, 101, 98, 0.15);
+  transform: translateY(-4px);
+}
+
+.list-view-card .blog-title {
+  color: var(--primary-dark);
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+}
+
+.list-view-card .blog-excerpt {
+  color: var(--text);
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.list-view-card .blog-date {
+  color: var(--logo); 
+  font-weight: 500;
+}
+
+.list-view-card .img-blog {
+  width: 30%;
+  max-width: 250px;
+  margin-bottom: 0;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: none;
+}
+
+.list-view-card .blog-card-content {
+  justify-content: center;
+  padding: 0;
+}
+
+/* History Deletion UI */
+.clear-history-btn {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 59, 48, 0.08);
+  color: #ff3b30;
+  border: 1px solid rgba(255, 59, 48, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: var(--transition);
+}
+
+.clear-history-btn:hover {
+  background: rgba(255, 59, 48, 0.15);
+  border-color: rgba(255, 59, 48, 0.4);
+  transform: translateY(-2px);
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.delete-history-btn {
+  background: none;
+  border: none;
+  color: var(--logo);
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.delete-history-btn:hover {
+  color: #ff3b30;
+  background: rgba(255, 59, 48, 0.1);
+}
+
+/* Mobile adjustments for list-view */
+@media (max-width: 750px) {
+  .list-view-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .list-view-card {
+    flex-direction: column;
+    padding: 0.75rem;
+    height: 100%;
+  }
+  
+  .list-view-card .img-blog {
+    width: 100%;
+    max-width: 100%;
+    margin-right: 0;
+    margin-bottom: 0.75rem;
+    height: 120px;
+  }
+
+  .list-view-card .img-blog img {
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .list-view-card .blog-title {
+    font-size: 0.95rem;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .list-view-card .blog-excerpt {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .list-view-card .blog-footer {
+    margin-top: auto; 
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .list-view-card .blog-date {
+    font-size: 0.75rem;
+  }
+
+  .list-view-card .card-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .list-view-card .read-more-myblog {
+    font-size: 0.8rem;
+  }
+}
+
+/* Very small screens adjustment to prevent breaking */
+@media (max-width: 400px) {
+  .list-view-grid {
+    gap: 0.5rem;
+  }
+  .list-view-card {
+    padding: 0.5rem;
+  }
+  .list-view-card .img-blog {
+    height: 100px;
   }
 }

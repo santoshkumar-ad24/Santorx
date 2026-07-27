@@ -13,7 +13,7 @@ body {
     display: none;
 }
 
-#menu-toggle:checked ~ .menu-backdrop {
+#menu-toggle:checked~.menu-backdrop {
     display: block;
     position: fixed;
     inset: 0;
@@ -22,11 +22,11 @@ body {
     cursor: default;
 }
 
-#menu-toggle:checked ~ .hamburger {
+#menu-toggle:checked~.hamburger {
     z-index: 11;
 }
 
-#menu-toggle:checked ~ .menu {
+#menu-toggle:checked~.menu {
     z-index: 10;
 }
 
@@ -51,13 +51,14 @@ body::before {
 
 /* Enhanced menu styling */
 @media (max-width: 768px) {
+
     /* Close button visual feedback */
-    #menu-toggle:checked ~ .hamburger {
+    #menu-toggle:checked~.hamburger {
         position: fixed;
         right: 1rem;
         top: 0.2rem;
     }
-    
+
     .menu a {
         position: relative;
         display: block;
@@ -69,7 +70,7 @@ body::before {
         transition: all 0.3s ease;
         overflow: hidden;
     }
-    
+
     .menu a::after {
         content: '';
         position: absolute;
@@ -80,18 +81,18 @@ body::before {
         background: linear-gradient(90deg, transparent, rgba(0, 101, 98, 0.2), transparent);
         transition: left 0.5s ease;
     }
-    
+
     .menu a:hover {
         background: rgba(0, 101, 98, 0.15);
         border-color: var(--teal);
         box-shadow: 0 0 15px rgba(0, 101, 98, 0.2);
         transform: translateX(8px);
     }
-    
+
     .menu a:hover::after {
         left: 100%;
     }
-    
+
     .menu a::before {
         content: '▶';
         position: absolute;
@@ -100,37 +101,38 @@ body::before {
         font-size: 0.8rem;
         transition: all 0.3s ease;
     }
-    
+
     .menu a:hover::before {
         left: 0.5rem;
     }
-    
+
     /* Stagger animation for menu items */
     .menu a:nth-child(1) {
         animation: slideInItem 0.4s ease 0.1s backwards;
     }
-    
+
     .menu a:nth-child(2) {
         animation: slideInItem 0.4s ease 0.2s backwards;
     }
-    
+
     .menu a:nth-child(3) {
         animation: slideInItem 0.4s ease 0.3s backwards;
     }
-    
+
     .menu a:nth-child(4) {
         animation: slideInItem 0.4s ease 0.4s backwards;
     }
-    
+
     .menu a:nth-child(5) {
         animation: slideInItem 0.4s ease 0.5s backwards;
     }
-    
+
     @keyframes slideInItem {
         from {
             opacity: 0;
             transform: translateX(20px);
         }
+
         to {
             opacity: 1;
             transform: translateX(0);
@@ -144,7 +146,7 @@ body::before {
         max-width: 65% !important;
         padding: 1.5rem 1rem !important;
     }
-    
+
     .menu a {
         padding: 0.875rem 1rem !important;
         font-size: 1rem !important;

@@ -158,6 +158,7 @@
                       <div class="img-blog">
                         <img src="<%= b.imageUrl %>" alt="<%= b.title %>">
                       </div>
+                      <a href="/blog/<%= b.slug %>" class="card-link">
                       <div class="blog-card-content">
                         <span class="blog-category">
                           <%= b.category %>
@@ -178,6 +179,7 @@
                           <a href="/blog/<%= b.slug %>" class="read-more-myblog">Read Article →</a>
                         </div>
                       </div>
+                      </a>
                     </div>
                   <% }); %>
 
@@ -186,6 +188,7 @@
                       <div class="img-blog">
                         <img src="<%= b.imageUrl %>" alt="<%= b.title %>">
                       </div>
+                      <a href="/blog/<%= b.slug %>" class="card-link">
                       <div class="blog-card-content">
                         <span class="blog-category">
                           <%= b.category %>
@@ -206,6 +209,7 @@
                           <a href="/blog/<%= b.slug %>" class="read-more-myblog">Read Article →</a>
                         </div>
                       </div>
+                      </a>
                     </div>
                   <% }); %>
                 </div>

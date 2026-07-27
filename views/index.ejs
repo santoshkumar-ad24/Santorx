@@ -3,16 +3,16 @@
 
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q1SH5LZCTH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q1SH5LZCTH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'G-Q1SH5LZCTH');
-</script>
-<meta name="yandex-verification" content="dad153b32c9fed72" />
-        <script type="application/ld+json">
+        gtag('config', 'G-Q1SH5LZCTH');
+    </script>
+    <meta name="yandex-verification" content="dad153b32c9fed72" />
+    <script type="application/ld+json">
     {
      "@context": "https://schema.org",
      "@type": "WebSite",
@@ -21,16 +21,17 @@
     }
     </script>
     <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "w0boasx8gf");
-</script>
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "w0boasx8gf");
+    </script>
     <meta charset="UTF-8">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore Saniova Tech Blog for the latest insights on artificial intelligence, emerging technology trends, AI tools, automation, and the future of innovation.">
+    <meta name="description"
+        content="Explore Saniova Tech Blog for the latest insights on artificial intelligence, emerging technology trends, AI tools, automation, and the future of innovation.">
     <meta name="keywords"
         content="Saniova,saniova, saniova Blog Insights, sanova, Future Blogs, tech Insights, santosh,santosh, sanio,Saniova, Saniova tech blog, Saniova AI blog, sonova blog,sonova,AI tools for students 2026, best AI tools for productivity, future of artificial intelligence,AI tools and technology blog, Saniova technology insights, rsantosh,ai blog, latest blog, blogging website, ai & future trends, Tech Blogs, Technology, Programming, Software Development, Tech News, Coding, Future Tech, Tech Reviews, tech saniova,">
     <meta property="og:site_name" content="Saniova" />
@@ -45,12 +46,14 @@
 <body>
 
     <header>
-        
+
         <nav>
 
             <div class="logo">
                 <img src="/image/logo.png" alt="logo-image" class="logo-image">
-                <a href="/"><h2>Saniova</h2></a>
+                <a href="/">
+                    <h2>Saniova</h2>
+                </a>
             </div>
             <input type="checkbox" id="menu-toggle" style="display: none;">
             <label for="menu-toggle" class="menu-backdrop" aria-hidden="true"></label>
@@ -65,239 +68,249 @@
                 <a href="/about">About</a>
                 <a href="/privacy-policy">Privacy</a>
                 <a href="/contact">Contact</a>
-            
+
             </div>
-            
+
         </nav>
     </header>
     <%- include('partials/signReg') %>
 
-    <section class="home-sec">
-        <div class="home-grid">
-            <div class="hero-copy">
-                <span class="hero-badge">Future Trend Journal</span>
-                <h1>Discover AI-driven ideas and future tech stories.</h1>
-                <p>Curated insights on artificial intelligence, innovation, automation, and emerging digital trends for the next generation of makers.</p>
-                <div class="hero-actions">
-                    <a href="/blog" class="hero-btn primary">Explore Articles</a>
-                    <a href="/contact" class="hero-btn secondary">Connect</a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="hero-panel">
-                    <div class="panel-top">
-                        <span>AI CORE</span>
-                        <span class="panel-tag">LIVE</span>
+        <section class="home-sec">
+            <div class="home-grid">
+                <div class="hero-copy">
+                    <span class="hero-badge">Future Trend Journal</span>
+                    <h1>Discover AI-driven ideas and future tech stories.</h1>
+                    <p>Curated insights on artificial intelligence, innovation, automation, and emerging digital trends
+                        for the next generation of makers.</p>
+                    <div class="hero-actions">
+                        <a href="/blog" class="hero-btn primary">Explore Articles</a>
+                        <a href="/contact" class="hero-btn secondary">Connect</a>
                     </div>
-                    <div class="panel-screen">
+                </div>
+                <div class="hero-visual" id="game-container">
+                    <div class="hero-panel game-panel">
+                        <div class="panel-top">
+                            <span>FOCUS GRID</span>
+                            <span class="panel-tag" id="gameStatusTag">READY</span>
+                        </div>
+                        <div class="panel-screen game-screen">
+                            <!-- Start Screen -->
+                            <div id="game-start-screen" class="game-overlay active">
+                                <h3>Test Your Focus!</h3>
+                                <p>Memorize the 1-16 grid layout in 17s, then click them in order as fast as possible.</p>
+                                <button id="startGameBtn" class="hero-btn primary">Play Now</button>
+                                <div id="startLeaderboardContainer" class="leaderboard-container">
+                                    <p class="loading-text">Loading Leaderboard...</p>
+                                </div>
+                            </div>
 
-                        <div class="screen-grid">
-                            <div class="robot">
-                                <div class="robot-bubble">HII</div>
-                                <div class="robot-antenna"></div>
-                                <div class="robot-head">
-                                    <div class="robot-eyes">
-                                        <span class="robot-eye left"></span>
-                                        <span class="robot-eye right"></span>
-                                    </div>
-                                    <div class="robot-mouth"></div>
+                            <!-- Play Screen (Grid) -->
+                            <div id="game-play-screen">
+                                <div class="game-header">
+                                    <div class="game-timer">Time: <span id="timerDisplay">0.0</span>s</div>
+                                    <div class="game-stats">Errors: <span id="errorDisplay">0</span></div>
                                 </div>
-                                <div class="robot-body">
-                                    <div class="robot-chest"></div>
-                                    <div class="robot-details">
-                                        <span></span>
-                                        <span></span>
-                                    </div>
+                                <div id="gameGrid" class="game-grid"></div>
+                            </div>
+
+                            <!-- End Screen -->
+                            <div id="game-end-screen" class="game-overlay">
+                                <h3>Game Over!</h3>
+                                <div class="score-display">Score: <span id="finalScore" class="highlight">0</span></div>
+                                <div class="time-display">Time: <span id="finalTime">0</span>s</div>
+                                
+                                <div id="leaderboardContainer" class="leaderboard-container">
+                                    <!-- Leaderboard and Featured Blogs injected here via JS -->
+                                    <p class="loading-text">Loading Leaderboard...</p>
                                 </div>
-                                <div class="robot-shadow"></div>
+                                <button id="restartGameBtn" class="hero-btn secondary">Play Again</button>
                             </div>
                         </div>
                     </div>
-                    <div class="panel-meta">
-                        <div>
-                            <small>Pulse</small>
-                            <strong>0.87</strong>
-                        </div>
-                        <div>
-                            <small>Trend</small>
-                            <strong>FUTURE</strong>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
 
-    <section class="featured-sec">
-        <div class="featured">
-            <div style="background: url('<%= blog[featured].imageUrl %>')no-repeat center center; background-size: cover;
+        <section class="featured-sec">
+            <div class="featured">
+                <div style="background: url('<%= blog[featured].imageUrl %>')no-repeat center center; background-size: cover;
     overflow: hidden;
     object-fit: cover;" class="image">
 
+                </div>
+                <div class="desc">
+                    <a href="/blog/<%= blog[featured].slug %>" class="card-link">
+                        <div class="stories-style">
+                            <p>Features Style</p>
+                        </div>
+                        <div class="title">
+                            <h2>
+                                <%= blog[featured].title %>
+                            </h2>
+                        </div>
+                        <div class="blog-fp" id="featBlogDes">
+                            <p>
+                                <%= blog[featured].metaDescription %>
+                            </p>
+                        </div>
+                        <a href="/blog/<%= blog[featured].slug %>"><button type="button" class="read-more">Read Full
+                                Blog</button></a>
+                    </a>
+                </div>
             </div>
-            <div class="desc">
-                <div class="stories-style">
-                    <p>Features Style</p>
-                </div>
-                <div class="title">
-                    <h2>
-                        <%= blog[featured].title %>
-                    </h2>
-                </div>
-                <div class="blog-fp" id="featBlogDes">
-                    <p>
-                        <%= blog[featured].metaDescription %>
-                    </p>
-                </div>
-                <a href="/blog/<%= blog[featured].slug %>"><button type="button" class="read-more">Read Full
-                        Blog</button></a>
+        </section>
+
+        <section class="blog-sec">
+            <div id="article-upper">
+                <h3>Latest Articles</h3>
+                <a href="/blog"><button type="button" class="read-more">All Posts-></button></a>
             </div>
-        </div>
-    </section>
 
-    <section class="blog-sec">
-        <div id="article-upper">
-            <h3>Latest Articles</h3>
-            <a href="/blog"><button type="button" class="read-more">All Posts-></button></a>
-        </div>
+            <% const groupedBlogs={}; blog.forEach(b=> {
+                if (!groupedBlogs[b.category]) groupedBlogs[b.category] = [];
+                groupedBlogs[b.category].push(b);
+                });
+                const categories = Object.keys(groupedBlogs).sort((a,b) => {
+                if (a === 'Future Trends') return -1;
+                if (b === 'Future Trends') return 1;
+                return a.localeCompare(b);
+                });
+                %>
 
-        <% 
-        const groupedBlogs = {};
-        blog.forEach(b => {
-          if (!groupedBlogs[b.category]) groupedBlogs[b.category] = [];
-          groupedBlogs[b.category].push(b);
-        });
-        const categories = Object.keys(groupedBlogs).sort((a,b) => {
-          if (a === 'Future Trends') return -1;
-          if (b === 'Future Trends') return 1;
-          return a.localeCompare(b);
-        });
-        %>
+                <% categories.forEach(cat=> { %>
+                    <div class="category-section">
+                        <h4 class="category-title">
+                            <%= cat %>
+                        </h4>
+                        <div class="blog-cards-grid">
+                            <% groupedBlogs[cat].slice(0, 6).forEach(b=> { %>
+                                <div class="blogs-card">
+                                    <div class="img-blog">
+                                        <img src="<%= b.imageUrl %>" alt="<%= b.title %>">
+                                    </div>
+                                    <a href="/blog/<%= b.slug %>" class="card-link">
+                                        <div class="blog-card-content">
+                                            <span class="blog-category">
+                                                <%= b.category %>
+                                            </span>
 
-        <% categories.forEach(cat => { %>
-        <div class="category-section">
-            <h4 class="category-title"><%= cat %></h4>
-            <div class="blog-cards-grid">
-                <% groupedBlogs[cat].slice(0, 6).forEach(b => { %>
-                <div class="blogs-card">
-                    <div class="img-blog">
-                        <img src="<%= b.imageUrl %>" alt="<%= b.title %>">
-                    </div>
-                    <div class="blog-card-content">
-                        <span class="blog-category">
-                            <%= b.category %>
-                        </span>
+                                            <h2 class="blog-title">
+                                                <%= b.title %>
+                                            </h2>
 
-                        <h2 class="blog-title">
-                            <%= b.title %>
-                        </h2>
+                                            <p class="blog-excerpt">
+                                                <%= b.metaDescription %>
+                                            </p>
 
-                        <p class="blog-excerpt">
-                            <%= b.metaDescription %>
-                        </p>
-
-                        <div class="blog-footer">
-                            <span class="blog-date">
-                                <%= b.Date.toDateString() %>
-                            </span>
-                            <a href="/blog/<%= b.slug %>" class="read-more-myblog">Read Article →</a>
+                                            <div class="blog-footer">
+                                                <span class="blog-date">
+                                                    <%= b.Date.toDateString() %>
+                                                </span>
+                                                <a href="/blog/<%= b.slug %>" class="read-more-myblog">Read Article
+                                                    →</a>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <% }); %>
                         </div>
                     </div>
-                </div>
-                <% }); %>
-            </div>
-        </div>
-        <% }); %>
-    </section>
+                    <% }); %>
+        </section>
 
-    <section class="feedback-sec">
-        <div class="feedback">
-            <form action="/feedback" method="post">
-                <div class="fullN">
-                    <div class="partN">
+        <section class="feedback-sec">
+            <div class="feedback">
+                <form action="/feedback" method="post">
+                    <div class="fullN">
+                        <div class="partN">
 
-                        <label for="firstname">First Name</label>
-                        <input type="text" name="firstName" id="firstname">
+                            <label for="firstname">First Name</label>
+                            <input type="text" name="firstName" id="firstname">
+                        </div>
+                        <div class="partN">
+
+                            <label for="lastname">Last Name</label>
+                            <input type="text" name="lastName" id="lastname">
+                        </div>
                     </div>
-                    <div class="partN">
 
-                        <label for="lastname">Last Name</label>
-                        <input type="text" name="lastName" id="lastname">
+                    <div class="form-ele">
+
+                        <label for="emailadd">Email</label>
+                        <input type="email" name="email" id="emailadd">
                     </div>
+
+                    <div class="form-ele">
+
+                        <label for="msg">Leave us a message...</label>
+                        <textarea name="message" id="msg"></textarea>
+
+                    </div>
+
+                    <div class="form-ele">
+                        <button type="submit" class="submit">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-wrapper">
+
+                <div class="f-col brand">
+                    <div class="logo">
+                        <img src="/image/logo.png" alt="logo-image" class="logo-image">
+                        <a href="/">
+                            <h2>Saniova</h2>
+                        </a>
+                    </div>
+                    <p>Your hub for tech insights, blogs and futuristic ideas.</p>
                 </div>
 
-                <div class="form-ele">
-
-                    <label for="emailadd">Email</label>
-                    <input type="email" name="email" id="emailadd">
+                <div class="f-col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/blog">Blogs</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/privacy-policy">Privacy</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
                 </div>
 
-                <div class="form-ele">
-
-                    <label for="msg">Leave us a message...</label>
-                    <textarea name="message" id="msg"></textarea>
-
+                <div class="f-col">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://www.facebook.com/share/1HMvQ11zft/">Facebook</a></li>
+                        <li><a href="https://www.reddit.com/u/WerewolfMain3182/s/i6biQC9A6T">Reddit</a></li>
+                        <li><a
+                                href="https://www.quora.com/profile/Saniova?ch=10&oid=3168548346&share=f830d026&srid=5a8iLI&target_type=user">quora</a>
+                        </li>
+                        <li><a href="https://pin.it/5b77ei5Rx">Pinterest</a></li>
+                    </ul>
                 </div>
 
-                <div class="form-ele">
-                    <button type="submit" class="submit">Submit</button>
+                <div class="f-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy-policy">Privacy Policy</a></li>
+                        <li><a href="/terms-&-conditions">Terms & Conditions</a></li>
+                        <li><a href="/disclaimer">Disclaimer</a></li>
+                    </ul>
                 </div>
 
-            </form>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="footer-wrapper">
-
-            <div class="f-col brand">
-                <div class="logo">
-                    <img src="/image/logo.png" alt="logo-image" class="logo-image">
-                    <a href="/"><h2>Saniova</h2></a>
-                </div>
-                <p>Your hub for tech insights, blogs and futuristic ideas.</p>
             </div>
 
-            <div class="f-col">
-                <h4>Explore</h4>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/blog">Blogs</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/privacy-policy">Privacy</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
+            <div class="footer-bottom">
+                © 2025 Saniova — All rights reserved.
             </div>
-
-            <div class="f-col">
-                <h4>Community</h4>
-                <ul>
-                    <li><a href="https://www.facebook.com/share/1HMvQ11zft/">Facebook</a></li>
-                    <li><a href="https://www.reddit.com/u/WerewolfMain3182/s/i6biQC9A6T">Reddit</a></li>
-                    <li><a href="https://www.quora.com/profile/Saniova?ch=10&oid=3168548346&share=f830d026&srid=5a8iLI&target_type=user">quora</a></li>
-                    <li><a href="https://pin.it/5b77ei5Rx">Pinterest</a></li>
-                </ul>
-            </div>
-
-            <div class="f-col">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="/privacy-policy">Privacy Policy</a></li>
-                    <li><a href="/terms-&-conditions">Terms & Conditions</a></li>
-                    <li><a href="/disclaimer">Disclaimer</a></li>
-                </ul>
-            </div>
-
-        </div>
-
-        <div class="footer-bottom">
-            © 2025 Saniova — All rights reserved.
-        </div>
-    </footer>
-    <script src="/script/blogCardHeight.js"></script>
-    <script src="/script/blogdescriptional.js"></script>
-    <script src="/script/authPopup.js"></script>
+        </footer>
+        <script src="/script/blogCardHeight.js"></script>
+        <script src="/script/blogdescriptional.js"></script>
+        <script src="/script/authPopup.js"></script>
+        <script src="/script/game.js"></script>
 
 </body>
 

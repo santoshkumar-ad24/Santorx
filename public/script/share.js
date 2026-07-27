@@ -59,3 +59,49 @@ if (linkedinBtn) {
         window.open(linkedinUrl, 'linkedin-share-dialog', 'width=800,height=600');
     });
 }
+
+// ==================== SHARE PANEL TOGGLE ====================
+const shareToggleBtn = document.querySelector('.share-toggle-btn');
+const shareSection = document.querySelector('.share-section');
+const sharePanel = document.getElementById('share-options');
+const shareAside = document.querySelector('.share-aside');
+let lastScrollY = window.scrollY;
+
+function handleShareToggle() {
+    const isExpanded = shareToggleBtn.getAttribute('aria-expanded') === 'true';
+    shareToggleBtn.setAttribute('aria-expanded', String(!isExpanded));
+    sharePanel.setAttribute('aria-hidden', String(isExpanded));
+    shareSection.classList.toggle('expanded', !isExpanded);
+}
+
+function handleScrollDirection() {
+    if (!shareAside) {
+        lastScrollY = window.scrollY;
+        return;
+    }
+
+    const currentY = window.scrollY;
+    const delta = currentY - lastScrollY;
+
+    if (Math.abs(delta) < 10) return;
+
+    if (currentY <= 80 || delta < 0) {
+        shareAside.classList.add('visible');
+    } else if (delta > 0) {
+        shareAside.classList.remove('visible');
+    }
+
+    lastScrollY = currentY;
+}
+
+if (shareToggleBtn && shareSection && sharePanel && shareAside) {
+    shareToggleBtn.addEventListener('click', handleShareToggle);
+    window.addEventListener('scroll', handleScrollDirection, { passive: true });
+    
+    // ensure initial visibility matches current scroll position
+    lastScrollY = window.scrollY;
+    handleScrollDirection();
+    
+    // Start visible on page load
+    shareAside.classList.add('visible');
+}
