@@ -720,6 +720,7 @@ nav {
     background: linear-gradient(135deg, var(--teal), #00938d);
     color: white;
     box-shadow: 0 16px 32px rgba(0, 101, 98, 0.18);
+    border: none;
 }
 
 .hero-btn.secondary {

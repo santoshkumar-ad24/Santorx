@@ -6,6 +6,7 @@ const userConatctDB = require("../models/userContact");
 const userFeedbackDB = require("../models/userFeedback");
 const slugify = require("slugify");
 const submitIndexNow = require("../utils/indexnow");
+const UserDB = require("../models/User");
 
 const authMiddleware = require('../middleware/adminChecker');
 const { validateString, sanitizeInput } = require('../middleware/inputValidator');
@@ -40,6 +41,13 @@ router.get("/dashboard/contact-inqury", authMiddleware, async (req, res) => {
     const userContact = await userConatctDB.find().sort({ createdAt: -1 });
 
     res.render("adm-inqury", { userContact })
+})
+
+router.get("/dashboard/users", authMiddleware, async (req, res) => {
+    const users = await UserDB.find().sort({ joinedAt: -1 });
+    const blog = await blogDB.find({ content: { $nin: [null, ""] } }).populate("adminId", "adminImage").limit(1);
+
+    res.render("admin-users", { users, blog });
 })
 
 router.get("/dashboard/create-blog", authMiddleware, (req, res) => {

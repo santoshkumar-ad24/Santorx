@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saniova Admin | Users Dashboard</title>
+
+    <link rel="stylesheet" href="/stylesheet/admin-dash.css">
+    <link rel="stylesheet" href="/stylesheet/admin-users.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Modern Vertical Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="logo">
+                    <img src="/image/logo.png" alt="logo-image" class="logo-image">
+                    <h2>Saniova</h2>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu">
+                <a href="/admin/dashboard" class="menu-item">
+                    <i class="fas fa-chart-line"></i> <span>Dashboard</span>
+                </a>
+                <a href="/admin/details" class="menu-item">
+                    <i class="fas fa-user-shield"></i> <span>Profile</span>
+                </a>
+                <a href="/admin/dashboard/users" class="menu-item active">
+                    <i class="fas fa-users"></i> <span>Users</span>
+                </a>
+                <a href="/admin/dashboard/feedback" class="menu-item">
+                    <i class="fas fa-comment-dots"></i> <span>FeedBack</span>
+                </a>
+                <a href="/admin/dashboard/contact-inqury" class="menu-item">
+                    <i class="fas fa-envelope-open-text"></i> <span>Inquiry</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <a href="/" class="external-link">
+                    <i class="fas fa-eye"></i> <span>View Site</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="workspace">
+            <!-- Top Navigation Bar -->
+            <header class="top-nav">
+                <div class="nav-left">
+                    <a href="/admin/details" class="profile-link">
+                        <div class="profileImg">
+                            <img src="<%= blog[0] && blog[0].adminId ? blog[0].adminId.adminImage : '/image/default-avatar.png' %>" alt="Profile">
+                        </div>
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <a href="/admin/dashboard/create-blog" class="action-btn">
+                        <i class="fas fa-plus"></i> Add New Blog
+                    </a>
+                </div>
+            </header>
+
+            <!-- Stats Highlight Grid -->
+            <section class="stats-overview">
+                <div class="stat-card-glass teal-bg">
+                    <div class="stat-info">
+                        <p>Total Registered Users</p>
+                        <h3><%= users.length %></h3>
+                    </div>
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                </div>
+            </section>
+
+            <!-- Users Section -->
+            <section class="admin-users-sec">
+                <div class="section-header">
+                    <h2>User Accounts</h2>
+                </div>
+                <div class="admin-users-container">
+                    <% for( let i = 0; i < users.length; i++ ) { %>
+                        <div class="admin-user-card">
+                            <div class="user-card-header">
+                                <div class="user-profile-img">
+                                    <% if (users[i].profileImage) { %>
+                                        <img src="<%= users[i].profileImage %>" alt="<%= users[i].name %>">
+                                    <% } else { %>
+                                        <div class="default-avatar"><i class="fas fa-user"></i></div>
+                                    <% } %>
+                                </div>
+                                <div class="user-provider" title="Logged in via <%= users[i].provider || 'Google' %>">
+                                    <% if (users[i].provider === 'google' || !users[i].provider) { %>
+                                        <i class="fab fa-google"></i>
+                                    <% } else { %>
+                                        <i class="fas fa-sign-in-alt"></i>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <div class="user-card-body">
+                                <h3><%= users[i].name || 'Unknown User' %></h3>
+                                <p class="user-email"><i class="fas fa-envelope"></i> <%= users[i].email %></p>
+                            </div>
+                            <div class="user-card-footer">
+                                <span class="joined-date">
+                                    <i class="fas fa-calendar-alt"></i> 
+                                    Joined: <%= users[i].joinedAt ? users[i].joinedAt.toDateString() : 'Unknown' %>
+                                </span>
+                            </div>
+                        </div>
+                    <% } %>
+                    <% if (users.length === 0) { %>
+                        <div class="empty-state">
+                            <p>No users have registered yet.</p>
+                        </div>
+                    <% } %>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
