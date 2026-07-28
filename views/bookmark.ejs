@@ -78,27 +78,8 @@
 
             <div class="feature-grid">
                 <% if (!loggedIn) { %>
-                    <div class="auth-modal hidden" id="authModal" aria-hidden="true">
-                        <div class="auth-card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
-                            <button class="auth-close" id="authClose" type="button"
-                                aria-label="Close sign in dialog">×</button>
-                            <div class="auth-header">
-                                <h2 id="authTitle">Please Sign in / Register to see your bookmarks</h2>
-                                <p>Continue with Google to sign in or create an account.</p>
-                            </div>
-                            <a class="google-btn" href="/auth/google">
-                                <span class="google-icon">G</span>
-                                Continue with Google
-                            </a>
-                            <p class="auth-note">By continuing, you agree to our <a href="/terms-&-conditions"
-                                    target="_blank" rel="noopener noreferrer">Terms & Conditions</a> and <a
-                                    href="/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
-                            </p>
-                        </div>
-                    </div>
                     <div style="text-align: center; width: 100%; margin-top: 20px;">
-                        <a class="hero-btn primary" href="#"
-                            onclick="document.getElementById('authModal').classList.remove('hidden')">Sign In to View
+                        <a class="hero-btn primary trigger-auth-modal" href="#">Sign In to View
                             Bookmarks</a>
                     </div>
                     <% } else if (bookmarks && bookmarks.length) { %>
