@@ -72,11 +72,13 @@ app.use(helmet({
                 "'unsafe-inline'",
                 "https://cdn.jsdelivr.net",
                 "https://www.googletagmanager.com",
+                "https://pagead2.googlesyndication.com",
                 "https://www.clarity.ms",
                 "https://scripts.clarity.ms",
                 "https://j.clarity.ms",
                 "https://k.clarity.ms",
-                "https://*.clarity.ms"
+                "https://*.clarity.ms",
+                "https://ep2.adtrafficquality.google"
 
 
 
@@ -96,7 +98,9 @@ app.use(helmet({
                 "https:",
                 "https://www.google-analytics.com",
                 "https://lh3.googleusercontent.com",
-                "https://*.googleusercontent.com"
+                "https://*.googleusercontent.com",
+                "https://pagead2.googlesyndication.com", 
+                "https://googleads.g.doubleclick.net" 
             ],
 
             connectSrc: [
@@ -113,8 +117,19 @@ app.use(helmet({
                 "https://scripts.clarity.ms",
                 "https://j.clarity.ms",
                 "https://k.clarity.ms",
-                "https://*.clarity.ms"
+                "https://*.clarity.ms",
+                "https://pagead2.googlesyndication.com",
+                "https://googleads.g.doubleclick.net" ,
+                "https://ep1.adtrafficquality.google"
 
+            ],
+            childSrc: [
+                "'self'",
+                "https://pagead2.googlesyndication.com",
+                "https://googleads.g.doubleclick.net",
+                "https://tpc.googlesyndication.com",
+                "https://ep2.adtrafficquality.google",
+                "https://www.google.com"
             ]
         }
     },
