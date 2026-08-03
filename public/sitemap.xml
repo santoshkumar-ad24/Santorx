@@ -112,6 +112,12 @@
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
+   <url>
+       <loc>https://rsantosh.com.np/blog/the-biggest-mistake-beginners-make-when-starting-automation-and-how-to-avoid-it</loc>
+       <lastmod>2026-08-03T14:07:58+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
 
   
 </urlset>
