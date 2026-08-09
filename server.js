@@ -108,6 +108,7 @@ const normalHelmet = helmet({
                 "https://www.google-analytics.com",
                 "https://www.googletagmanager.com",
                 "https://analytics.google.com",
+                "https://region1.analytics.google.com", 
                 "https://stats.g.doubleclick.net",
                 "https://www.google.com",
                 "https://accounts.google.com",
