@@ -43,6 +43,7 @@
     <link rel="stylesheet" href="/stylesheet/my_blog.css">
     <link rel="stylesheet" href="/stylesheet/blog-cards.css">
     <link rel="stylesheet" href="/stylesheet/hamburger-menu.css">
+    <link rel="stylesheet" href="/stylesheet/top-ads.css">
 </head>
 
 <body>
@@ -76,18 +77,41 @@
         </nav>
     </header>
     <%- include('partials/signReg') %>
-    <div class="banner-ads">
-        <script>
-  atOptions = {
-    'key' : '212f011987645364c8a322b872b5998d',
-    'format' : 'iframe',
-    'height' : 90,
-    'width' : 728,
-    'params' : {}
-  };
-</script>
-<script src="https://www.highperformanceformat.com/212f011987645364c8a322b872b5998d/invoke.js"></script>
-
+    
+    <div class="top-ads-wrapper">
+        <div class="ad-container">
+            <span class="ad-badge">Advertisement</span>
+            <div class="ad-scroll" id="ad-xy765-1">
+                <iframe
+                    src="/ads/banner728"
+                    width="728"
+                    height="90"
+                    frameborder="0"
+                    scrolling="no"
+                    title="Advertisement">
+                </iframe>
+            </div>
+            <div class="ad-scroll" id="ad-xy765-2">
+                <iframe
+                    src="/ads/banner468"
+                    width="468"
+                    height="60"
+                    frameborder="0"
+                    scrolling="no"
+                    title="Advertisement">
+                </iframe>
+            </div>
+            <div class="ad-scroll" id="ad-xy765-3">
+                <iframe
+                    src="/ads/banner320"
+                    width="320"
+                    height="50"
+                    frameborder="0"
+                    scrolling="no"
+                    title="Advertisement">
+                </iframe>
+            </div>
+        </div>
     </div>
 
         <section class="home-sec">
@@ -175,6 +199,42 @@
                 </div>
             </div>
         </section>
+
+        <div class="top-ads-wrapper" style="padding-top:10px ; margin-top: 0;">
+        <div class="ad-container">
+            <span class="ad-badge" style="top: auto; bottom: 0;transform: translateY(10%);">Advertisement</span>
+            <div class="ad-scroll" id="ad-xy765-1">
+                <iframe
+                    src="/ads/banner728"
+                    width="728"
+                    height="90"
+                    frameborder="0"
+                    scrolling="no"
+                    title="Advertisement">
+                </iframe>
+            </div>
+            <div class="ad-scroll" id="ad-xy765-2">
+                <iframe
+                    src="/ads/banner468"
+                    width="468"
+                    height="60"
+                    frameborder="0"
+                    scrolling="no"
+                    title="Advertisement">
+                </iframe>
+            </div>
+            <div class="ad-scroll" id="ad-xy765-3">
+                <iframe
+                    src="/ads/banner320"
+                    width="320"
+                    height="50"
+                    frameborder="0"
+                    scrolling="no"
+                    title="Advertisement">
+                </iframe>
+            </div>
+        </div>
+    </div>
 
         <section class="blog-sec">
             <div id="article-upper">

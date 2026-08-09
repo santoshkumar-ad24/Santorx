@@ -51,6 +51,7 @@ const cloudinaryRouter = require('./routes/cloudinary.routes');
 const adminLog = require('./routes/adminLog.routes');
 const userFeaturesRouter = require('./routes/userFeatures.routes');
 const gameRouter = require('./routes/game.routes');
+const adsRoutes = require('./routes/ads.routes');
 
 
 // Environment variables
@@ -62,7 +63,7 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 
 
 
-app.use(helmet({
+const normalHelmet = helmet({
     contentSecurityPolicy: {
         directives: {
             defaultSrc: ["'self'"],
@@ -79,11 +80,7 @@ app.use(helmet({
                 "https://k.clarity.ms",
                 "https://*.clarity.ms",
                 "https://ep2.adtrafficquality.google",
-                "https://www.highperformanceformat.com",
-                "https://www.highperformanceformat.com",
-
-
-
+                "https://www.highperformanceformat.com"
             ],
 
             styleSrc: [
@@ -124,9 +121,9 @@ app.use(helmet({
                 "https://googleads.g.doubleclick.net",
                 "https://ep1.adtrafficquality.google",
                 "https://csi.gstatic.com",
-                "https://protrafficinspector.com",
-
+                "https://protrafficinspector.com"
             ],
+
             childSrc: [
                 "'self'",
                 "https://pagead2.googlesyndication.com",
@@ -136,9 +133,7 @@ app.use(helmet({
                 "https://www.google.com",
                 "https://google.com",
                 "https://www.highperformanceformat.com"
-            ],
-
-
+            ]
         }
     },
 
@@ -151,7 +146,44 @@ app.use(helmet({
     frameguard: { action: 'deny' },
     nosniff: true,
     xssFilter: true
-}));
+});
+
+const adHelmet = helmet({
+    contentSecurityPolicy: false,
+
+    hsts: {
+        maxAge: 31536000,
+        includeSubDomains: true,
+        preload: true
+    },
+
+    frameguard: false,
+    nosniff: true,
+    xssFilter: true
+});
+
+app.use((req, res, next) => {
+    if (req.path === '/ads/banner728') {
+        return adHelmet(req, res, next);
+    }
+    if (req.path === '/ads/banner468') {
+        return adHelmet(req, res, next);
+    }
+    if (req.path === '/ads/banner320') {
+        return adHelmet(req, res, next);
+    }
+    if (req.path === '/ads/banner250') {
+        return adHelmet(req, res, next);
+    }
+    if (req.path === '/ads/banner160') {
+        return adHelmet(req, res, next);
+    }
+    if (req.path === '/ads/nativeBanner') {
+        return adHelmet(req, res, next);
+    }
+
+    return normalHelmet(req, res, next);
+});
 
 
 // ============ VIEW ENGINE ============
@@ -179,6 +211,8 @@ app.use('/cloud', cloudinaryRouter);
 app.use('/admin', adminLog);
 app.use("/auth", require("./routes/auth"));
 app.use('/', gameRouter);
+app.use('/ads', adsRoutes);
+
 
 // ============ HEALTH CHECK ENDPOINT ============
 app.get('/health', (req, res) => {

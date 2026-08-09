@@ -1,0 +1,166 @@
+/* top-ads.css */
+.top-ads-wrapper {
+    width: 100%;
+    margin-top: 70px; /* Push below fixed navbar */
+    /* Light theme gradient matching the website's clean aesthetic */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 250, 253, 0.95) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(0, 101, 98, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px 16px 0; /* Extra top padding to ensure the badge has breathing room */
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 30px rgba(0, 101, 98, 0.03);
+}
+
+/* Subtle decorative glow */
+.top-ads-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 101, 98, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+    animation: pulseGlow 10s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+    0% { transform: scale(1); opacity: 0.4; }
+    100% { transform: scale(1.1); opacity: 1; }
+}
+
+.top-ads-wrapper .ad-container {
+    position: relative;
+    z-index: 1;
+    border-radius: 16px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0; 
+    /* Elegant soft shadow and subtle border (ring) */
+    box-shadow: 0 12px 35px rgba(0, 101, 98, 0.06), 
+                0 0 0 1px rgba(0, 101, 98, 0.08); 
+    padding: 8px; /* Elegant white frame around the iframe */
+    max-width: 100%;
+    /* overflow is visible so the badge can overlap the border cleanly without being clipped */
+    overflow: visible; 
+}
+
+/* Ad Badge styling positioned perfectly on the top border */
+.top-ads-wrapper .ad-badge {
+    position: absolute;
+    top: 0;
+    left: 24px;
+    transform: translateY(-50%); /* Centers exactly on the border line */
+    background: #ffffff;
+    color: var(--teal, #006562);
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 2px 10px rgba(0, 101, 98, 0.12);
+    border: 1px solid rgba(0, 101, 98, 0.15);
+    z-index: 10;
+}
+
+/* Scroll container for mobile */
+.top-ads-wrapper .ad-scroll {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto; /* Allows horizontal scroll on very small screens for fixed width ads */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; 
+    border-radius: 10px;
+}
+
+/* Hide scrollbar for a cleaner look */
+.top-ads-wrapper .ad-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.top-ads-wrapper .ad-scroll iframe {
+    display: block;
+    border-radius: 10px; 
+    background: #f8fafc; /* Subtle placeholder background in case ad takes time to load */
+}
+
+/* Remove the top margin from the home section to seamlessly flow from the ad banner */
+.home-sec {
+    margin-top: 0 !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .top-ads-wrapper {
+        padding: 15px 12px 0;
+    }
+    
+    .top-ads-wrapper .ad-container {
+        border-radius: 12px;
+        padding: 6px;
+    }
+    
+    .top-ads-wrapper .ad-scroll {
+        border-radius: 8px;
+    }
+
+    .top-ads-wrapper .ad-scroll iframe {
+        border-radius: 8px;
+    }
+
+    .top-ads-wrapper .ad-badge {
+        left: 16px;
+        font-size: 0.6rem;
+        padding: 2px 10px;
+    }
+}
+/* Default state for screens >= 728px */
+#ad-xy765-1 {
+    display: block;
+}
+#ad-xy765-1 iframe { min-width: 728px; }
+
+#ad-xy765-2 {
+    display: none;
+}
+#ad-xy765-2 iframe { min-width: 468px; }
+
+#ad-xy765-3 {
+    display: none;
+}
+#ad-xy765-3 iframe { min-width: 320px; }
+
+@media screen and (max-width: 727px) {
+    #ad-xy765-1 {
+        display: none;
+    }
+    #ad-xy765-2 {
+        display: block;
+    }
+    #ad-xy765-3 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 467px) {
+    #ad-xy765-1 {
+        display: none;
+    }
+    #ad-xy765-2 {
+        display: none;
+    }
+    #ad-xy765-3 {
+        display: block;
+    }
+}
+
+

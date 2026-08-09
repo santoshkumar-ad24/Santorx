@@ -19,8 +19,8 @@
 "name": "Saniova"
 }
 </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7903701529997398"
-     crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7903701529997398"
+        crossorigin="anonymous"></script>
     <meta name="yandex-verification" content="dad153b32c9fed72" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -107,6 +107,8 @@
     <link rel="stylesheet" href="/stylesheet/style.css">
     <link rel="stylesheet" href="/stylesheet/blog.css">
     <link rel="stylesheet" href="/stylesheet/hamburger-menu.css">
+    <link rel="stylesheet" href="/stylesheet/top-ads.css">
+    <link rel="stylesheet" href="/stylesheet/sideads.css">
 </head>
 
 <body>
@@ -138,7 +140,26 @@
 
     </header>
     <%- include('partials/signReg') %>
-
+        <div class="top-ads-wrapper">
+            <div class="ad-container">
+                <span class="ad-badge">Advertisement</span>
+                <div class="ad-scroll" id="ad-xy765-1">
+                    <iframe src="/ads/banner728" width="728" height="90" frameborder="0" scrolling="no"
+                        title="Advertisement">
+                    </iframe>
+                </div>
+                <div class="ad-scroll" id="ad-xy765-2">
+                    <iframe src="/ads/banner468" width="468" height="60" frameborder="0" scrolling="no"
+                        title="Advertisement">
+                    </iframe>
+                </div>
+                <div class="ad-scroll" id="ad-xy765-3">
+                    <iframe src="/ads/banner320" width="320" height="50" frameborder="0" scrolling="no"
+                        title="Advertisement">
+                    </iframe>
+                </div>
+            </div>
+        </div>
 
         <main>
 
@@ -249,15 +270,74 @@
                             </div>
 
                             <!-- Blog Body Content -->
-                            <div class="content">
-                                <p>
-                                    <%- blog.content %>
-                                </p>
-                            </div>
+                            <%
+    const h2Matches = blog.content.match(/<h2\b[^>]*>/gi) || [];
+    const h2Count = h2Matches.length;
+
+    let targetH2;
+
+    if (h2Count >= 5) {
+        targetH2 = 2;
+    } else if (h2Count >= 4) {
+        targetH2 = 3;
+    } else {
+        targetH2 = null;
+    }
+
+    let currentH2 = 0;
+
+    const contentWithAd = targetH2
+        ? blog.content.replace(/<\/h2>/gi, function(match) {
+            currentH2++;
+
+            if (currentH2 === targetH2) {
+                return `
+                    ${match}
+                    <div class="native-ad-container">
+                        <span class="native-ad-badge">Sponsored Content</span>
+                        <iframe
+                            src="/ads/nativeBanner"
+                            width="100%"
+                            frameborder="0"
+                            scrolling="no"
+                            title="Advertisement"
+                            style="border: none; width: 100%; display: block; border-radius: 12px; background: #ffffff;">
+                        </iframe>
+                    </div>
+                `;
+            }
+
+            return match;
+        })
+        : blog.content;
+%>
+
+<div class="content">
+    <%- contentWithAd %>
+</div>
 
 
                         </div>
 
+                        <div class="sideads">
+                            <div class="ad-topscroll">
+                                <iframe src="/ads/banner250" width="300" height="250" frameborder="0" scrolling="no"
+                                    title="Advertisement">
+                                </iframe>
+                            </div>
+                            <div class="adsflex">
+                                <div class="ad-sidescroll">
+                                    <iframe src="/ads/banner160" width="160" height="300" frameborder="0" scrolling="no"
+                                        title="Advertisement">
+                                    </iframe>
+                                </div>
+                                <div class="ad-sidescroll">
+                                    <iframe src="/ads/banner160" width="160" height="300" frameborder="0" scrolling="no"
+                                        title="Advertisement">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
 
                         <!-- Sidebar -->
                     </div>
@@ -350,6 +430,7 @@
                     </section>
                 </article>
 
+
         </main>
         <footer class="footer">
             <div class="footer-wrapper">
@@ -407,6 +488,7 @@
             <script src="/script/share.js"></script>
             <script src="/script/blog-interactions.js"></script>
             <script src="/script/blogdescriptional.js"></script>
+            <script src="/script/blog-ad-responsive.js"></script>
             <script src="/script/authPopup.js"></script>
 </body>
 

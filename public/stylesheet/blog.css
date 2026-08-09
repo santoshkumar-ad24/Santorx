@@ -29,7 +29,6 @@ body {
 
 /* BLOG PAGE STYLES - Wordora */
 main {
-    margin-top: 100px;
     margin-bottom: 50px;
 }
 
@@ -888,6 +887,57 @@ article h1 {
     color: var(--teal);
 }
 
+/* ========== NATIVE AD CONTAINER ========== */
+
+.native-ad-container {
+    position: relative;
+    padding: 5px;
+    background: linear-gradient(135deg, rgba(227, 248, 245, 0.6) 0%, rgba(246, 250, 253, 0.8) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 101, 98, 0.12);
+    border-radius: 16px;
+    box-shadow: 0 12px 35px rgba(0, 101, 98, 0.06), 0 0 0 1px rgba(0, 101, 98, 0.04);
+    transition: var(--transition);
+    overflow: visible; /* Allows the badge to overlap the top border */
+}
+
+.native-ad-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 45px rgba(0, 101, 98, 0.1), 0 0 0 1px rgba(0, 101, 98, 0.08);
+}
+
+.native-ad-container .native-ad-badge {
+    position: absolute;
+    top: 0;
+    left: 32px;
+    transform: translateY(-50%);
+    background: #ffffff;
+    color: var(--teal);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(0, 101, 98, 0.12);
+    border: 1px solid rgba(0, 101, 98, 0.15);
+    z-index: 10;
+}
+
+
+/* Mobile responsive for native ad badge */
+@media (max-width: 768px) {
+    .native-ad-container {
+        padding: 8px;
+    }
+    .native-ad-container .native-ad-badge {
+        left: 20px;
+        font-size: 0.65rem;
+        padding: 3px 10px;
+    }
+}
+
 /* ========== RESPONSIVE MEDIA QUERIES ========== */
 
 /* TABLET DEVICES (768px and below) */
@@ -1280,7 +1330,7 @@ article h1 {
 }
 
 
-@media (max-width: 680px) {
+@media (max-width: 770px) {
     article {
         animation: none !important;
         transform: none !important;

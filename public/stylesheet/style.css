@@ -40,7 +40,7 @@ header {
     width: 100vw;
     background-color: var(--header);
     position: fixed;
-    z-index: 2;
+    z-index: 200;
     top: 0;
 
 
@@ -171,7 +171,6 @@ nav {
     background-color: rgba(15, 23, 42, 0.85);
     backdrop-filter: blur(8px);
     position: fixed;
-    top: 90px;
     right: 20px;
     color: var(--navlink);
     gap: 0.5rem;
@@ -179,7 +178,7 @@ nav {
     border-radius: 999px;
     border: 1px solid rgba(0, 101, 98, 0.3);
     align-items: center;
-    z-index: 110;
+    z-index: 210;
     cursor: pointer;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     transition: var(--transition);
@@ -558,7 +557,7 @@ nav {
 
     .register,
     .signedIn {
-        top: 70px;
+        top: 50px;
         padding: 0.5rem 1rem;
     }
 
